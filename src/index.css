@@ -1,13 +1,356 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    background: #fff;
+    color: #222;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.wrapper {
+    width: 1280px;
+    margin: 50px auto;
+}
+
+.header {
+    margin-bottom: 10px;
+    padding: 0 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.header__nav {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.header__nav li {
+    display: inline;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: opacity 500ms ease;
+}
+.header__nav li:hover {
+    opacity: 0.5;
+}
+
+.header__cart-button {
+    position: relative;
+    top: -2px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color, transform 500ms ease;
+}
+.header__cart-button:hover,
+.header__cart-button.active {
+    color: #dc3d3d;
+    transform: scale(1.5);
+}
+
+.header .shop-cart {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    width: 450px;
+    background: #eeeeee;
+    -webkit-box-shadow: 4px 5px 15px -7px #606060;
+    box-shadow: 4px 5px 15px -7px #606060;
+    z-index: 100;
+    padding: 20px;
+}
+
+.empty {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.header .shop-cart .item {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+header .shop-cart .item:last-child {
+    margin-bottom: 0;
+}
+
+header .shop-cart .item img {
+    width: 70px;
+    float: left;
+    margin-right: 20px;
+}
+
+header .shop-cart .item h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+header .shop-cart .item p {
+    font-weight: 600;
+}
+
+header .shop-cart .item .delete-icon {
+    float: right;
+    position: relative;
+    top: -32px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+header .shop-cart .item .delete-icon:hover {
+    color: #dc3d3d;
+}
+
+header .shop-cart .summa {
+    float: left;
+    width: 100%;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.carousel-image {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 35px;
+}
+
+.categories .category {
+    display: inline-block;
+    background: #f2f2f2;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+.categories .category:hover {
+    background: #cecece;
+    border-color: #000;
+}
+
+.category.active {
+    background: #cecece;
+    border-color: #000;
+}
+
+main {
+    display: flex;
+    width: 1280px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.item {
+    width: 400px;
+    margin-bottom: 50px;
+    background-color: #f5f5f5;
+    transition: transform 0.2s ease;
+    position: relative;
+    padding-bottom: 20px;
+}
+.item:hover {
+    transform: scale(1.02);
+}
+
+.item__img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.item__title {
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 40px;
+    width: 95%;
+    margin: 10px 20px;
+}
+.item__title:hover {
+    text-decoration: underline;
+}
+
+.item__author, 
+.item__price {
+    margin: 10px 20px;
+}
+
+.item__price {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item__cart-button {
+    width: 35px;
+    height: 35px;
+    color: #333;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.item__cart-button:hover {
+    transform: scale(1.05);
+    color: #dc3d3d;
+}
+
+
+.modal-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    overflow: auto;
+}
+
+.modal__content {
+    width: 800px;
+    margin: 2% auto;
+    position: relative;
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.modal__header {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.modal-window img {
+    width: 35%;
+    margin-right: 20px;
+}
+
+.modal__information {
+    position: relative;
+    width: 100%;
+}
+
+.modal-window h2,
+.modal-window p,
+.modal-window b {
+    margin-bottom: 15px;
+}
+
+.modal__title {
+    width: 100%;
+    overflow: hidden;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.modal__author {
+    font-weight: 600;
+}
+
+.modal__date {
+    letter-spacing: 1px;
+}
+
+.modal__price {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+}
+
+.modal__price p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.modal-window .add-to-cart {
+    position: relative;
+    bottom: 5px;
+    width: 35px;
+    height: 35px;
+    color: #333;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.modal-window .add-to-cart:hover {
+    transform: scale(1.05);
+    color: #dc3d3d;
+}
+
+.modal__desc {
+    margin: 15px auto;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.modal__tracklist {
+    font-weight: 600;
+}
+
+.modal__track {
+    display: flex;
+    flex-flow: wrap;
+    color: #000;
+}
+.modal__track:hover {
+    color: #dc3d3d;
+}
+
+.modal__track-id {
+    margin-right: 15px;
+}
+
+.modal__track-duration {
+    width: 35px;
+    text-align: start;
+    order: 999;
+    margin-left: auto;
+}
+
+.modal__btn-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+.modal__btn-close:hover {
+    color: #dc3d3d;
+}
+
+main {
+    min-height: 200px;
+}
+
+footer {
+    margin-top: 100px;
+    background: #cecece;
+    height: 100px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
