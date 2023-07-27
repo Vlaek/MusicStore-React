@@ -18,10 +18,6 @@ export class Categories extends Component {
                     name: 'Indie rock'
                 },
                 {
-                    key: 'indie rock',
-                    name: 'Indie rock'
-                },
-                {
                     key: 'hard rock',
                     name: 'Hard rock'
                 },

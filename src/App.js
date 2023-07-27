@@ -29,8 +29,8 @@ class App extends React.Component {
     }
     render() {
         return (
-            <div>
-                <div className="wrapper">
+            <div className="wrapper">
+                <div className="container">
                     <Header 
                         orders={this.state.orders} 
                         onDelete={this.deleteOrder}
