@@ -6,11 +6,15 @@ export class Modal extends Component {
         document.body.style.overflow = 'hidden';
     }
     componentWillUnmount() {
-        document.body.style.overflow = 'visible';
+        if (!this.props.showModalOrder)
+            document.body.style.overflow = 'visible';
     }
     render() {
         return (
-            <div className='modal-window' onClick={() => this.props.onShowModal(this.props.item)}>
+            <div 
+                className='modal-item' 
+                onClick={() => this.props.onShowModal(this.props.item)}
+            >
                 <div className='modal__content' onClick={e => e.stopPropagation()}>
                     <div className='modal__header'>
                         <img 

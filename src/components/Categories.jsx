@@ -6,7 +6,7 @@ export class Categories extends Component {
         this.state = {
             categories: [
                 {
-                    key: 'all',
+                    key: '',
                     name: 'all'
                 },
                 {
@@ -29,6 +29,10 @@ export class Categories extends Component {
                     key: 'alternative rap',
                     name: 'Alternative rap'
                 },
+                {
+                    key: 'hip hop',
+                    name: 'Hip Hop'
+                },
             ],
             active: false,
         }
@@ -40,11 +44,11 @@ export class Categories extends Component {
             <div className='categories'>
                 {this.state.categories.map(category => (
                     <div 
-                        className='category' 
+                        className={category.name === 'all' ? 'category active' : 'category'} 
                         key={category.key}
                         onClick={(el) => {
-                            this.props.chooseCategory(category.key)
                             this.setCategory(el.target)
+                            this.props.setSort(category.key)
                         }}
                     >{category.name}</div>
                 ))}
