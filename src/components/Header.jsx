@@ -17,9 +17,9 @@ export default function Header(props) {
                         }} 
                         className={`header__cart-button`} 
                     />
-                    <li>About Us</li>
-                    <li>Contacts</li>
-                    <li>Cabinet</li>
+                    <li>О нас</li>
+                    <li>Контакты</li>
+                    <li>Кабинет</li>
                 </ul>
             </div>
             <CarouselBox/>

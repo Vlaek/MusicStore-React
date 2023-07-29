@@ -62,7 +62,7 @@ const data = [
         ],
         img: 'placebo/1.jpg',
         desc: 'Placebo is the debut studio album by British alternative rock band Placebo. It was released on 17 June 1996 by record label Virgin. It is the only album recorded with drummer Robert Schultzberg before his departure from the group.',
-        category: 'alternative rock',
+        genre: 'alternative rock',
         date: '17.07.1996',
         price: 39.99,
    },
@@ -139,7 +139,7 @@ const data = [
         ],
         img: 'placebo/2.jpg',
         desc: 'Without You I\'m Nothing is the second studio album by British alternative rock band Placebo. Recorded in mid-to-late 1998, it was released on 12 October 1998 by record labels Hut and Virgin Records.',
-        category: 'alternative rock',
+        genre: 'alternative rock',
         date: '12.10.1998',
         price: 39.99
    },
@@ -216,7 +216,7 @@ const data = [
         ],
         img: 'placebo/3.jpg',
         desc: 'Black Market Music is the third studio album by British alternative rock band Placebo. The album took nine months to record, from late-1999 to mid-2000; the longest that the band had ever spent recording an album until 2022\'s Never Let Me Go. It was released on 9 October 2000 by record label Hut.',
-        category: 'indie rock',
+        genre: 'indie rock',
         date: '09.10.2000',
         price: 29.99
    },
@@ -288,7 +288,7 @@ const data = [
         ],
         img: 'placebo/4.jpg',
         desc: 'Sleeping with Ghosts is the fourth studio album by British alternative rock band Placebo. It was recorded from late 2002 to early 2003 and released on 1 April 2003 by record labels Virgin and Hut.',
-        category: 'alternative rock',
+        genre: 'alternative rock',
         date: '24.03.2003',
         price: 39.99
    },
@@ -365,7 +365,7 @@ const data = [
         ],
         img: 'placebo/5.jpg',
         desc: 'Meds is the fifth studio album by British alternative rock band Placebo. It was recorded from late 2005 to early 2006 and released on 13 March 2006 by record label Virgin in most countries, although it was released three days earlier in Australia and New Zealand. Illegal copies had previously been available on the Internet since 17 January 2006.',
-        category: 'alternative rock',
+        genre: 'alternative rock',
         date: '13.03.2006',
         price: 49.99
    },
@@ -442,7 +442,7 @@ const data = [
         ],
         img: 'placebo/6.jpg',
         desc: 'Battle for the Sun is the sixth studio album by British alternative rock band Placebo. It was recorded in Canada in 2008 and released on 8 June 2009 by record label PIAS. It is their first album with new drummer Steve Forrest, following the departure of Steve Hewitt in 2007.',
-        category: 'alternative rock',
+        genre: 'alternative rock',
         date: '03.06.2009',
         price: 29.99
    },
@@ -504,7 +504,7 @@ const data = [
         ],
         img: 'placebo/7.jpg',
         desc: 'Loud Like Love is the seventh studio album by British alternative rock band Placebo, recorded between 2012 and 2013 and released on 16 September 2013. The album reached number 13 in the UK Albums Chart, and received a mixed response from critics. Three singles were released from the album: "Too Many Friends", "Loud Like Love" and "A Million Little Pieces". It is the band\'s final album to feature the drummer Steve Forrest.',
-        category: 'alternative rock',
+        genre: 'alternative rock',
         date: '16.09.2013',
         price: 29.99
    },
@@ -696,7 +696,7 @@ const data = [
         ],
         img: 'placebo/8.jpg',
         desc: 'A Place for Us to Dream is a compilation album by the English alternative rock band Placebo. It was released on 7 October 2016, as part of the band\'s twentieth anniversary celebrations. It consists of 36 tracks, including songs off albums, single versions, radio edits, live performances and redux editions of previously released songs, as well as the 2016 single "Jesus\' Son". The compilation includes all Placebo songs that have been released as singles, apart from "Burger Queen Français", "Twenty Years" and "The Never-Ending Why".',
-        category: 'alternative rock',
+        genre: 'alternative rock',
         date: '07.10.2016',
         price: 99.99
    },
@@ -773,7 +773,7 @@ const data = [
         ],
         img: 'placebo/9.jpg',
         desc: 'Never Let Me Go is the eighth studio album by British alternative rock band Placebo, recorded between 2019 and 2021 and released on 25 March 2022. The album was made available for pre-order on 9 November 2021. It is Placebo\'s first studio album in over eight years, following 2013\'s Loud Like Love. It is also their first album to be recorded as a duo, following the departure of drummer Steve Forrest in 2015. Concurrent with the album announcement, on 4 November 2021, the band revealed a 2022 headline tour of Europe and the United Kingdom.',
-        category: 'indie rock',
+        genre: 'indie rock',
         date: '25.03.2022',
         price: 39.99
    },
@@ -790,7 +790,7 @@ const data = [
         ],
         img: 'placebo/10.jpg',
         desc: 'On 7 September 2022, Placebo released a cover of the song "Shout" by Tears for Fears.',
-        category: 'indie rock',
+        genre: 'indie rock',
         date: '07.09.2022',
         price: 9.99
    },
@@ -857,7 +857,7 @@ const data = [
         ],
         img: 'rammstein/1.jpg',
         desc: 'Herzeleid is the debut studio album by German Neue Deutsche Härte band Rammstein, first released on 25 September 1995 via Motor Music.',
-        category: 'hard rock',
+        genre: 'hard rock',
         date: '29.09.1995',
         price: 39.99
    },
@@ -934,7 +934,7 @@ const data = [
         ],
         img: 'rammstein/2.jpg',
         desc: 'Sehnsucht is the second studio album by German Neue Deutsche Härte band Rammstein. It was released on August 22, 1997, through Motor Music in Europe and Slash Records in the United States. It is the only album entirely in German to be certified platinum by the RIAA in the US. The album peaked at No. 1 on the Austrian and German charts.',
-        category: 'hard rock',
+        genre: 'hard rock',
         date: '22.08.1997',
         price: 39.99
    },
@@ -1001,7 +1001,7 @@ const data = [
         ],
         img: 'rammstein/3.jpg',
         desc: 'Mutter is the third studio album by German Neue Deutsche Härte band Rammstein. It was released on 2 April 2001 through Motor and Universal Music. The album\'s cover image is a photograph of a dead fetus, which was taken by Daniel & Geo Fuchs. The album has yielded six singles which, to date, are the most released from any Rammstein album.',
-        category: 'industrial metal',
+        genre: 'industrial metal',
         date: '02.04.2001',
         price: 39.99
    },
@@ -1068,7 +1068,7 @@ const data = [
         ],
         img: 'rammstein/4.jpg',
         desc: 'Reise, Reise is the fourth studio album by Neue Deutsche Härte band Rammstein. It was released on 27 September 2004 through Universal Music in Germany and followed shortly by its release across Europe. It was later released in North America through Republic Records on 16 November 2004. Recorded at El Cortijo Studios in Málaga, Spain, the album was produced by the band themselves along with Swedish record producer Jacob Hellner.',
-        category: 'hard rock',
+        genre: 'hard rock',
         date: '27.09.2004',
         price: 39.99
    },
@@ -1135,7 +1135,7 @@ const data = [
         ],
         img: 'rammstein/5.jpg',
         desc: 'Rosenrot is the fifth studio album by German Neue Deutsche Härte band Rammstein, released on 28 October 2005. The album includes six songs artistically omitted from Reise, Reise. The album\'s first title was Reise, Reise Volume Two, but on 18 August 2005 the album was announced as Rosenrot. The cover art is nearly identical to the Japanese import of Reise, Reise. The image is a slightly altered photograph of the icebreaker USS Atka, taken on 13 March 1960 at McMurdo Station, Ross Ice Shelf, Antarctica.',
-        category: 'industrial metal',
+        genre: 'industrial metal',
         date: '28.10.2005',
         price: 39.99
    },
@@ -1202,7 +1202,7 @@ const data = [
         ],
         img: 'rammstein/6.jpg',
         desc: 'Liebe ist für alle da is the sixth studio album by German Neue Deutsche Härte band Rammstein. It was released through Universal Music in Europe on 16 October 2009, the United Kingdom on 19 October 2009, and the United States on 20 October 2009.',
-        category: 'industrial metal',
+        genre: 'industrial metal',
         date: '16.10.2009',
         price: 39.99
    },
@@ -1269,7 +1269,7 @@ const data = [
         ],
         img: 'rammstein/7.jpg',
         desc: 'The untitled seventh studio album by German Neue Deutsche Härte band Rammstein, titled Rammstein on digital platforms and on CD-Text enabled devices, was released on 17 May 2019 through Universal Music. Their first studio album in ten years, it is their first not to be produced by Jacob Hellner; it was instead produced by Emigrate guitarist Olsen Involtini, who also serves as Rammstein\'s live sound engineer.',
-        category: 'industrial metal',
+        genre: 'industrial metal',
         date: '17.05.2019',
         price: 39.99
    },
@@ -1336,7 +1336,7 @@ const data = [
         ],
         img: 'rammstein/8.jpg',
         desc: 'Zeit is the eighth studio album by German Neue Deutsche Härte band Rammstein, released on 29 April 2022 through Universal Music. Produced by the band with Olsen Involtini, the album was unplanned and recorded as a result of the band\'s tour being postponed due to the COVID-19 pandemic. According to the band, the enforced lockdowns due to the pandemic spurred the band\'s creativity, resulting in spontaneous writing and recording sessions. Rammstein recorded the album in late 2020 and early 2021 at La Fabrique Studios in Saint-Rémy-de-Provence, France, where they recorded their previous album. The album\'s title track was released as the lead single on 10 March 2022.',
-        category: 'industrial metal',
+        genre: 'industrial metal',
         date: '29.06.2022',
         price: 39.99
    },
@@ -1413,7 +1413,7 @@ const data = [
         ],
         img: 'kanye/1.jpg',
         desc: 'Graduation is the third studio album by American rapper and producer Kanye West, released on September 11, 2007, through Def Jam Recordings and Roc-A-Fella Records. Recording sessions took place between 2005 and 2007 at several studios in New York and Los Angeles. It was primarily produced by West himself, with contributions from various other producers, including DJ Toomp. The album also features guest appearances from recording artists such as Dwele, T-Pain, Lil Wayne, Mos Def, DJ Premier, and Chris Martin. The cover art and its interior artwork were designed by Japanese contemporary artist Takashi Murakami.',
-        category: 'alternative rap',
+        genre: 'alternative rap',
         date: '11.09.2007',
         price: 39.99
     },
@@ -1485,7 +1485,7 @@ const data = [
         ],
         img: 'kanye/2.jpg',
         desc: 'My Beautiful Dark Twisted Fantasy is the fifth studio album by American rapper and producer Kanye West. It was released by Def Jam Recordings and Roc-A-Fella Records on November 22, 2010. Retreating to a self-imposed exile in Hawaii after a period of controversy in 2009 following his interruption at the MTV Music Awards, he recorded the album at Honolulu\'s Avex Recording Studio in a communal environment involving numerous musicians. Additional recording sessions took place at Glenwood Place Studios in Burbank, California, and at the New York City studios Electric Lady and Platinum Sound.',
-        category: 'hip hop',
+        genre: 'hip hop',
         date: '22.11.2010',
         price: 39.99
     },

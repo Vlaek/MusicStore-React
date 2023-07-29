@@ -20,9 +20,50 @@ class App extends React.Component {
             showModalOrder: false,
             fullItem: {},
             filter: {
-                sort: "",
+                genre: "",
+                sort: "new",
                 query: ""
-            }
+            },
+            genres: [
+                {
+                    key: '',
+                    name: 'Все'
+                },
+                {
+                    key: 'alternative rock',
+                    name: 'Alternative rock'
+                },
+                {
+                    key: 'indie rock',
+                    name: 'Indie rock'
+                },
+                {
+                    key: 'hard rock',
+                    name: 'Hard rock'
+                },
+                {
+                    key: 'industrial metal',
+                    name: 'Industrial metal'
+                },
+                {
+                    key: 'alternative rap',
+                    name: 'Alternative rap'
+                },
+                {
+                    key: 'hip hop',
+                    name: 'Hip Hop'
+                },
+            ],
+            sorts: [
+                {
+                    key: 'new',
+                    name: 'Сначала новые'
+                },
+                {
+                    key: 'old',
+                    name: 'Сначала старые'
+                },
+            ]
         }
 
         this.state.currentItems = this.state.items;
@@ -30,12 +71,11 @@ class App extends React.Component {
         this.addToOrder = this.addToOrder.bind(this);
         this.deleteOrder = this.deleteOrder.bind(this);
 
-        this.chooseCategory = this.chooseCategory.bind(this);
-
         this.onShowModal = this.onShowModal.bind(this);
         this.onShowModalOrder = this.onShowModalOrder.bind(this);
 
         this.handleSortChange = this.handleSortChange.bind(this);
+        this.handleGenreChange = this.handleGenreChange.bind(this);
         this.handleQueryChange = this.handleQueryChange.bind(this);
     }
     render() {
@@ -49,9 +89,13 @@ class App extends React.Component {
                         onDelete={this.deleteOrder}
                         onShowModalOrder={this.onShowModalOrder}
                     />
-                    <Categories 
-                        chooseCategory={this.chooseCategory} 
-                        setSort={this.handleSortChange}
+                    <Categories
+                        categories={this.state.sorts}
+                        setCategory={this.handleSortChange}
+                    />
+                    <Categories
+                        categories={this.state.genres}
+                        setCategory={this.handleGenreChange}
                     />
                     <Input 
                         placeholder={"Найти"}
@@ -108,17 +152,6 @@ class App extends React.Component {
         this.setState({showModalOrder: !this.state.showModalOrder})
     }
 
-    chooseCategory(category) {
-        if (category === 'all') {
-            this.setState({currentItems: this.state.items})
-            return
-        }
-
-        this.setState({
-            currentItems: this.state.items.filter(item => item.category === category)
-        })
-    }
-
     handleQueryChange(event) {
         if (!event.target.value)
             event.target.value = ""
@@ -126,24 +159,45 @@ class App extends React.Component {
         this.setState({ filter: newFilter });
     }
 
-    handleSortChange(category) {
-        const newFilter = { ...this.state.filter, sort: category };
+    handleGenreChange(genre) {
+        const newFilter = { ...this.state.filter, genre: genre };
         this.setState({ filter: newFilter });
+    }
+
+    handleSortChange(sort) {
+        const newSort = { ...this.state.filter, sort: sort };
+        this.setState({ filter: newSort });
     }
 
     setFilterItems() {
         const { items, filter } = this.state;
-        if (!filter.query && !filter.sort) {
+        if (!filter.query && !filter.genre && !filter.sort) {
             return items;
         }
-        const filteredItems = items.filter(item => 
+        
+        let filteredItems = items.filter(item => 
             item.title.toLowerCase().includes(filter.query.toLowerCase()) || 
             item.author.toLowerCase().includes(filter.query.toLowerCase()))
-        if (!filter.sort) {
-            return filteredItems;
-        } else {
-            return filteredItems.filter(item => item.category === filter.sort)
+
+        if (filter.genre) {
+            filteredItems = [...filteredItems].filter(item => item.genre === filter.genre)
         }
+
+        if (!filter.sort) {
+            return filteredItems
+        }
+        
+        filteredItems.sort((a, b) => {
+            const [aDay, aMonth, aYear] = a.date.split('.');
+            const [bDay, bMonth, bYear] = b.date.split('.');
+            if (filter.sort === 'new') {
+                return new Date(`${bMonth}/${bDay}/${bYear}`) - new Date(`${aMonth}/${aDay}/${aYear}`)
+            } else {
+                return new Date(`${aMonth}/${aDay}/${aYear}`) - new Date(`${bMonth}/${bDay}/${bYear}`)
+            }
+        })
+        
+        return filteredItems;
     }
 }
 

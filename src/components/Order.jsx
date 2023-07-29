@@ -12,7 +12,13 @@ export class Order extends Component {
                     onClick={() => this.props.onShowModal(this.props.item)}
                 />
                 <div className='modal-order__item__body'>
-                    <p className='modal-order__item__title' title={this.props.item.title}>{this.props.item.title}</p>
+                    <p 
+                        className='modal-order__item__title' 
+                        title={this.props.item.title}
+                        onClick={() => this.props.onShowModal(this.props.item)}
+                    >
+                        {this.props.item.title}
+                    </p>
                     <p className='modal-order__item__author'>{this.props.item.author}</p>
                     <p className='modal-order__item__price'>${this.props.item.price}</p>
                     <FaTrash 

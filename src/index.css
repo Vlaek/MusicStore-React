@@ -20,8 +20,9 @@ body, html {
 }
 
 .container {
-    width: 1280px;
+    width: 1280px !important;
     margin: 50px auto;
+    padding: 0  !important;
     flex: 1 0 auto;
 }
 
@@ -187,18 +188,36 @@ header .shop-cart .summa {
 }
 
 
-main {
-    display: flex;
+.item-list {
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 40px 40px;
     width: 100%;
     min-height: 200px;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 
+.item-list_empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 600px;
+}
+
+.item-list_empty__title {
+    font-size: 56px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.item-list_empty__subtitle {
+    font-size: 32px;
+    font-weight: 600;
+}
 
 .item {
     width: 400px;
-    margin-bottom: 50px;
     background-color: #eeeeee;
     border: 1px solid #eeeeee;
     transition: transform 0.2s ease;
@@ -429,7 +448,6 @@ footer {
     justify-content: center;
     align-items: center;
     position: fixed;
-    align-self: flex-start;
     z-index: 9999;
     width: 600px;
     padding: 15px 0;
@@ -442,7 +460,7 @@ footer {
 
 .modal-order__body {
     flex: 1 0 auto;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 200px;
 }
 
@@ -472,6 +490,7 @@ footer {
     margin-right: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid #eeeeee;
 }
 .modal-order__img:hover {
     transform: scale(1.02);
@@ -481,7 +500,7 @@ footer {
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 10px;
-    width: 90%;
+    width: 320px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
