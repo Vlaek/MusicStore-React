@@ -8,6 +8,8 @@ import dataJSON from "./data.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from "./components/UI/Input";
 import ModalOrder from "./components/ModalOrder";
+import CarouselBox from "./components/CarouselBox";
+
 
 class App extends React.Component {
     constructor(props) {
@@ -87,11 +89,12 @@ class App extends React.Component {
 
         return (
             <div className="wrapper">
+                <Header
+                    orders={this.state.orders}
+                    onShowModalOrder={this.onShowModalOrder}
+                />
                 <div className="container">
-                    <Header
-                        orders={this.state.orders}
-                        onShowModalOrder={this.onShowModalOrder}
-                    />
+                    <CarouselBox/>
                     <Categories
                         categories={this.state.sorts}
                         setCategory={this.handleSortChange}
