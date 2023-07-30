@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# MusicStore - React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Описание
 
-## Available Scripts
+[**MusicStore**](https://vlaek.github.io/MusicStore-React/) - это веб-приложение, разработанное с использованием React, предоставляющее возможность пользователям просматривать и покупать музыкальные альбомы. Проект создан в качестве учебной и практической задачи, чтобы продемонстрировать навыки разработки фронтенда с использованием React и связанных технологий.
 
-In the project directory, you can run:
+Основные функции и компоненты проекта:
+* Структура данных альбомов:
+  * Каждый альбом содержит следующую информацию: название, группу, дату выхода, описание и список треков.
+  * Для каждого трека указано название и длительность.
+* Модальное окно просмотра товара:
+  * При клике на карточку альбома, открывается модальное окно с подробной информацией о товаре.
+  * Модальное окно содержит обложку, название, группу, дату выхода, описание альбома и список треков с их продолжительностью.
+* Лайки товаров: пользователи могут лайкать понравившиеся альбомы.
+* Модальное окно корзины:
+  * Содержит список выбранных пользователем товаров для покупки.
+  * Пользователи могут просматривать и удалять товары из корзины.
+  * Отображается общая стоимость выбранных товаров.
+* Фильтрация товаров по жанрам: позволяет пользователям фильтровать альбомы по жанру музыки.
+* Сортировка товаров по дате выхода альбома: позволяет пользователю сортировать альбомы по дате их выпуска (от самых новых к старым или наоборот).
+* Поиск товаров:
+  * Реализован поиск по названию альбома или группе.
 
-### `npm start`
+Технологии:
+* Frontend: React, HTML, CSS, JavaScript
+<!-- * Маршрутизация: React Router -->
+* Компоненты: Использование различных React-компонентов для создания интерфейса
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Замечание: Проект MusicStore React создан исключительно в качестве учебного пет-проекта и не имеет целей стать коммерческим или использоваться для продажи реальных музыкальных товаров.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- ## Иллюстрации -->
+<!-- ### Главная страница -->
+<!-- ![Главная страница](https://i.imgur.com/ikk0AHa.gif "Главная страница") -->
