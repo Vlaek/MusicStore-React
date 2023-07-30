@@ -4,7 +4,7 @@ import { IoClose } from 'react-icons/io5';
 
 
 export default function ModalOrder(props) {
-    const summa = props.orders.reduce((summa, order) => summa + order.price, 0);
+    const summa = props.orders.reduce((summa, order) => summa + order.price * order.count, 0);
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
@@ -28,8 +28,10 @@ export default function ModalOrder(props) {
                                 <Order 
                                     key={order.id} 
                                     item={order} 
-                                    onShowModal={props.onShowModal}
+                                    onAdd={props.onAdd}
+                                    onRemove={props.onRemove}
                                     onDelete={props.onDelete} 
+                                    onShowModal={props.onShowModal}
                                 />
                             ))}
                         </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { IoCart, IoClose } from 'react-icons/io5';
+import { IoCart, IoClose, IoHeart } from 'react-icons/io5';
 
 export class Modal extends Component {
     componentDidMount() {
@@ -29,13 +29,19 @@ export class Modal extends Component {
                             <p className='modal__date'>{this.props.item.date}</p>
                             <div className='modal__price'>
                                 <p>${this.props.item.price}</p>
-                                <IoCart 
-                                    className='add-to-cart'
-                                    onClick={() => {
-                                        this.props.onAdd(this.props.item)
-                                        this.props.onShowModal(this.props.item)
-                                    }}
-                                />
+                                <div className="modal__btn-list">
+                                    <IoHeart
+                                        className={`modal__btn-like ${this.props.likes.includes(this.props.item.id) && 'active'}`}
+                                        onClick={() => this.props.onLike(this.props.item)}
+                                    />
+                                    <IoCart 
+                                        className='modal__btn-cart' 
+                                        onClick={() => {
+                                            this.props.onAdd(this.props.item)
+                                            this.props.onShowModal(this.props.item)
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>

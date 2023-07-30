@@ -9,14 +9,15 @@ export class Items extends Component {
                     <div className='item-list'>
                         {this.props.items.map(item => (
                             <Item 
-                                item={item} 
                                 key={item.id} 
+                                item={item} 
+                                like={this.props.likes.includes(item.id)}
                                 onAdd={this.props.onAdd}
+                                onLike={this.props.onLike}
                                 onShowModal={this.props.onShowModal}
                             />
                         ))}
                     </div>
-
                 : 
                     <div className='item-list_empty'>
                         <p className='item-list_empty__title'>К сожалению, таких товаров не найдено :(</p>

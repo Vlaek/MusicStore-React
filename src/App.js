@@ -15,6 +15,7 @@ class App extends React.Component {
         this.state = {
             items: dataJSON,
             orders: [],
+            likes: [],
             currentItems: [],
             showModal: false,
             showModalOrder: false,
@@ -69,6 +70,7 @@ class App extends React.Component {
         this.state.currentItems = this.state.items;
 
         this.addToOrder = this.addToOrder.bind(this);
+        this.removeFromOrder = this.removeFromOrder.bind(this);
         this.deleteOrder = this.deleteOrder.bind(this);
 
         this.onShowModal = this.onShowModal.bind(this);
@@ -77,6 +79,8 @@ class App extends React.Component {
         this.handleSortChange = this.handleSortChange.bind(this);
         this.handleGenreChange = this.handleGenreChange.bind(this);
         this.handleQueryChange = this.handleQueryChange.bind(this);
+
+        this.likeItem = this.likeItem.bind(this);
     }
     render() {
         const filteredTasks = this.setFilterItems();
@@ -84,9 +88,8 @@ class App extends React.Component {
         return (
             <div className="wrapper">
                 <div className="container">
-                    <Header 
-                        orders={this.state.orders} 
-                        onDelete={this.deleteOrder}
+                    <Header
+                        orders={this.state.orders}
                         onShowModalOrder={this.onShowModalOrder}
                     />
                     <Categories
@@ -103,40 +106,67 @@ class App extends React.Component {
                     />
                     <Items 
                         items={filteredTasks} 
+                        likes={this.state.likes}
                         onAdd={this.addToOrder} 
+                        onLike={this.likeItem}
                         onShowModal={this.onShowModal}
                     />
                     { this.state.showModalOrder && 
                         <ModalOrder
-                            orders={this.state.orders} 
+                            orders={this.state.orders}
                             onDelete={this.deleteOrder}
                             onShowModalOrder={this.onShowModalOrder}
                             onShowModal={this.onShowModal}
+                            onAdd={this.addToOrder}
+                            onRemove={this.removeFromOrder}
                         /> 
                     }
                     { this.state.showModal && 
                         <Modal 
-                            onAdd={this.addToOrder} 
-                            onShowModal={this.onShowModal} 
                             item={this.state.fullItem} 
+                            likes={this.state.likes}
+                            onAdd={this.addToOrder} 
+                            onLike={this.likeItem}
+                            onShowModal={this.onShowModal} 
                             showModalOrder={this.state.showModalOrder}
                         /> 
                     }
                 </div>
                 <Footer />
             </div>
-
         );
     }
 
     addToOrder(item) {
-        let isInArray = false;
-        this.state.orders.forEach(order => {
-            if (order.id === item.id)
-                isInArray = true
-        })
-        if (!isInArray)
-            this.setState({ orders: [...this.state.orders, item] })
+        this.setState(prevState => {
+            const { orders } = prevState;
+            const index = orders.findIndex(order => order.id === item.id);
+            if (index >= 0) {
+                const newOrders = [...orders];
+                newOrders[index].count += 1;
+                return { orders: newOrders };
+            } else {
+                return { orders: [...orders, {...item, count: 1}] };
+            }
+        });
+    }
+
+    removeFromOrder(item) {
+        this.setState(prevState => {
+            const { orders } = prevState;
+            const index = orders.findIndex(order => order.id === item.id);
+            if (index >= 0 && orders[index].count > 1) {
+                const newOrders = [...orders];
+                newOrders[index].count -= 1;
+                return { orders: newOrders };
+            } else if (index >= 0 && orders[index].count === 1) {
+                const newOrders = [...orders];
+                newOrders.splice(index, 1);
+                return { orders: newOrders };
+            } else {
+                return prevState;
+            }
+        });
     }
 
     deleteOrder(id) {
@@ -198,6 +228,18 @@ class App extends React.Component {
         })
         
         return filteredItems;
+    }
+
+    likeItem(item) {
+        let isInArray = false;
+        this.state.likes.forEach(like => {
+            if (like === item.id)
+                isInArray = true
+                this.setState({likes: this.state.likes.filter(like => like !== item.id)})
+        })
+        if (!isInArray)
+            this.setState({ likes: [...this.state.likes, item.id] })
+        console.log(this.state.likes)
     }
 }
 

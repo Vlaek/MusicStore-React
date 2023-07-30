@@ -26,6 +26,17 @@ body, html {
     flex: 1 0 auto;
 }
 
+a:visited {
+    color: #dc3d3d;
+    transition: all 0.3s ease;
+}
+a:hover {
+    filter: brightness(75%)
+}
+
+
+/* Header */
+
 .header {
     margin-bottom: 10px;
     padding: 0 10px;
@@ -41,6 +52,7 @@ body, html {
 }
 
 .header__nav {
+    font-weight: 600;
     list-style: none;
     margin-bottom: 0;
 }
@@ -49,81 +61,29 @@ body, html {
     display: inline;
     margin-left: 25px;
     cursor: pointer;
-    transition: opacity 500ms ease;
+    transition: all 0.3s ease;
 }
 .header__nav li:hover {
-    opacity: 0.5;
+    color: #dc3d3d;
 }
 
-.header__cart-button {
+.header__btn-btn-cart {
     position: relative;
     top: -2px;
     margin-right: 10px;
     cursor: pointer;
-    transition: color, transform 500ms ease;
+    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
 }
-.header__cart-button:hover,
-.header__cart-button.active {
+.header__btn-btn-cart:hover,
+.header__btn-btn-cart.active {
     color: #dc3d3d;
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
-.header .shop-cart {
-    position: absolute;
-    top: 35px;
-    right: 0;
-    width: 450px;
-    background: #eeeeee;
-    -webkit-box-shadow: 4px 5px 15px -7px #606060;
-    box-shadow: 4px 5px 15px -7px #606060;
-    z-index: 100;
-    padding: 20px;
-}
 
-.header .shop-cart .item {
-    width: 100%;
-    height: 90px;
-    float: left;
-    margin-bottom: 0px;
-    padding: 5px;
-}
-
-header .shop-cart .item:last-child {
-    margin-bottom: 0;
-}
-
-header .shop-cart .item img {
-    width: 70px;
-    float: left;
-    margin-right: 20px;
-}
-
-header .shop-cart .item h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-header .shop-cart .item p {
-    font-weight: 600;
-}
-
-header .shop-cart .item .delete-icon {
-    float: right;
-    position: relative;
-    top: -32px;
-    transition: color 0.3s ease;
-    cursor: pointer;
-}
-header .shop-cart .item .delete-icon:hover {
-    color: #dc3d3d;
-}
-
-header .shop-cart .summa {
-    float: left;
-    width: 100%;
-    font-weight: 600;
-    font-size: 20px;
-}
+/* Carousel */
 
 .carousel-image {
     height: 500px;
@@ -131,6 +91,9 @@ header .shop-cart .summa {
     object-fit: cover;
     margin-bottom: 35px;
 }
+
+
+/* Categories */
 
 .categories .category {
     display: inline-block;
@@ -149,6 +112,9 @@ header .shop-cart .summa {
     background: #cecece;
     border-color: #000;
 }
+
+
+/* Search */
 
 .search {
     width: 100%;
@@ -181,12 +147,14 @@ header .shop-cart .summa {
     z-index: 2;
     color: #000;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 .search__btn-close:hover {
     color: #dc3d3d;
 }
 
+
+/* Items */
 
 .item-list {
     display: grid;
@@ -220,7 +188,7 @@ header .shop-cart .summa {
     width: 400px;
     background-color: #eeeeee;
     border: 1px solid #eeeeee;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
     position: relative;
     padding-bottom: 20px;
 }
@@ -263,19 +231,38 @@ header .shop-cart .summa {
     margin-bottom: 0;
 }
 
-.item__cart-button {
+.item__btn-list {
+
+}
+
+.item__btn-like {
     width: 35px;
     height: 35px;
-    font-weight: 600;
+    margin-right: 15px;
     color: #333;
     cursor: pointer;
     transition: all 0.3s ease;
 }
-.item__cart-button:hover {
-    transform: scale(1.05);
+.item__btn-like:hover,
+.item__btn-like.active {
+    transform: scale(1.1);
     color: #dc3d3d;
 }
 
+.item__btn-cart {
+    width: 35px;
+    height: 35px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.item__btn-cart:hover {
+    transform: scale(1.1);
+    color: #dc3d3d;
+}
+
+
+/* Modal Item */
 
 .modal-item {
     position: fixed;
@@ -323,7 +310,7 @@ header .shop-cart .summa {
 .modal__title {
     width: 100%;
     overflow: hidden;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 900;
 }
 
@@ -338,19 +325,41 @@ header .shop-cart .summa {
 .modal__price {
     position: absolute;
     bottom: 0;
+    padding-right: 20px;
     display: flex;
+    justify-content: space-between;
     width: 100%;
 }
 
 .modal__price p {
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 600;
     margin-right: 15px;
+    margin-bottom: 0;
 }
 
-.modal-item .add-to-cart {
-    position: relative;
-    bottom: 5px;
+.modal__btn-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+}
+
+.modal__btn-like {
+    width: 35px;
+    height: 35px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.modal__btn-like:hover,
+.modal__btn-like.active {
+    transform: scale(1.2);
+    color: #dc3d3d;
+}
+
+
+.modal__btn-cart {
     width: 35px;
     height: 35px;
     color: #333;
@@ -358,8 +367,8 @@ header .shop-cart .summa {
     font-weight: 600;
     transition: all 0.3s ease;
 }
-.modal-item .add-to-cart:hover {
-    transform: scale(1.05);
+.modal__btn-cart:hover {
+    transform: scale(1.2);
     color: #dc3d3d;
 }
 
@@ -406,16 +415,7 @@ header .shop-cart .summa {
 }
 
 
-footer {
-    background: #eeeeee;
-    height: 100px;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-}
-
+/* Modal Order */
 
 .modal-order {
     position: fixed;
@@ -516,9 +516,10 @@ footer {
 
 .modal-order__item__price {
     position: absolute;
-    bottom: -20px;
+    bottom: 0;
     font-size: 24px;
     font-weight: 600;
+    margin-bottom: 0;
 }
 
 .modal-order__item__delete-btn {
@@ -532,6 +533,35 @@ footer {
 }
 .modal-order__item__delete-btn:hover {
     color: #dc3d3d;
+}
+
+.modal-order__item__count {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 35%;
+    border-radius: 15px;
+    background: #eeeeee;
+    padding: 0px 20px;
+    user-select: none;
+}
+
+.modal-order__item__count p {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.modal-order__item__count__btn {
+    color: #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.modal-order__item__count__btn:hover {
+    color: #dc3d3d
 }
 
 .modal-order__footer {
@@ -557,6 +587,7 @@ footer {
     outline: none;
     border-radius: 25px;
     transition: all 0.3s ease;
+    user-select: none;
 }
 .modal-order__button:hover {
     background: #dc3d3d;
@@ -592,4 +623,17 @@ footer {
 .modal-order__empty__text {
     text-align: center;
     font-size: 20px;
+}
+
+
+/* Footer */
+
+footer {
+    background: #eeeeee;
+    height: 100px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
 }

@@ -4,7 +4,6 @@ import CarouselBox from "./CarouselBox";
 
 export default function Header(props) {
     const [cartOpen, setCartOpen] = useState(false);
-
     return (
         <header>
             <div className='header'>
@@ -15,7 +14,7 @@ export default function Header(props) {
                             setCartOpen(!cartOpen)
                             props.onShowModalOrder()
                         }} 
-                        className={`header__cart-button`} 
+                        className={`header__btn-btn-cart ${props.orders.length && 'active'}`} 
                     />
                     <li>О нас</li>
                     <li>Контакты</li>
