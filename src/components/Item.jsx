@@ -7,7 +7,7 @@ export class Item extends Component {
             <div className='item'>
                 <img 
                     className='item__img'
-                    src={"./img/" + this.props.item.img} 
+                    src={require(`../../public/img/${this.props.item.img}`)} 
                     alt="img"
                     onClick={() => this.props.onShowModal(this.props.item)}
                 />
