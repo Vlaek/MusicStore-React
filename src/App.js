@@ -5,11 +5,9 @@ import Header from "./components/Header";
 import Items from "./components/Items";
 import Modal from "./components/Modal";
 import dataJSON from "./data.js";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from "./components/UI/Input";
 import ModalOrder from "./components/ModalOrder";
 import CarouselBox from "./components/CarouselBox";
-
 
 class App extends React.Component {
     constructor(props) {

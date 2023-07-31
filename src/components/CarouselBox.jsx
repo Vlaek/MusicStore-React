@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import placeboImg from '../img/placebo.jpg'
 import rammsteinImg from '../img/rammstein.jpg'
 import kanyeWest from '../img/kanye-west.jpg'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class CarouselBox extends Component {
     render() {
