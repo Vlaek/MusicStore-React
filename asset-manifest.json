@@ -1,16 +1,26 @@
 {
   "files": {
-    "main.css": "/MusicStore-React/static/css/main.04806974.css",
-    "main.js": "/MusicStore-React/static/js/main.9e8b3bc5.js",
+    "main.css": "/MusicStore-React/static/css/main.228b51fd.css",
+    "main.js": "/MusicStore-React/static/js/main.990d5a63.js",
+    "static/media/2.jpg": "/MusicStore-React/static/media/2.33cca3ba8159aec35ad9.jpg",
+    "static/media/8.jpg": "/MusicStore-React/static/media/8.189efa7ab1ea8b02f670.jpg",
+    "static/media/1.jpg": "/MusicStore-React/static/media/1.703975abffb72c069728.jpg",
+    "static/media/9.jpg": "/MusicStore-React/static/media/9.a4fe8aaefc053f3efbc3.jpg",
+    "static/media/7.jpg": "/MusicStore-React/static/media/7.f04b1392b3c2b8569ccc.jpg",
+    "static/media/4.jpg": "/MusicStore-React/static/media/4.85b75323e9e9d3dd598a.jpg",
+    "static/media/5.jpg": "/MusicStore-React/static/media/5.f6782736186a3441c127.jpg",
     "static/media/kanye-west.jpg": "/MusicStore-React/static/media/kanye-west.9be4b8695aee0a75878b.jpg",
+    "static/media/10.jpg": "/MusicStore-React/static/media/10.00f282b266c064ad7e6c.jpg",
+    "static/media/6.jpg": "/MusicStore-React/static/media/6.f10fb94c55985a4519e2.jpg",
     "static/media/rammstein.jpg": "/MusicStore-React/static/media/rammstein.0663a40927514dcb3c63.jpg",
+    "static/media/3.jpg": "/MusicStore-React/static/media/3.c4818de6f538ec65db06.jpg",
     "static/media/placebo.jpg": "/MusicStore-React/static/media/placebo.32371ec015c0bc8f7ff2.jpg",
     "index.html": "/MusicStore-React/index.html",
-    "main.04806974.css.map": "/MusicStore-React/static/css/main.04806974.css.map",
-    "main.9e8b3bc5.js.map": "/MusicStore-React/static/js/main.9e8b3bc5.js.map"
+    "main.228b51fd.css.map": "/MusicStore-React/static/css/main.228b51fd.css.map",
+    "main.990d5a63.js.map": "/MusicStore-React/static/js/main.990d5a63.js.map"
   },
   "entrypoints": [
-    "static/css/main.04806974.css",
-    "static/js/main.9e8b3bc5.js"
+    "static/css/main.228b51fd.css",
+    "static/js/main.990d5a63.js"
   ]
 }
