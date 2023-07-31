@@ -25,7 +25,7 @@ export class Modal extends Component {
                         <div className="modal__information">
                             <h2 className='modal__title'>{this.props.item.title}</h2>
                             <p className='modal__author'>{this.props.item.author}</p>
-                            <p className='modal__genre'>{this.props.item.category}</p>
+                            <p className='modal__genre'>{this.props.item.genre}</p>
                             <p className='modal__date'>{this.props.item.date}</p>
                             <div className='modal__price'>
                                 <p className='modal__cost'>${this.props.item.price}</p>

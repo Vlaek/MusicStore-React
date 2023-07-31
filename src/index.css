@@ -217,7 +217,7 @@ header {
     border: 1px solid #eeeeee;
     transition: transform 0.3s ease;
     position: relative;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 .item:hover {
     transform: scale(1.02);
@@ -243,6 +243,10 @@ header {
 
 .item__author {
     margin: 10px 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 90%;
 }
 
 .item__price {
@@ -331,8 +335,10 @@ header {
 }
 
 .modal__title {
-    width: 100%;
+    width: 85%;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: 30px;
     font-weight: 900;
 }
@@ -693,6 +699,24 @@ footer {
         width: 360px;
     }
 
+    .item__title {
+        font-size: 28px;
+        line-height: 30px;
+    }
+
+    .item__author {
+        font-size: 16px;
+    }
+
+    .item__price {
+        font-size: 20px;
+    }
+
+    .item__btn-like, .item__btn-cart {
+        width: 30px;
+        height: 30px;
+    }
+
     .modal-order__content {
         width: 550px;
     }
@@ -730,6 +754,23 @@ footer {
 
     .item {
         width: 310px;
+    }
+
+    .item__title {
+        font-size: 24px;
+    }
+
+    .item__author {
+        font-size: 15px;
+    }
+
+    .item__price {
+        font-size: 19px;
+    }
+
+    .item__btn-like, .item__btn-cart {
+        width: 28px;
+        height: 28px;
     }
 
     .modal-order__content {
@@ -808,26 +849,26 @@ footer {
     }
 
     .item__title {
-        font-size: 22px;
-        margin: 5px auto;
+        font-size: 18px;
+        line-height: 26px;
+        margin: 3px auto;
     }
 
     .item__author {
         font-size: 12px;
-        margin: 5px auto;
-        width: 90%;
+        margin: 3px auto;
     }
 
     .item__price {
         font-size: 18px;
-        margin: 5px auto;
+        margin: 3px auto;
         width: 90%;
     }
 
     .item__btn-like,
     .item__btn-cart {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
     }
 
     .modal-order__content {
@@ -914,6 +955,11 @@ footer {
         font-size: 14px;
     }
 
+    .modal-item {
+        height: 100%;
+        background-color: #fff;
+    }
+
     .modal__content {
         width: 100%;
         height: 100%;
@@ -994,6 +1040,24 @@ footer {
 
     .item {
         width: 170px;
+        padding: 0;
+    }
+
+    .item__title {
+        font-size: 15px;
+    }
+
+    footer {
+        height: 60px;
+        margin-top: 30px;
+    }
+
+    footer p {
+        margin: 0;
+    }
+
+    .modal__title, .modal__author, .modal__genre, .modal__date {
+        margin-bottom: 8px;
     }
 }
 
@@ -1090,19 +1154,19 @@ footer {
         z-index: 9999;
     }
 
-    .modal__title, .modal__author, .modal__date {
-        margin-bottom: 10px;
+    .modal__title, .modal__author, .modal__genre, .modal__date {
+        margin-bottom: 5px;
     }
 
     .modal__title {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .modal__author {
-        font-size: 14px;
+        font-size: 16px;
     }
 
-    .modal__date {
+    .modal__genre, .modal__date {
         font-size: 14px;
     }
 
@@ -1198,6 +1262,7 @@ footer {
 
     .category {
         font-size: 10px;
+        padding: 6px 8px;
         margin: 2px 5px;
         border-radius: 12px;
     }
@@ -1209,6 +1274,21 @@ footer {
 
     .item {
         width: 175px;
+        padding: 0;
+    }
+
+    .item__title {
+        font-size: 16px;
+        line-height: 1.2;
+        margin: 5px auto;
+    }
+
+    .item__price {
+        font-size: 16px;
+    }
+
+    .item__btn-like, .item__btn-cart {
+        width: 22px;
     }
 
     .item-list_empty {
@@ -1235,15 +1315,37 @@ footer {
         font-size: 14px;
     }
 
-    .modal__title, .modal__author, .modal__date {
+    .modal__header {
+        flex-direction: column;
+    }
+
+    .modal-item img {
+        width: 85%;
+        margin: 10px auto;
+    }
+
+    .modal__information {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .modal__title, 
+    .modal__author,
+    .modal__genre, 
+    .modal__date {
         margin-bottom: 5px;
     }
 
     .modal__title {
         font-size: 20px;
+        width: 100%;
     }
 
     .modal__author {
+        font-size: 14px;
+    }
+
+    .modal__genre {
         font-size: 12px;
     }
 
@@ -1253,6 +1355,15 @@ footer {
 
     .modal__cost {
         font-size: 18px;
+    }
+
+    .modal__price {
+        position: static;
+        padding: 0;
+    }
+
+    .modal__desc {
+        margin: 10px auto;
     }
 
     .modal__btn-like, .modal__btn-cart {
