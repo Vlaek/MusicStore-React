@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/MusicStore-React/static/css/main.04806974.css",
+    "main.js": "/MusicStore-React/static/js/main.9e8b3bc5.js",
+    "static/media/kanye-west.jpg": "/MusicStore-React/static/media/kanye-west.9be4b8695aee0a75878b.jpg",
+    "static/media/rammstein.jpg": "/MusicStore-React/static/media/rammstein.0663a40927514dcb3c63.jpg",
+    "static/media/placebo.jpg": "/MusicStore-React/static/media/placebo.32371ec015c0bc8f7ff2.jpg",
+    "index.html": "/MusicStore-React/index.html",
+    "main.04806974.css.map": "/MusicStore-React/static/css/main.04806974.css.map",
+    "main.9e8b3bc5.js.map": "/MusicStore-React/static/js/main.9e8b3bc5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04806974.css",
+    "static/js/main.9e8b3bc5.js"
+  ]
+}
