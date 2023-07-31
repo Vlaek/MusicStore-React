@@ -20,7 +20,7 @@ export default function ModalOrder(props) {
                     <div className='modal-order__container'> 
                         <div className="modal-order__header">
                             <p className='summa'>
-                                Sum: ${new Intl.NumberFormat().format(summa)}
+                                Сумма: ${new Intl.NumberFormat().format(summa)}
                             </p>
                         </div>
                         <div className="modal-order__body">

@@ -18,7 +18,7 @@ export class Modal extends Component {
                 <div className='modal__content' onClick={e => e.stopPropagation()}>
                     <div className='modal__header'>
                         <img 
-                            src={"./img/" + this.props.item.img} 
+                            src={require(`../../public/img/${this.props.item.img}`)} 
                             alt="img"
                             className='modal__img'
                         />
@@ -28,7 +28,7 @@ export class Modal extends Component {
                             <p className='modal__genre'>{this.props.item.category}</p>
                             <p className='modal__date'>{this.props.item.date}</p>
                             <div className='modal__price'>
-                                <p>${this.props.item.price}</p>
+                                <p className='modal__cost'>${this.props.item.price}</p>
                                 <div className="modal__btn-list">
                                     <IoHeart
                                         className={`modal__btn-like ${this.props.likes.includes(this.props.item.id) && 'active'}`}

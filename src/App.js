@@ -91,8 +91,9 @@ class App extends React.Component {
                     orders={this.state.orders}
                     onShowModalOrder={this.onShowModalOrder}
                 />
+                <CarouselBox/>
                 <div className="container">
-                    <CarouselBox/>
+                    
                     <Categories
                         categories={this.state.sorts}
                         setCategory={this.handleSortChange}

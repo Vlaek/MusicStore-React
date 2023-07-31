@@ -26,8 +26,8 @@ body, html {
     flex: 1 0 auto;
 }
 
-a:visited {
-    color: #dc3d3d;
+a, a:visited {
+    color: #dc3d3d !important;
     transition: all 0.3s ease;
 }
 a:hover {
@@ -104,6 +104,12 @@ header {
 
 
 /* Carousel */
+
+.carousel-container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+}
 
 .carousel-image {
     height: 500px;
@@ -318,9 +324,9 @@ header {
     width: 100%;
 }
 
-.modal-item h2,
-.modal-item p,
-.modal-item b {
+.modal__title,
+.modal__author,
+.modal__date {
     margin-bottom: 15px;
 }
 
@@ -345,10 +351,11 @@ header {
     padding-right: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
-.modal__price p {
+.modal__cost {
     font-size: 28px;
     font-weight: 600;
     margin-right: 15px;
@@ -466,7 +473,8 @@ header {
     align-items: center;
     position: fixed;
     z-index: 9999;
-    width: 600px;
+    width: 100%;
+    height: 70px;
     padding: 15px 0;
     font-size: 24px;
     font-weight: 600;
@@ -487,17 +495,18 @@ header {
 
 .modal-order__item {
     width: 100%;
-    margin-bottom: 30px;
     background: #fff;
     padding: 25px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #eeeeee;
 }
 .modal-order__item:first-child {
-    margin-top: 110px;
+    border-top: 1px solid #eeeeee;;
+    margin-top: 90px;
 }
 .modal-order__item:last-child {
-    margin-bottom: 130px;
+    margin-bottom: 90px;
 }
 
 .modal-order__item__body {
@@ -591,16 +600,16 @@ header {
     flex-shrink: 0;
     position: fixed;
     bottom: 0;
-    width: 600px;
-    padding: 25px 0;
+    width: 100%;
+    height: 70px;
+    padding: 12px 0;
     background: #fff;
-    height: 110px;
     border-top: 2px solid #eeeeee;
     overflow: hidden;
 }
 
 .modal-order__button {
-    padding: 10px 100px;
+    padding: 0 50px;
     font-size: 24px;
     font-weight: 600;
     background: #cecece;
@@ -671,6 +680,10 @@ footer {
         max-width: 1140px;
     }
 
+    .carousel-container {
+        max-width: 1140px;
+    }
+
     .item-list {
         grid-template-columns: repeat(3, 360px);
         grid-gap: 30px 30px;
@@ -684,16 +697,8 @@ footer {
         width: 550px;
     }
 
-    .modal-order__header {
-        width: 550px;
-    }
-
     .modal-order__item__title {
         width: 270px;
-    }
-
-    .modal-order__footer {
-        width: 550px;
     }
 
     .modal-order__btn-close {
@@ -703,6 +708,10 @@ footer {
 
 @media (max-width: 1200px) {
     .header__container {
+        max-width: 960px;
+    }
+
+    .carousel-container {
         max-width: 960px;
     }
 
@@ -727,24 +736,12 @@ footer {
         width: 500px;
     }
 
-    .modal-order__header {
-        width: 500px;
-    }
-
     .modal-order__item__title {
         width: 220px;
     }
 
     .modal-order__item__count {
         width: 110px;
-    }
-
-    .modal-order__footer {
-        width: 500px;
-    }
-
-    .modal-order__button {
-        padding: 10px 75px;
     }
 
     .modal-order__btn-close {
@@ -761,9 +758,13 @@ footer {
         max-width: 720px;
     }
 
+    .carousel-container {
+        max-width: none;
+    }
+
     .carousel-image {
         height: 350px;
-        margin: 25px 0;
+        margin: 0 0 25px;
     }
 
     .category {
@@ -834,17 +835,15 @@ footer {
     }
 
     .modal-order__header {
-        width: 400px;
         font-size: 20px;
         padding: 10px 0;
     }
 
     .modal-order__item {
         padding: 15px;
-        margin: 20px 0;
     }
     .modal-order__item:first-child {
-        margin-top: 70px;
+        margin-top: 90px;
     }
     .modal-order__item:last-child {
         margin-bottom: 90px;
@@ -886,7 +885,6 @@ footer {
     }
 
     .modal-order__footer {
-        width: 400px;
         padding: 15px;
         height: 70px;
     }
@@ -897,7 +895,31 @@ footer {
     }
 
     .modal-order__btn-close {
+        width: 50px;
+        height: 50px;
+        top: calc(50% - 25px);
         right: 415px;
+    }
+
+    .modal-order__empty {
+        padding: 0 40px;
+    }
+    
+    .modal-order__empty__title {
+        font-size: 48px;
+    }
+    
+    .modal-order__empty__text {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .modal__content {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+        padding: 20px 15px;
     }
 }
 
@@ -937,7 +959,7 @@ footer {
 
     .carousel-image {
         height: 300px;
-        margin: 20px 0;
+        margin: 0 0 20px;
     }
     
     .category {
@@ -1054,17 +1076,68 @@ footer {
         margin: 0 !important;
         font-size: 14px;
     }
+
+    .modal-order__content {
+        width: 100%;
+    }
+
+    .modal-order__btn-close {
+        color: #000;
+        width: 35px;
+        height: 35px;
+        right: 10px;
+        top: 10px;
+        z-index: 9999;
+    }
+
+    .modal__title, .modal__author, .modal__date {
+        margin-bottom: 10px;
+    }
+
+    .modal__title {
+        font-size: 24px;
+    }
+
+    .modal__author {
+        font-size: 14px;
+    }
+
+    .modal__date {
+        font-size: 14px;
+    }
+
+    .modal__desc {
+        font-size: 12px;
+    }
+
+    .modal__btn-list {
+        width: 80px;
+    }
+
+    .modal__track {
+        font-size: 14px;
+    }
+
+    .modal__cost {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .modal__btn-like, .modal__btn-cart {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 @media (max-width: 420px) {
 
     header {
-        height: 40px;
+        height: 50px;
     }
 
     .header {
         padding: 0;
-        height: 40px;
+        height: 50px;
     }
 
     .header__nav {
@@ -1088,10 +1161,17 @@ footer {
 
     .carousel-image {
         height: 200px;
+        margin: 0;
     }
 
     .carousel-item {
-        height: 240px;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        visibility: hidden;
     }
 
     .carousel-caption {
@@ -1101,10 +1181,12 @@ footer {
 
     .carousel-caption h3 {
         font-size: 14px;
+        margin: 0;
     }
 
     .carousel-caption p {
         font-size: 10px;
+        margin: 0;
     }
 
     .categories {
@@ -1117,6 +1199,7 @@ footer {
     .category {
         font-size: 10px;
         margin: 2px 5px;
+        border-radius: 12px;
     }
 
     .item-list {
@@ -1150,5 +1233,34 @@ footer {
     footer p {
         margin: 0 !important;
         font-size: 14px;
+    }
+
+    .modal__title, .modal__author, .modal__date {
+        margin-bottom: 5px;
+    }
+
+    .modal__title {
+        font-size: 20px;
+    }
+
+    .modal__author {
+        font-size: 12px;
+    }
+
+    .modal__date {
+        font-size: 12px;
+    }
+
+    .modal__cost {
+        font-size: 18px;
+    }
+
+    .modal__btn-like, .modal__btn-cart {
+        width: 25px;
+        height: 25px;
+    }
+
+    .modal__btn-list {
+        width: 60px;
     }
 }

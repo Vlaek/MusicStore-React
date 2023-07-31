@@ -7,7 +7,7 @@ export class Order extends Component {
             <div className='modal-order__item'>
                 <img 
                     className='modal-order__img'
-                    src={"./img/" + this.props.item.img} 
+                    src={require(`../../public/img/${this.props.item.img}`)} 
                     alt="img"
                     onClick={() => this.props.onShowModal(this.props.item)}
                 />
