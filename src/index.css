@@ -211,6 +211,12 @@ header {
     font-weight: 600;
 }
 
+.item-list_empty__error {
+    font-size: 32px;
+    font-weight: 600;
+    color: #dc3d3d;
+}
+
 .item {
     width: 400px;
     background-color: #eeeeee;
@@ -479,7 +485,7 @@ header {
     align-items: center;
     position: fixed;
     z-index: 9999;
-    width: 100%;
+    width: 600px;
     height: 70px;
     padding: 15px 0;
     font-size: 24px;
@@ -606,7 +612,7 @@ header {
     flex-shrink: 0;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 600px;
     height: 70px;
     padding: 12px 0;
     background: #fff;
@@ -838,7 +844,7 @@ footer {
         font-size: 32px;
     }
 
-    .item-list_empty__subtitle {
+    .item-list_empty__subtitle, .item-list_empty__error {
         width: 90%;
         font-size: 22px;
     }
@@ -876,6 +882,7 @@ footer {
     }
 
     .modal-order__header {
+        width: 400px;
         font-size: 20px;
         padding: 10px 0;
     }
@@ -926,6 +933,7 @@ footer {
     }
 
     .modal-order__footer {
+        width: 400px;
         padding: 15px;
         height: 70px;
     }
@@ -1033,7 +1041,7 @@ footer {
         font-size: 24px;
     }
 
-    .item-list_empty__subtitle {
+    .item-list_empty__subtitle, .item-list_empty__error {
         width: 90%;
         font-size: 18px;
     }
@@ -1122,7 +1130,7 @@ footer {
         font-size: 20px;
     }
 
-    .item-list_empty__subtitle {
+    .item-list_empty__subtitle, .item-list_empty__error {
         width: 90%;
         font-size: 12px;
     }
@@ -1141,7 +1149,7 @@ footer {
         font-size: 14px;
     }
 
-    .modal-order__content {
+    .modal-order__content, .modal-order__header, .modal-order__footer {
         width: 100%;
     }
 
@@ -1300,7 +1308,7 @@ footer {
         font-size: 16px;
     }
 
-    .item-list_empty__subtitle {
+    .item-list_empty__subtitle, .item-list_empty__error {
         width: 90%;
         font-size: 10px;
     }
