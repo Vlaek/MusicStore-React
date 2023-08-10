@@ -3,6 +3,25 @@
 * {
     margin: 0;
     padding: 0;
+    border: 0;
+}
+
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+:focus, :active {
+    outline: none;
+}
+
+a:focus, a:active {
+    outline: none;
+}
+
+input::-ms-clear {
+    display: none;
 }
 
 body, html {
@@ -22,16 +41,16 @@ body, html {
 .container {
     width: 1280px !important;
     margin: 0 auto;
-    padding: 0  !important;
+    padding: 0 !important;
     flex: 1 0 auto;
 }
 
 a, a:visited {
-    color: #dc3d3d !important;
-    transition: all 0.3s ease;
+    text-decoration: none;
 }
+
 a:hover {
-    filter: brightness(75%)
+    text-decoration: none;
 }
 
 
@@ -66,6 +85,8 @@ header {
     cursor: pointer;
     transition: all 0.3s ease;
     user-select: none;
+    color: #000;
+    text-decoration: none;
 }
 .header__logo:hover {
     color: #dc3d3d;
@@ -83,8 +104,13 @@ header {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-.header__nav li:hover {
-    color: #dc3d3d;
+.header__link, .header__link:visited {
+    color: #000 !important;
+    text-decoration: none;
+}
+.header__link:hover {
+    color: #dc3d3d !important;
+    filter: brightness(100%);
 }
 
 .header__btn-cart {
@@ -185,7 +211,7 @@ header {
 .item-list {
     display: grid;
     grid-template-columns: repeat(3, 400px);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 1fr;
     grid-gap: 40px 40px;
     width: 100%;
     min-height: 200px;
@@ -681,6 +707,16 @@ footer {
     margin-top: 50px;
 }
 
+footer a, footer a:visited {
+    color: #dc3d3d;
+}
+footer a:hover {
+    filter: brightness(75%)
+}
+
+.footer_text {
+    margin-bottom: 0;
+}
 
 
 @media (max-width: 1400px) {
@@ -996,6 +1032,9 @@ footer {
     .header__logo {
         font-size: 20px;
         margin-bottom: 3px;
+    }
+    .header__logo a {
+        color: #000 !important;
     }
 
     .header__nav {
@@ -1382,4 +1421,62 @@ footer {
     .modal__btn-list {
         width: 60px;
     }
+}
+
+
+/* Page About Us */
+
+.greeting {
+    margin: 40px 0;
+    width: 50%;
+}
+
+.greeting__text {
+    font-size: 50px;
+    margin: 0;
+}
+
+.greeting__text.red {
+    color: #dc3d3d;
+}
+
+.description {
+    text-align: justify;
+}
+
+.description__text {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    margin: 25px 0;
+}
+
+.information__item {
+    width: 30%;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.information__item:hover {
+    transform: scale(1.02);
+}
+
+.information__title {
+    color: #dc3d3d;
+    font-size: 36px;
+    font-weight: 900;
+    padding: 0 20px;
+}
+
+.information__text {
+    padding: 0 20px;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.25;
 }
