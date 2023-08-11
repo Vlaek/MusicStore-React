@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useContext} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import { OrdersContext } from '../context/context';
 import Categories from "../components/Categories";
 import Items from "../components/Items";
@@ -8,47 +8,26 @@ import DataService from '../API/DataService';
 import { useItems } from '../hooks/useItems';
 import { useFetching } from '../hooks/useFetching';
 import Loader from "../components/UI/Loader/Loader";
-import { useObserver } from '../hooks/useObserve';
-import { getPageCount } from '../utils/pages';
 
 const Index = () => {
     const [items, setItems] = useState([]);
     const {likes, addToOrder, likeItem, onShowModal} = useContext(OrdersContext);
-    const [totalPages, setTotalPages] = useState(0);
-    const [limit, setLimit] = useState(6);
-    const [page, setPage] = useState(1);
-    const lastElement = useRef();
     
     const [filter, setFilter] = useState({
         genre: "",
-        sort: "order",
+        sort: "",
         query: ""
     });
 
     const sortedAndSearchedItems = useItems(items, filter.sort, filter.query, filter.genre);
     
     const [fetchItems, isItemsLoading, itemsError] = useFetching(async () => {
-        const response = await DataService.getAll(-1, 1, filter.query, filter.genre);
+        const response = await DataService.getAll();
         setItems(response.data);
-        const responseAll = await DataService.getAll(-1, 1);
-        const totalCount = responseAll.data.length
-        setTotalPages(getPageCount(totalCount, limit))
     })
 
-    // useObserver(lastElement, page < totalPages, isItemsLoading, () => {
-    //     setPage(page + 1);
-    // })
-
     useEffect(() => {
-        setItems([]);
-        fetchItems(1, -1);
-    }, [filter])
-
-    useEffect(() => {
-        fetchItems(page, limit)
-    }, [page, limit])
-
-    useEffect(() => {
+        fetchItems(1, -1)
         window.scrollTo(0, 0);
     }, [])
 
@@ -142,7 +121,6 @@ const Index = () => {
                             onLike={likeItem}
                             onShowModal={onShowModal}
                         />
-                        <div ref={lastElement}></div>
                         {isItemsLoading &&
                             <div className='item-list_empty'>
                                 <Loader/>

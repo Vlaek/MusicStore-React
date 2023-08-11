@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import Item from '../components/Item';
+// import Item from '../components/Item';
 import Tabs from '../components/Tabs'
 import { OrdersContext } from '../context/context';
 import profilePhoto from '../img/Vlek.jpg'

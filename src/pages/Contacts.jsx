@@ -23,9 +23,9 @@ const Contacts = () => {
                         <div className="contact-information__item__title">Через интернет</div>
                         <div className="contact-information__item__text">
                             <span>Служба поддержки</span>
-                            <p>Конактную информацию службы поддержкит вы найдете <a href="#" className='contact-information__item__link'>здесь</a>.</p>
+                            <p>Конактную информацию службы поддержкит вы найдете <div className='contact-information__item__link'>здесь</div>.</p>
                             <span>Пресса</span>
-                            <p>Контактную информацию для журналистов вы найдете <a href="#" className='contact-information__item__link'>здесь</a>.</p>
+                            <p>Контактную информацию для журналистов вы найдете <div className='contact-information__item__link'>здесь</div>.</p>
                             <span>Почтовый адрес</span>
                             <div className='contact-information__item__address'>
                                 <p>MusicStore SAS</p>
@@ -39,21 +39,21 @@ const Contacts = () => {
                     <div className="contact-information__item">
                         <div className="contact-information__item__title">В соцсетях</div>
                         <div className="contact-information__item__text">
-                            <a href='#' className='contact-information__item__link-media'>
+                            <div className='contact-information__item__link-media'>
                                <FaTelegram/><p>Telegram</p>
-                            </a>
-                            <a href='#' className='contact-information__item__link-media'>
+                            </div>
+                            <div className='contact-information__item__link-media'>
                                <FaVk/><p>ВКонтакте</p>
-                            </a>
-                            <a href='#' className='contact-information__item__link-media'>
+                            </div>
+                            <div className='contact-information__item__link-media'>
                                <FaYoutube/><p>YouTube</p>
-                            </a>
-                            <a href='#' className='contact-information__item__link-media'>
+                            </div>
+                            <div className='contact-information__item__link-media'>
                                <FaTwitter/><p>Twitter</p>
-                            </a>
-                            <a href='#' className='contact-information__item__link-media'>
+                            </div>
+                            <div className='contact-information__item__link-media'>
                                <FaOdnoklassniki/><p>Одноклассники</p>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>

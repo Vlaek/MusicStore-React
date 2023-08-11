@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
 
 export default function Header(props) {
@@ -22,10 +22,34 @@ export default function Header(props) {
                             }} 
                             className={`header__btn-cart ${props.orders.length && 'active'}`} 
                         />
-                        <li><Link to='/' className='header__link'>Главная</Link></li>
-                        <li><Link to='/about' className='header__link'>О нас</Link></li>
-                        <li><Link to='/contacts' className='header__link'>Контакты</Link></li>
-                        <li><Link to='/profile' className='header__link'>Кабинет</Link></li>
+                        <li>
+                            <NavLink 
+                                to='/' 
+                                className='header__link' 
+                                activeClassName='header__link active'
+                            >Главная</NavLink>
+                        </li>
+                        <li>
+                            <NavLink 
+                                to='/about' 
+                                className='header__link' 
+                                activeClassName='header__link active'
+                            >О нас</NavLink>
+                        </li>
+                        <li>
+                            <NavLink 
+                                to='/contacts' 
+                                className='header__link' 
+                                activeClassName='header__link active'
+                            >Контакты</NavLink>
+                        </li>
+                        <li>
+                            <NavLink 
+                                to='/profile' 
+                                className='header__link' 
+                                activeClassName='header__link active'
+                            >Кабинет</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
