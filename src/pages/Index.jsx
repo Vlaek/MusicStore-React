@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react"
+import React, {useState, useEffect, useRef, useContext} from "react"
 import { OrdersContext } from '../context/context';
 import Categories from "../components/Categories";
 import Items from "../components/Items";
@@ -8,7 +8,6 @@ import DataService from '../API/DataService';
 import { useItems } from '../hooks/useItems';
 import { useFetching } from '../hooks/useFetching';
 import Loader from "../components/UI/Loader/Loader";
-import { useContext } from "react";
 import { useObserver } from '../hooks/useObserve';
 import { getPageCount } from '../utils/pages';
 
@@ -30,7 +29,7 @@ const Index = () => {
     
     const [fetchItems, isItemsLoading, itemsError] = useFetching(async () => {
         const response = await DataService.getAll(-1, 1, filter.query, filter.genre);
-        setItems([...items, ...response.data]);
+        setItems(response.data);
         const responseAll = await DataService.getAll(-1, 1);
         const totalCount = responseAll.data.length
         setTotalPages(getPageCount(totalCount, limit))

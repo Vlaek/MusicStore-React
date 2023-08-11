@@ -62,10 +62,10 @@ function App() {
         likes.forEach(like => {
             if (like === item.id)
                 isInArray = true
-                setLikes(likes.filter(like => like !== item.id))
+                setLikes(likes.filter(like => like.id !== item.id))
         })
         if (!isInArray)
-            setLikes([...likes, item.id])
+            setLikes([...likes, item])
     }
 
     return (

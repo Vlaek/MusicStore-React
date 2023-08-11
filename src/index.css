@@ -1480,3 +1480,281 @@ footer a:hover {
     font-weight: 600;
     line-height: 1.25;
 }
+
+.team {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 50px;
+    margin: 35px 0;
+}
+
+.team__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.team__img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.team__img img {
+    width: 100%;
+}
+
+.team__name {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.team__position {
+    font-size: 16px;
+    text-align: center;
+}
+
+.team__mail {
+    font-size: 18px;
+    font-style: italic;
+}
+
+
+/* Page Contacts */
+
+.contact-information {
+    margin: 20px 0;
+}
+
+.contact-information__title {
+    margin-bottom: 20px;
+}
+
+.contact-information__grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    row-gap: 35px;
+    column-gap: 150px;
+}
+
+.contact-information__item__title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.contact-information__item__text {
+    text-align: justify;
+}
+
+.contact-information__item__text p {
+    margin: 5px 0;
+}
+
+
+.contact-information__item__text span {
+    display: block;
+    font-weight: 600;
+    margin: 25px 0 5px;
+}
+
+.contact-information__item__link,
+.contact-information__item__link:visited {
+    color: #dc3d3d;
+    text-decoration: underline;
+}
+.contact-information__item__link:hover {
+    text-decoration: none;
+    filter: brightness(75%)
+}
+
+.contact-information__item__address p {
+    margin: 0;
+}
+
+.contact-information__item__link-media {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #dc3d3d;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+.contact-information__item__link-media:hover {
+    transform: scale(1.02);
+    filter: brightness(75%)
+}
+
+.contact-information__item__link-media:first-child {
+    margin-top: 20px;
+}
+
+.contact-information__item__link-media p {
+    display: inline-block;
+    margin: 0 0 0 10px;
+}
+
+.contact-map {
+    margin: 30px 0;
+    outline: 1px solid black;
+}
+
+.contact-map__item {
+    width: 100%;
+    height: 300px;
+}
+
+.contact-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.contact-form__title {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.contact-form__item {
+    padding: 20px;
+    background: #eeeeee;
+    border-radius: 15px;
+}
+
+.contact-form__content {
+    display: flex;
+}
+
+.contact-form__input {
+    display: block;
+    width: 300px;
+    outline: 1px solid #222;
+    padding: 5px;
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
+
+.contact-form__textarea {
+    width: 300px;
+    height: 150px;
+    outline: 1px solid #222;
+    padding: 5px;
+    resize: none;
+}
+
+.contact-form__input:focus, .contact-form__textarea:focus {
+    outline-color: #dc3d3d;
+}
+
+.contact-form__btn {
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+    outline: 1px solid #222;
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+.contact-form__btn:hover {
+    background: #dc3d3d;
+}
+
+
+
+
+
+/* Page Profile */
+
+.cabinet__title {
+    margin: 30px 0;
+    font-size: 40px;
+}
+
+
+.tabs {
+    display: flex;
+}
+
+.tabs__content {
+    width: 65%;
+    height: 535px;
+    background: #eee;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+.tabs__btn {
+    display: block;
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.tabs__btn.active {
+    font-weight: 600;
+    color: #dc3d3d;
+}
+.tabs__btn:hover {
+    transform: translateX(5px)
+}
+
+
+.profile__content {
+    display: flex;
+}
+
+.profile__content .first {
+    width: 300px;
+    margin-right: 30px;
+}
+
+.profile__content .second {
+    width: 100%;
+}
+
+.profile__title,
+.likes__title {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.profile__img {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.profile__img img {
+    width: 100%;
+}
+
+.profile__btn {
+    width: 100%;
+    cursor: pointer;
+    background-color: #606060;
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+.profile__btn:hover {
+    background-color: #dc3d3d;
+}
+
+.profile__label {
+
+}
+
+.profile__input {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}

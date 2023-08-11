@@ -65,8 +65,9 @@ export const useSortedItems = (items, sort) => {
 }
 
 export const useItems = (items, sort, query, genre) => {
+    
     const filteredItems = useFiltredItems(items, query, genre);
     const sortedItems = useSortedItems(filteredItems, sort);
-
+    
     return sortedItems;
 }
