@@ -31,7 +31,7 @@ export class Modal extends Component {
                                 <p className='modal__cost'>${this.props.item.price}</p>
                                 <div className="modal__btn-list">
                                     <IoHeart
-                                        className={`modal__btn-like ${this.props.likes.includes(this.props.item.id) && 'active'}`}
+                                        className={`modal__btn-like ${this.props.likes.some(like => like.id === this.props.item.id) && 'active'}`}
                                         onClick={() => this.props.onLike(this.props.item)}
                                     />
                                     <IoCart 

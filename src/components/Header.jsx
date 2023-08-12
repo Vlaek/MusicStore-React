@@ -26,28 +26,28 @@ export default function Header(props) {
                             <NavLink 
                                 to='/' 
                                 className='header__link' 
-                                activeClassName='header__link active'
+                                activeclassname='header__link active'
                             >Главная</NavLink>
                         </li>
                         <li>
                             <NavLink 
                                 to='/about' 
                                 className='header__link' 
-                                activeClassName='header__link active'
+                                activeclassname='header__link active'
                             >О нас</NavLink>
                         </li>
                         <li>
                             <NavLink 
                                 to='/contacts' 
                                 className='header__link' 
-                                activeClassName='header__link active'
+                                activeclassname='header__link active'
                             >Контакты</NavLink>
                         </li>
                         <li>
                             <NavLink 
                                 to='/profile' 
                                 className='header__link' 
-                                activeClassName='header__link active'
+                                activeclassname='header__link active'
                             >Кабинет</NavLink>
                         </li>
                     </ul>

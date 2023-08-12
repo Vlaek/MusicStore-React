@@ -11,7 +11,8 @@ export class Items extends Component {
                             <Item 
                                 key={item.id} 
                                 item={item} 
-                                like={this.props.likes.includes(item)}
+                                like={this.props.likes.some(like => like.id === item.id)}
+                                order={this.props.orders.some(order => order.id === item.id)}
                                 onAdd={this.props.onAdd}
                                 onLike={this.props.onLike}
                                 onShowModal={this.props.onShowModal}

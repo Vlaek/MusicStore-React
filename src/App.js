@@ -9,6 +9,7 @@ import { OrdersContext } from './context/context'
 
 function App() {
     const [orders, setOrders] = useState([]);
+    const [ordersHistory, setOrdersHistory] = useState([]);
     const [showModalOrder, setShowModalOrder] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [fullItem, setFullItem] = useState({});
@@ -21,6 +22,13 @@ function App() {
 
     const onShowModalOrder = () => {
         setShowModalOrder(!showModalOrder);
+    }
+
+    const makeOrder = (order, price) => {
+        let today = new Date();
+        const newOrder = {id: ordersHistory.length + 1, order: order, price: price, date: today.toLocaleString()};
+        setOrdersHistory(prevOrders => [...prevOrders, newOrder]);
+        console.log(ordersHistory)
     }
 
     const addToOrder = (item) => {
@@ -38,6 +46,10 @@ function App() {
 
     const deleteOrder = (id) => {
         setOrders(prevOrders => prevOrders.filter(order => order.id !== id));
+    }
+
+    const clearOrder = () => {
+        setOrders([])
     }
 
     const removeFromOrder = (item) => {
@@ -60,7 +72,7 @@ function App() {
     const likeItem = (item) => {
         let isInArray = false;
         likes.forEach(like => {
-            if (like === item.id)
+            if (like.id === item.id)
                 isInArray = true
                 setLikes(likes.filter(like => like.id !== item.id))
         })
@@ -71,9 +83,11 @@ function App() {
     return (
         <OrdersContext.Provider value={{
             likes,
+            orders,
+            ordersHistory,
             addToOrder,
             likeItem,
-            onShowModal
+            onShowModal,
         }}>
             <Router>
                 <div className="wrapper">
@@ -85,6 +99,8 @@ function App() {
                     { showModalOrder && 
                         <ModalOrder
                             orders={orders}
+                            onMakeOrder={makeOrder}
+                            onClear={clearOrder}
                             onDelete={deleteOrder}
                             onShowModalOrder={onShowModalOrder}
                             onShowModal={onShowModal}

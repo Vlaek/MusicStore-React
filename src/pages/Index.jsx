@@ -11,25 +11,25 @@ import Loader from "../components/UI/Loader/Loader";
 
 const Index = () => {
     const [items, setItems] = useState([]);
-    const {likes, addToOrder, likeItem, onShowModal} = useContext(OrdersContext);
+    const {likes, orders, addToOrder, likeItem, onShowModal} = useContext(OrdersContext);
     
     const [filter, setFilter] = useState({
         genre: "",
-        sort: "",
+        sort: "new",
         query: ""
     });
 
-    const sortedAndSearchedItems = useItems(items, filter.sort, filter.query, filter.genre);
-    
     const [fetchItems, isItemsLoading, itemsError] = useFetching(async () => {
-        const response = await DataService.getAll();
-        setItems(response.data);
+        const response = await DataService.getAll()
+        setItems(response.data)
     })
 
     useEffect(() => {
         fetchItems(1, -1)
         window.scrollTo(0, 0);
     }, [])
+
+    const sortedAndSearchedItems = useItems(items, filter.sort, filter.query, filter.genre);
 
     const genres = [
         {
@@ -116,6 +116,7 @@ const Index = () => {
                     <div>
                         <Items 
                             items={sortedAndSearchedItems} 
+                            orders={orders}
                             likes={likes}
                             onAdd={addToOrder} 
                             onLike={likeItem}

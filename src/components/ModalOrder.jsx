@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import Order from './Order';
 import { IoClose } from 'react-icons/io5';
 
-
 export default function ModalOrder(props) {
     const summa = props.orders.reduce((summa, order) => summa + order.price * order.count, 0);
 
@@ -36,7 +35,13 @@ export default function ModalOrder(props) {
                             ))}
                         </div>
                         <div className="modal-order__footer">
-                            <button className="modal-order__button">К оформлению</button>
+                            <button 
+                                className="modal-order__button" 
+                                onClick={() => {
+                                    props.onMakeOrder(props.orders, summa)
+                                    props.onClear()
+                                }}
+                            >К оформлению</button>
                         </div>
                     </div>
                     :

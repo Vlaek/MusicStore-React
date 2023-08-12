@@ -1,21 +1,27 @@
-import React, {useContext} from 'react'
-// import Item from '../components/Item';
+import React, {useContext, useEffect} from 'react'
 import Tabs from '../components/Tabs'
 import { OrdersContext } from '../context/context';
 import profilePhoto from '../img/Vlek.jpg'
+import { IoCart, IoHeart } from 'react-icons/io5';
+import Accordion from '../components/Accordion';
 
 const Profile = () => {
-    const {likes, likeItem, onShowModal} = useContext(OrdersContext);
+    const {likes, ordersHistory, likeItem, onShowModal, addToOrder} = useContext(OrdersContext);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     const tabs = [
         {
             title: 'Мои данные',
             content: (
                 <div className='profile'>
-                    <div className="profile__title">Мои данные</div>
+                    <div className="profile__title">Мой профиль</div>
                     <div className="profile__content">
                         <div className='first'>
                             <div className="profile__img">
-                                <img src={profilePhoto} alt="profile-photo" />
+                                <img src={profilePhoto} alt="profile" />
                             </div>
                             <div className="profile__btn">Редактировать</div>
                             <div className="profile__btn">Выйти</div>
@@ -32,7 +38,7 @@ const Profile = () => {
                             <div className="profile__input">88005553535</div>
 
                             <div className="profile__label">Адрес</div>
-                            <div className="profile__input">Россия, Юрга, Мира, 17</div>
+                            <div className="profile__input">10 Rue de la Paix, 75002 Paris, France</div>
 
                             <div className="profile__label">Почтовый индекс</div>
                             <div className="profile__input">12345</div>
@@ -44,27 +50,93 @@ const Profile = () => {
         {
             title: 'Мои отложенные',
             content: (
-                <div className='likes'>
-                    <div className="likes__title">Мои отложенные</div>
-                    {likes.map(like => (
-                        <div key={like.id}>{like.title}</div>
-                    ))}
-                        {/* {this.props.items.map(item => (
-                            <Item 
-                                key={item.id} 
-                                item={item} 
-                                like={this.props.likes.includes(item.id)}
-                                onAdd={this.props.onAdd}
-                                onLike={this.props.onLike}
-                                onShowModal={this.props.onShowModal}
-                            />
-                        ))} */}
+                <div className='profile-items'>
+                    {likes.length > 0 
+                        ? 
+                        <div className="profile-items_list">
+                            {likes.map(like => (
+                                <div key={like.id} className='profile-items__item'>
+                                    <div className="profile-items__img">
+                                        <img 
+                                            src={require(`../../public/img/${like.img}`)} 
+                                            alt="img" 
+                                            onClick={() => onShowModal(like)}
+                                        />
+                                    </div>
+                                    <div className="profile-items__content">
+                                        <h2 
+                                            className="profile-items__title"
+                                            onClick={() => onShowModal(like)}
+                                        >{like.title}</h2>
+                                        <p className="profile-items__author">{like.author}</p>
+                                        <div className="profile-items__price">
+                                            <p>${like.price}</p>
+                                            <div className="profile-items__btn-list">
+                                                <IoHeart
+                                                    className={`profile-items__btn-like ${like && 'active'}`}
+                                                    onClick={() => likeItem(like)}
+                                                />
+                                                <IoCart 
+                                                    className='profile-items__btn-cart'
+                                                    onClick={() => addToOrder(like)}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        :
+                        <div className='profile-items__empty'>Пусто :(</div>
+                    }
                 </div>
             )
         },
         {
             title: 'Мои заказы',
-            content: '131'
+            content: (
+                <div className="orders-history">
+                    {ordersHistory.length > 0 
+                    ?
+                    ordersHistory.map(order => (
+                        <div key={order.date}>
+                            <Accordion 
+                                header={<div>Заказ №<b>{order.id}</b> от <b>{order.date}</b>. К оплате: <b>${Math.ceil(order.price * 100) / 100}</b></div>} 
+                                content={
+                                <div>
+                                    <div className="profile-items__list-2">
+                                        {order.order.map(item => (
+                                            <div key={item.id} className='profile-items__item gray'>
+                                            <div className="profile-items__img">
+                                                <img 
+                                                    src={require(`../../public/img/${item.img}`)} 
+                                                    alt="img" 
+                                                    onClick={() => onShowModal(item)}
+                                                />
+                                            </div>
+                                            <div className="profile-items__content">
+                                                <h2 
+                                                    className="profile-items__title"
+                                                    onClick={() => onShowModal(item)}
+                                                >{item.title}</h2>
+                                                <p className="profile-items__author">{item.author}</p>
+                                                <div className="profile-items__price">
+                                                    <p>${item.price} x {item.count}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                }
+                            />
+                        </div>
+                    ))
+                    :
+                    <div className='profile-items__empty'>Пусто :(</div>
+                    }
+                </div>
+            )
         },
     ]
     return (

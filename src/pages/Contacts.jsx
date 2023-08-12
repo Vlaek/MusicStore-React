@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { FaVk, FaTelegram, FaYoutube, FaTwitter, FaOdnoklassniki } from "react-icons/fa6";
 import { YMaps, Map } from '@pbe/react-yandex-maps'
 
 const Contacts = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <div className="container">
             <div className="contact-information">
@@ -23,9 +28,9 @@ const Contacts = () => {
                         <div className="contact-information__item__title">Через интернет</div>
                         <div className="contact-information__item__text">
                             <span>Служба поддержки</span>
-                            <p>Конактную информацию службы поддержкит вы найдете <div className='contact-information__item__link'>здесь</div>.</p>
+                            <p>Конактную информацию службы поддержки вы найдете <b className='contact-information__item__link'>здесь</b>.</p>
                             <span>Пресса</span>
-                            <p>Контактную информацию для журналистов вы найдете <div className='contact-information__item__link'>здесь</div>.</p>
+                            <p>Контактную информацию для журналистов вы найдете <b className='contact-information__item__link'>здесь</b>.</p>
                             <span>Почтовый адрес</span>
                             <div className='contact-information__item__address'>
                                 <p>MusicStore SAS</p>

@@ -10,13 +10,13 @@ const Tabs = ({ tabs }) => {
             </div>
             <div>
                 {tabs.map((tab, index) => (
-                    <a
+                    <div
                         key={index}
                         onClick={() => setActiveTab(index)}
                         className={`tabs__btn ${activeTab === index && 'active'}`}
                     >
                         {tab.title}
-                    </a>
+                    </div>
                 ))}
             </div>
         </div>
