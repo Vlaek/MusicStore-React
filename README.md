@@ -22,8 +22,12 @@
   * Реализован поиск по названию альбома или группе.
 
 Технологии:
-* Frontend: React, HTML, CSS, JavaScript
-* Компоненты: Использование различных React-компонентов для создания интерфейса
+* HTML, CSS, JavaScript, React
+* React Router
+* React Icons
+* Axios
+* React Yandex Maps
+* React Bootstrap (Carousel)
 
 Замечание: Проект MusicStore React создан исключительно в качестве учебного пет-проекта и не имеет целей стать коммерческим или использоваться для продажи реальных музыкальных товаров.
 
