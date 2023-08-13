@@ -24,28 +24,28 @@ export default function Header(props) {
                         />
                         <li>
                             <NavLink 
-                                to='/' 
+                                to='/MusicStore-React/' 
                                 className='header__link' 
                                 activeclassname='header__link active'
                             >Главная</NavLink>
                         </li>
                         <li>
                             <NavLink 
-                                to='/about' 
+                                to='/MusicStore-React/about' 
                                 className='header__link' 
                                 activeclassname='header__link active'
                             >О нас</NavLink>
                         </li>
                         <li>
                             <NavLink 
-                                to='/contacts' 
+                                to='/MusicStore-React/contacts' 
                                 className='header__link' 
                                 activeclassname='header__link active'
                             >Контакты</NavLink>
                         </li>
                         <li>
                             <NavLink 
-                                to='/profile' 
+                                to='/MusicStore-React/profile' 
                                 className='header__link' 
                                 activeclassname='header__link active'
                             >Кабинет</NavLink>
