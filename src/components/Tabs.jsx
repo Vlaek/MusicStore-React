@@ -5,7 +5,6 @@ const Tabs = ({ tabs }) => {
 
     useEffect(() => {
         document.querySelector('.tabs__content').scrollTo(0, 0);
-        console.log(document.querySelector('.tabs__content'))
     }, [activeTab])
 
     return (

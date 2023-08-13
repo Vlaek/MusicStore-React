@@ -28,7 +28,6 @@ function App() {
         let today = new Date();
         const newOrder = {id: ordersHistory.length + 1, order: order, price: price, date: today.toLocaleString()};
         setOrdersHistory(prevOrders => [...prevOrders, newOrder]);
-        console.log(ordersHistory)
     }
 
     const addToOrder = (item) => {
