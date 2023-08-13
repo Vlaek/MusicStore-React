@@ -29,4 +29,4 @@
 
 ## Иллюстрации
 ### Главная страница
-![Главная страница](https://i.imgur.com/XghWZpq.gif "Главная страница")
+![Главная страница](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWxmdHcwYjJzcWt6aXZqbDBhcGd0dWRqczNkbDZ3MXB2eWxjamNueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/m4eRXbdM1cLwV1L7cR/giphy.gif "Главная страница")
