@@ -114,6 +114,11 @@ const Index = () => {
                     </div>
                     :
                     <div>
+                        {isItemsLoading &&
+                            <div className='item-list_empty'>
+                                <Loader/>
+                            </div>
+                        }
                         <Items 
                             items={sortedAndSearchedItems} 
                             orders={orders}
@@ -122,11 +127,6 @@ const Index = () => {
                             onLike={likeItem}
                             onShowModal={onShowModal}
                         />
-                        {isItemsLoading &&
-                            <div className='item-list_empty'>
-                                <Loader/>
-                            </div>
-                        }
                     </div>
                 }
             </div>
