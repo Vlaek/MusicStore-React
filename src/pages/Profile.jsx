@@ -101,7 +101,12 @@ const Profile = () => {
                     ordersHistory.map(order => (
                         <div key={order.date}>
                             <Accordion 
-                                header={<div>Заказ №<b>{order.id}</b> от <b>{order.date}</b>. К оплате: <b>${Math.ceil(order.price * 100) / 100}</b></div>} 
+                                header={
+                                <div className='orders-history__header'>
+                                    <div className='orders-history__order'>Заказ №<b>{order.id}</b> от <b>{order.date}</b>. </div>
+                                    <div className='orders-history__payment'>К оплате: <b>${Math.ceil(order.price * 100) / 100}</b></div>
+                                </div>
+                                } 
                                 content={
                                 <div>
                                     <div className="profile-items__list-2">

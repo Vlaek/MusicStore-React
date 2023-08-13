@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Tabs = ({ tabs }) => {
-  const [activeTab, setActiveTab] = useState(0);
+    const [activeTab, setActiveTab] = useState(0);
+
+    useEffect(() => {
+        document.querySelector('.tabs__content').scrollTo(0, 0);
+        console.log(document.querySelector('.tabs__content'))
+    }, [activeTab])
 
     return (
         <div className='tabs'>
             <div className='tabs__content'>
                 {tabs[activeTab].content}
             </div>
-            <div>
+            <div className='tabs__header'>
                 {tabs.map((tab, index) => (
                     <div
                         key={index}

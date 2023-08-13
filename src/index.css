@@ -986,11 +986,10 @@ footer a:hover {
 
 .tabs__content {
     width: 75%;
-    height: 700px;
+    height: 750px;
     background: #eee;
     border: 3px solid #eee;
     margin-right: 25px;
-    margin-bottom: 25px;
     padding: 15px;
     overflow-y: auto;
     overflow-x: auto;
@@ -998,7 +997,7 @@ footer a:hover {
 
 @media (max-height: 1000px) {
     .tabs__content {
-        height: 540px;
+        height: 580px;
     }
 }
 
@@ -1179,6 +1178,15 @@ footer a:hover {
     height: 100%;
 }
 
+.orders-history__header {
+    display: flex;
+    flex-direction: row;
+}
+
+.orders-history__order {
+    margin-right: 15px;
+}
+
 .profile-items__list-2 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1211,15 +1219,15 @@ footer a:hover {
   }
 
 .accordion-content {
-    max-height: 0;
+    height: 0;
     overflow: hidden;
     border-top: 3px solid #eee;
     margin-bottom: 0;
-    transition: max-height 0.3s ease, border 0s ease 0.3s;
+    transition: height 0.3s ease, border 0s ease 0.3s;
 }
 
 .accordion-content.active {
-    max-height: 1000px;
+    height: 100%;
     border: none;
     margin-bottom: 10px;
 }
@@ -1370,6 +1378,37 @@ footer a:hover {
 
     .contact-map {
         margin: 20px 0;
+    }
+
+    .cabinet__title {
+        font-size: 30px;
+        margin: 20px 0;
+    }
+
+    .tabs {
+        flex-direction: column-reverse;
+    }
+
+    .tabs__header {
+        display: flex;
+    }
+
+    .tabs__content {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .tabs__btn {
+        margin-right: 35px;
+    }
+    .tabs__btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .profile__title {
+        font-size: 25px;
+        margin-bottom: 10px;
     }
 }
 
@@ -1723,6 +1762,32 @@ footer a:hover {
         row-gap: 25px;
         margin: 20px 0;
     }
+
+
+    /* Profile Page */
+
+    .cabinet__title {
+        font-size: 20px;
+        margin: 15px 0;
+    }
+
+    .tabs__btn {
+        font-size: 18px;
+    }
+
+    .profile__content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile__content .first {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+
+    .profile-items_list, .profile-items__list-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 576px) {
@@ -1953,6 +2018,71 @@ footer a:hover {
 
     .contact-form__title {
         font-size: 22px;
+    }
+
+    /* Profile Page */
+
+    .tabs__header {
+        justify-content: space-between;
+    }
+
+    .tabs__btn {
+        font-size: 16px;
+        margin-right: 0;
+    }
+
+    .tabs__content {
+        padding: 10px;
+    }
+
+    .profile__content .first {
+        margin-bottom: 5px;
+    }
+
+    .profile__btn {
+        font-size: 14px;
+    }
+
+    .profile__title {
+        text-align: center;
+    }
+
+    .profile__label {
+        font-size: 12px;
+    }
+
+    .profile__input {
+        font-size: 14px;
+    }
+
+    .orders-history__header {
+        flex-direction: column;
+        font-size: 13px;
+    }
+    
+    .orders-history__order {
+        margin-right: 0;
+    }
+
+    .profile__title {
+        font-size: 20px;
+    }
+
+    .profile-items__title {
+        font-size: 14px;
+    }
+
+    .profile-items__author {
+        font-size: 12px;
+    }
+
+    .profile-items__price p {
+        font-size: 13px;
+    }
+
+    .profile-items_list, .profile-items__list-2 {
+        row-gap: 10px;
+        column-gap: 10px;
     }
 }
 
