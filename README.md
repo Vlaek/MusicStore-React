@@ -34,8 +34,6 @@
 ![Сортировка и фильтрация](https://media2.giphy.com/media/20j77wv5nHmi15sAC6/giphy.gif "Сортировка и фильтрация")
 ### Модальное окно просмотра товара
 ![Модальное окно](https://media4.giphy.com/media/RiiBGTaT08mNYWUN3A/giphy.gif "Модальное окно")
-### Модальное окно просмотра товара
-![Модальное окно](https://media4.giphy.com/media/RiiBGTaT08mNYWUN3A/giphy.gif "Модальное окно")
 ### Модальное окно покупки товара
 ![Модальное окно](https://media2.giphy.com/media/9TmnNrwxBoGlk37UjC/giphy.gif "Модальное окно")
 ### Страницы "О нас", "Контакты" и "Кабинет"
