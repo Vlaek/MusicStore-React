@@ -1,41 +1,54 @@
-import React, { Component } from 'react'
+import React, {useState, useRef} from 'react'
+import { CSSTransition } from 'react-transition-group';
 import { FaTrash } from 'react-icons/fa'
 import OrderButton from './UI/OrderButton'
 
-export class Order extends Component {
-    render() {
-        return (
-            <div className='modal-order__item'>
+const Order = (props) => {
+    const [show, setShow] = useState(true);
+    const myRef = useRef(null);
+    return (
+        <CSSTransition 
+            in={show} 
+            timeout={300}
+            classNames='alert'
+            nodeRef={myRef}
+        >
+            <div className='modal-order__item' ref={myRef}>
                 <img 
                     className='modal-order__img'
-                    src={require(`../../public/img/${this.props.item.img}`)} 
+                    src={require(`../../public/img/${props.item.img}`)} 
                     alt="img"
-                    onClick={() => this.props.onShowModal(this.props.item)}
+                    onClick={() => props.onShowModal(props.item)}
                 />
                 <div className='modal-order__item__body'>
                     <p 
                         className='modal-order__item__title' 
-                        title={this.props.item.title}
-                        onClick={() => this.props.onShowModal(this.props.item)}
+                        title={props.item.title}
+                        onClick={() => props.onShowModal(props.item)}
                     >
-                        {this.props.item.title}
+                        {props.item.title}
                     </p>
-                    <p className='modal-order__item__author'>{this.props.item.author}</p>
-                    <p className='modal-order__item__price'>${this.props.item.price}</p>
+                    <p className='modal-order__item__author'>{props.item.author}</p>
+                    <p className='modal-order__item__price'>${props.item.price}</p>
                     <FaTrash 
                         className='modal-order__item__delete-btn' 
-                        onClick={() => this.props.onDelete(this.props.item.id)}
+                        onClick={() => {
+                            setShow(false)
+                            setTimeout(() => {
+                                props.onDelete(props.item.id)
+                            }, 300);
+                        }}
                     />
                     <OrderButton 
-                        item={this.props.item} 
-                        onAdd={this.props.onAdd} 
-                        onRemove={this.props.onRemove}
+                        item={props.item} 
+                        onAdd={props.onAdd} 
+                        onRemove={props.onRemove}
                     />
                 </div>
                 
             </div>
-        )
-    }
+        </CSSTransition>
+    )
 }
 
 export default Order

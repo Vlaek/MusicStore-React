@@ -1,9 +1,9 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useState, useContext, useEffect, useRef} from 'react'
 import Tabs from '../components/Tabs'
 import { OrdersContext } from '../context/context';
 import profilePhoto from '../img/Vlek.jpg'
-import { IoCart, IoHeart } from 'react-icons/io5';
 import Accordion from '../components/Accordion';
+import LikeItem from '../components/LikeItem';
 
 const Profile = () => {
     const {likes, ordersHistory, likeItem, onShowModal, addToOrder} = useContext(OrdersContext);
@@ -55,35 +55,13 @@ const Profile = () => {
                         ? 
                         <div className="profile-items_list">
                             {likes.map(like => (
-                                <div key={like.id} className='profile-items__item'>
-                                    <div className="profile-items__img">
-                                        <img 
-                                            src={require(`../../public/img/${like.img}`)} 
-                                            alt="img" 
-                                            onClick={() => onShowModal(like)}
-                                        />
-                                    </div>
-                                    <div className="profile-items__content">
-                                        <h2 
-                                            className="profile-items__title"
-                                            onClick={() => onShowModal(like)}
-                                        >{like.title}</h2>
-                                        <p className="profile-items__author">{like.author}</p>
-                                        <div className="profile-items__price">
-                                            <p>${like.price}</p>
-                                            <div className="profile-items__btn-list">
-                                                <IoHeart
-                                                    className={`profile-items__btn-like ${like && 'active'}`}
-                                                    onClick={() => likeItem(like)}
-                                                />
-                                                <IoCart 
-                                                    className='profile-items__btn-cart'
-                                                    onClick={() => addToOrder(like)}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <LikeItem 
+                                    like={like} 
+                                    key={like.id}
+                                    onLike={likeItem}
+                                    onAddToOrder={addToOrder}
+                                    onShowModal={onShowModal}
+                                />
                             ))}
                         </div>
                         :
