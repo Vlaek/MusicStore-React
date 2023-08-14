@@ -22,11 +22,25 @@
   * Реализован поиск по названию альбома или группе.
 
 Технологии:
-* Frontend: React, HTML, CSS, JavaScript
-* Компоненты: Использование различных React-компонентов для создания интерфейса
+* HTML, CSS, JavaScript, React
+* React Router
+* React Icons
+* Axios
+* React Yandex Maps
+* React Bootstrap (Carousel)
 
 Замечание: Проект MusicStore React создан исключительно в качестве учебного пет-проекта и не имеет целей стать коммерческим или использоваться для продажи реальных музыкальных товаров.
 
 ## Иллюстрации
 ### Главная страница
-![Главная страница](https://i.imgur.com/XghWZpq.gif "Главная страница")
+![Главная страница](https://media1.giphy.com/media/W2em8cGs2ZPktcI1vk/giphy.gif "Главная страница")
+### Сортировка и фильтрация
+![Сортировка и фильтрация](https://media2.giphy.com/media/20j77wv5nHmi15sAC6/giphy.gif "Сортировка и фильтрация")
+### Модальное окно просмотра товара
+![Модальное окно](https://media4.giphy.com/media/RiiBGTaT08mNYWUN3A/giphy.gif "Модальное окно")
+### Модальное окно просмотра товара
+![Модальное окно](https://media4.giphy.com/media/RiiBGTaT08mNYWUN3A/giphy.gif "Модальное окно")
+### Модальное окно покупки товара
+![Модальное окно](https://media2.giphy.com/media/9TmnNrwxBoGlk37UjC/giphy.gif "Модальное окно")
+### Страницы "О нас", "Контакты" и "Кабинет"
+![Другие страницы](https://media4.giphy.com/media/CeJSpzeMq0o4xkSFvN/giphy.gif "Другие страницы")
