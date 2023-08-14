@@ -3,8 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import AppRouter from "./components/AppRouter"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
-import ModalOrder from "./components/ModalOrder"
 import Modal from "./components/Modal"
+import ModalOrder from "./components/ModalOrder"
 import { OrdersContext } from './context/context'
 
 function App() {
@@ -95,28 +95,26 @@ function App() {
                         onShowModalOrder={onShowModalOrder}
                     />
                     <AppRouter/>
-                    { showModalOrder && 
-                        <ModalOrder
-                            orders={orders}
-                            onMakeOrder={makeOrder}
-                            onClear={clearOrder}
-                            onDelete={deleteOrder}
-                            onShowModalOrder={onShowModalOrder}
-                            onShowModal={onShowModal}
-                            onAdd={addToOrder}
-                            onRemove={removeFromOrder}
-                        /> 
-                    }
-                    { showModal && 
-                        <Modal 
-                            item={fullItem} 
-                            likes={likes}
-                            onAdd={addToOrder} 
-                            onLike={likeItem}
-                            onShowModal={onShowModal} 
-                            showModalOrder={showModalOrder}
-                        /> 
-                    }
+                    <ModalOrder
+                        orders={orders}
+                        showModalOrder={showModalOrder}
+                        onMakeOrder={makeOrder}
+                        onClear={clearOrder}
+                        onDelete={deleteOrder}
+                        onShowModalOrder={onShowModalOrder}
+                        onShowModal={onShowModal}
+                        onAdd={addToOrder}
+                        onRemove={removeFromOrder}
+                    />
+                    <Modal 
+                        item={fullItem} 
+                        likes={likes}
+                        showModal={showModal}
+                        onAdd={addToOrder} 
+                        onLike={likeItem}
+                        onShowModal={onShowModal} 
+                        showModalOrder={showModalOrder}
+                    /> 
                     <Footer />
                 </div>
             </Router>

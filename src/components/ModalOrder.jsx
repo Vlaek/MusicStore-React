@@ -1,61 +1,91 @@
-import React, { useEffect } from 'react'
-import Order from './Order';
+import React, { useEffect, useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import { IoClose } from 'react-icons/io5';
+import Order from './Order';
 
-export default function ModalOrder(props) {
+const ModalOrder = (props) => {
     const summa = props.orders.reduce((summa, order) => summa + order.price * order.count, 0);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        document.body.style.overflow = 'hidden';
-        return () => {
+        if (!props.showModalOrder) {
+            setIsOpen(false)
             document.body.style.overflow = 'visible';
-        };
-    }, []);
+        }
+        else {
+            document.body.style.overflow = 'hidden';
+        }
+    }, [props.showModalOrder])
 
     return (
-        <div className='modal-order' onClick={() => props.onShowModalOrder()}>
-            <div className="modal-order__content" onClick={e => e.stopPropagation()}>
-                { props.orders.length ? 
-                    <div className='modal-order__container'> 
-                        <div className="modal-order__header">
-                            <p className='summa'>
-                                Сумма: ${new Intl.NumberFormat().format(summa)}
-                            </p>
+        <CSSTransition
+            timeout={100}
+            in={props.showModalOrder}
+            unmountOnExit
+            classNames='modal-order'
+            onEntered={() => setIsOpen(true)}
+        >
+            <div className='modal-order' onClick={() => {
+                props.onShowModalOrder()}} >
+                
+                <CSSTransition
+                    in={isOpen}
+                    timeout={200}
+                    classNames='modal-order__content'
+                >
+                
+                <div className="modal-order__content" onClick={e => e.stopPropagation()}>
+                {props.showModalOrder &&
+                    <div style={{height: '100%'}}>
+                        {props.orders.length 
+                        ? 
+                        <div className='modal-order__container'> 
+                            <div className="modal-order__header">
+                                <p className='summa'>
+                                    Сумма: ${new Intl.NumberFormat().format(summa)}
+                                </p>
+                            </div>
+                            <div className="modal-order__body">
+                                {props.orders.map(order => (
+                                    <Order 
+                                        key={order.id} 
+                                        item={order} 
+                                        onAdd={props.onAdd}
+                                        onRemove={props.onRemove}
+                                        onDelete={props.onDelete} 
+                                        onShowModal={props.onShowModal}
+                                    />
+                                ))}
+                            </div>
+                            <div className="modal-order__footer">
+                                <button 
+                                    className="modal-order__button" 
+                                    onClick={() => {
+                                        props.onMakeOrder(props.orders, summa)
+                                        props.onClear()
+                                    }}
+                                >К оформлению</button>
+                            </div>
                         </div>
-                        <div className="modal-order__body">
-                            {props.orders.map(order => (
-                                <Order 
-                                    key={order.id} 
-                                    item={order} 
-                                    onAdd={props.onAdd}
-                                    onRemove={props.onRemove}
-                                    onDelete={props.onDelete} 
-                                    onShowModal={props.onShowModal}
-                                />
-                            ))}
+                        :
+                        <div className='modal-order__empty'>
+                            <p className='modal-order__empty__title'>Ой, пусто!</p>
+                            <p className='modal-order__empty__text'>Ваша корзина пуста, откройте "Меню" и выберите понравившийся товар.</p>
                         </div>
-                        <div className="modal-order__footer">
-                            <button 
-                                className="modal-order__button" 
-                                onClick={() => {
-                                    props.onMakeOrder(props.orders, summa)
-                                    props.onClear()
-                                }}
-                            >К оформлению</button>
-                        </div>
+                        }
+                        <IoClose 
+                            className='modal-order__btn-close'
+                            onClick={() => props.onShowModalOrder()}
+                        />
                     </div>
-                    :
-                    <div className='modal-order__empty'>
-                        <p className='modal-order__empty__title'>Ой, пусто!</p>
-                        <p className='modal-order__empty__text'>Ваша корзина пуста, откройте "Меню" и выберите понравившийся товар.</p>
-                    </div>
-                }
-                <IoClose 
-                    className='modal-order__btn-close'
-                    onClick={() => props.onShowModalOrder()}
-                />
+                    }
+                </div>
+                
+                </CSSTransition>
+                
             </div>
-            
-        </div>
+        </CSSTransition>
     )
 }
+
+export default ModalOrder
