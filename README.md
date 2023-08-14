@@ -28,6 +28,7 @@
 * Axios
 * React Yandex Maps
 * React Bootstrap (Carousel)
+* React Transition
 
 Замечание: Проект MusicStore React создан исключительно в качестве учебного пет-проекта и не имеет целей стать коммерческим или использоваться для продажи реальных музыкальных товаров.
 
@@ -36,8 +37,6 @@
 ![Главная страница](https://media1.giphy.com/media/W2em8cGs2ZPktcI1vk/giphy.gif "Главная страница")
 ### Сортировка и фильтрация
 ![Сортировка и фильтрация](https://media2.giphy.com/media/20j77wv5nHmi15sAC6/giphy.gif "Сортировка и фильтрация")
-### Модальное окно просмотра товара
-![Модальное окно](https://media4.giphy.com/media/RiiBGTaT08mNYWUN3A/giphy.gif "Модальное окно")
 ### Модальное окно просмотра товара
 ![Модальное окно](https://media4.giphy.com/media/RiiBGTaT08mNYWUN3A/giphy.gif "Модальное окно")
 ### Модальное окно покупки товара
