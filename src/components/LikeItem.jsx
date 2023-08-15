@@ -6,6 +6,39 @@ const LikeItem = (props) => {
     const [show, setShow] = useState(true);
     const myRef = useRef(null);
 
+    function dragOverHandler(e) {
+        e.preventDefault()
+        e.target.closest('.profile-items__item').style.boxShadow = '0 4px 3px gray'
+    }
+
+    function dragLeaveHandler(e) {
+        e.target.closest('.profile-items__item').style.boxShadow = 'none'
+    }
+
+    function dragStartHandler(index) {
+        props.setDraggableItem(index)
+    }
+
+    function dragEndHandler(e) {
+        e.target.closest('.profile-items__item').style.boxShadow = 'none'
+    }
+
+    function dropHandler(e, index) {
+        e.preventDefault()
+        e.target.closest('.profile-items__item').style.boxShadow = 'none'
+        if (e.target.closest('.profile-items__item')) {
+            const draggedItem = props.likes[props.draggableItem]
+            const remainingItems = props.likes.filter((item, i) => i !== props.draggableItem);
+            const updatedItems = [
+                ...remainingItems.slice(0, index),
+                draggedItem,
+                ...remainingItems.slice(index)
+            ]
+            props.setLikes(updatedItems)
+        }
+            
+    }
+
     return (
         <CSSTransition 
             in={show} 
@@ -13,7 +46,16 @@ const LikeItem = (props) => {
             classNames='alert'
             nodeRef={myRef}
         >
-        <div className='profile-items__item' ref={myRef}>
+        <div 
+            className='profile-items__item' 
+            ref={myRef} 
+            draggable={true}
+            onDragOver={(e) => dragOverHandler(e)}
+            onDragStart={(e) => dragStartHandler(props.index)}
+            onDragLeave={e => dragLeaveHandler(e)}
+            onDragEnd={(e) => dragEndHandler(e)}
+            onDrop={(e) => dropHandler(e, props.index)}
+        >
             <div className="profile-items__img">
                 <img 
                     src={require(`../../public/img/${props.like.img}`)} 

@@ -87,6 +87,7 @@ function App() {
             addToOrder,
             likeItem,
             onShowModal,
+            setLikes
         }}>
             <Router>
                 <div className="wrapper">

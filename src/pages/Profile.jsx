@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect, useRef} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import Tabs from '../components/Tabs'
 import { OrdersContext } from '../context/context';
 import profilePhoto from '../img/Vlek.jpg'
@@ -6,7 +6,8 @@ import Accordion from '../components/Accordion';
 import LikeItem from '../components/LikeItem';
 
 const Profile = () => {
-    const {likes, ordersHistory, likeItem, onShowModal, addToOrder} = useContext(OrdersContext);
+    const {likes, ordersHistory, likeItem, onShowModal, addToOrder, setLikes} = useContext(OrdersContext);
+    const [draggableItem, setDraggableItem] = useState(null)
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -54,13 +55,18 @@ const Profile = () => {
                     {likes.length > 0 
                         ? 
                         <div className="profile-items_list">
-                            {likes.map(like => (
+                            {likes.map((like, index) => (
                                 <LikeItem 
                                     like={like} 
+                                    draggableItem={draggableItem}
+                                    setDraggableItem={setDraggableItem}
+                                    likes={likes}
+                                    index={index}
                                     key={like.id}
                                     onLike={likeItem}
                                     onAddToOrder={addToOrder}
                                     onShowModal={onShowModal}
+                                    setLikes={setLikes}
                                 />
                             ))}
                         </div>
