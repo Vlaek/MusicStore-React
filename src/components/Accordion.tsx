@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
-function Accordion(props) {
+interface AccordionProps {
+    header: JSX.Element
+    content: JSX.Element
+}
+
+const Accordion: FC<AccordionProps> = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleAccordion = () => {

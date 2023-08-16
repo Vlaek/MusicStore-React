@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC, JSXElementConstructor } from 'react';
 
-const Tabs = ({ tabs }) => {
+interface TabsProps {
+    tabs: Tab[]
+    document: Document | null
+}
+
+interface Tab {
+    title: string
+    content: JSX.Element
+}
+
+const Tabs: FC<TabsProps> = ({ tabs }) => {
     const [activeTab, setActiveTab] = useState(0);
 
     useEffect(() => {
-        document.querySelector('.tabs__content').scrollTo(0, 0);
+        (document.querySelector('.tabs__content') as HTMLDivElement).scrollTo(0, 0);
     }, [activeTab])
 
     return (

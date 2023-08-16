@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
+import { IOrder, IShowModalOrder } from '../types/types';
 
-export default function Header(props) {
+interface HeaderProps {
+    orders: IOrder[]
+    onShowModalOrder: IShowModalOrder
+}
+
+const Header: FC<HeaderProps> = (props) => {
     const [cartOpen, setCartOpen] = useState(false);
 
     const scrollToTop = () => {
@@ -25,29 +31,25 @@ export default function Header(props) {
                         <li>
                             <NavLink 
                                 to='/MusicStore-React/' 
-                                className='header__link' 
-                                activeclassname='header__link active'
+                                className={({ isActive }) => isActive ? "header__link active" : "header__link"}
                             >Главная</NavLink>
                         </li>
                         <li>
                             <NavLink 
                                 to='/MusicStore-React/about' 
-                                className='header__link' 
-                                activeclassname='header__link active'
+                                className={({ isActive }) => isActive ? "header__link active" : "header__link"}
                             >О нас</NavLink>
                         </li>
                         <li>
                             <NavLink 
                                 to='/MusicStore-React/contacts' 
-                                className='header__link' 
-                                activeclassname='header__link active'
+                                className={({ isActive }) => isActive ? "header__link active" : "header__link"}
                             >Контакты</NavLink>
                         </li>
                         <li>
                             <NavLink 
                                 to='/MusicStore-React/profile' 
-                                className='header__link' 
-                                activeclassname='header__link active'
+                                className={({ isActive }) => isActive ? "header__link active" : "header__link"}
                             >Кабинет</NavLink>
                         </li>
                     </ul>
@@ -56,3 +58,5 @@ export default function Header(props) {
         </header>
     )
 }
+
+export default Header

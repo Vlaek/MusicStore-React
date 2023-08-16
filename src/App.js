@@ -24,9 +24,9 @@ function App() {
         setShowModalOrder(!showModalOrder);
     }
 
-    const makeOrder = (order, price) => {
+    const makeOrder = (orders, price) => {
         let today = new Date();
-        const newOrder = {id: ordersHistory.length + 1, order: order, price: price, date: today.toLocaleString()};
+        const newOrder = {id: ordersHistory.length + 1, order: orders, price: price, date: today.toLocaleString()};
         setOrdersHistory(prevOrders => [...prevOrders, newOrder]);
     }
 

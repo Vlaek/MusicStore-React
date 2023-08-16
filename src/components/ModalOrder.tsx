@@ -1,9 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { IoClose } from 'react-icons/io5';
 import Order from './Order';
+import { IAdd, IOrder, IShowModalOrder, IShowModal, IRemove, IDelete, IMakeOrder, IClearOrder } from './../types/types';
 
-const ModalOrder = (props) => {
+interface ModalOrderProps {
+    showModalOrder: boolean
+    orders: IOrder[]
+    onShowModalOrder: IShowModalOrder
+    onAdd: IAdd
+    onRemove: IRemove
+    onDelete: IDelete
+    onShowModal: IShowModal
+    onMakeOrder: IMakeOrder
+    onClear: IClearOrder
+}
+
+const ModalOrder: FC<ModalOrderProps> = (props) => {
     const summa = props.orders.reduce((summa, order) => summa + order.price * order.count, 0);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -27,13 +40,11 @@ const ModalOrder = (props) => {
         >
             <div className='modal-order' onClick={() => {
                 props.onShowModalOrder()}} >
-                
                 <CSSTransition
                     in={isOpen}
                     timeout={200}
                     classNames='modal-order__content'
                 >
-                
                 <div className="modal-order__content" onClick={e => e.stopPropagation()}>
                 {props.showModalOrder &&
                     <div style={{height: '100%'}}>
@@ -80,9 +91,7 @@ const ModalOrder = (props) => {
                     </div>
                     }
                 </div>
-                
                 </CSSTransition>
-                
             </div>
         </CSSTransition>
     )

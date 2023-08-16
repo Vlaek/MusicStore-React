@@ -1,9 +1,18 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, FC} from 'react'
 import { CSSTransition } from 'react-transition-group';
 import { FaTrash } from 'react-icons/fa'
 import OrderButton from './UI/OrderButton'
+import { IAdd, IAlbum, IDelete, IRemove, IShowModal } from './../types/types';
 
-const Order = (props) => {
+interface OrderProps {
+    item: IAlbum
+    onShowModal: IShowModal
+    onDelete: IDelete
+    onAdd: IAdd
+    onRemove: IRemove
+}
+
+const Order: FC<OrderProps> = (props) => {
     const [show, setShow] = useState(true);
     const myRef = useRef(null);
     return (
@@ -45,7 +54,6 @@ const Order = (props) => {
                         onRemove={props.onRemove}
                     />
                 </div>
-                
             </div>
         </CSSTransition>
     )
