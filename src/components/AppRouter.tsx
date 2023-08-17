@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import Index from '../pages/Index';
 import { Route, Routes } from 'react-router-dom';
 import { routes } from '../router';

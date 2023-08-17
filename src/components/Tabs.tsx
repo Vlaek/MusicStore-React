@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC, JSXElementConstructor } from 'react';
+import { useState, useEffect, FC } from 'react';
 
 interface TabsProps {
     tabs: Tab[]
