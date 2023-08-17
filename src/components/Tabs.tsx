@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC, JSXElementConstructor } from 'react';
 
 interface TabsProps {
     tabs: Tab[]
-    document: Document | null
+    document?: Document | null
 }
 
 interface Tab {

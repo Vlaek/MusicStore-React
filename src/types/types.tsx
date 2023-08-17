@@ -36,15 +36,15 @@ export interface IShowModalOrder {
 }
 
 export interface ILike {
-    (item: IAlbum): IAlbum[]
+    (item: IAlbum): void
 }
 
 export interface IAdd {
-    (item: IAlbum): IOrder[]
+    (item: IAlbum): void
 }
 
 export interface IRemove {
-    (item: IOrder): IOrder[]
+    (item: IOrder): void
 }
 
 export interface IDelete {
@@ -57,4 +57,22 @@ export interface IMakeOrder {
 
 export interface IClearOrder {
     (): void
+}
+
+export interface ISetLikes {
+    (likes: IAlbum[]): void
+}
+
+export interface ISetDraggableItem {
+    (draggableItem: number): void
+}
+
+export interface IOrdersContext {
+    likes: IAlbum[]
+    orders: IOrder[]
+    ordersHistory: IOrderHistory[]
+    addToOrder: IAdd
+    likeItem: ILike
+    onShowModal: IShowModal
+    setLikes: ISetLikes
 }

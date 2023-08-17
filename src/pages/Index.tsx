@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react"
+import React, {FC, useState, useEffect, useContext} from "react"
 import { OrdersContext } from '../context/context';
 import Categories from "../components/Categories";
 import Items from "../components/Items";
@@ -6,12 +6,14 @@ import Input from "../components/UI/Input";
 import CarouselBox from "../components/CarouselBox";
 import DataService from '../API/DataService';
 import { useItems } from '../hooks/useItems';
-import { useFetching } from '../hooks/useFetching';
+import { useFetching, IUseFetching } from '../hooks/useFetching';
 import Loader from "../components/UI/Loader/Loader";
+import { IOrdersContext } from './../types/types';
 
-const Index = () => {
+
+const Index: FC = () => {
     const [items, setItems] = useState([]);
-    const {likes, orders, addToOrder, likeItem, onShowModal} = useContext(OrdersContext);
+    const {likes, orders, addToOrder, likeItem, onShowModal} = useContext(OrdersContext) as IOrdersContext;
     
     const [filter, setFilter] = useState({
         genre: "",
@@ -19,7 +21,7 @@ const Index = () => {
         query: ""
     });
 
-    const [fetchItems, isItemsLoading, itemsError] = useFetching(async () => {
+    const {fetchItems, isLoading, itemsError}: IUseFetching = useFetching(async () => {
         const response = await DataService.getAll()
         setItems(response.data)
     })
@@ -73,19 +75,20 @@ const Index = () => {
         },
     ];
 
-    const handleQueryChange = (event) => {
-        if (!event.target.value)
-            event.target.value = ""
-        const newFilter = { ...filter, query: event.target.value };
+    const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<SVGElement, MouseEvent> | undefined) => {
+        const input = e?.target as HTMLInputElement
+        if (!input.value)
+            input.value = ""
+        const newFilter = { ...filter, query: input.value };
         setFilter(newFilter);
     }
 
-    const handleGenreChange = (genre) => {
+    const handleGenreChange = (genre: string) => {
         const newFilter = { ...filter, genre: genre };
         setFilter(newFilter);
     }
 
-    const handleSortChange = (sort) => {
+    const handleSortChange = (sort: string) => {
         const newSort = { ...filter, sort: sort };
         setFilter(newSort);
     }
@@ -102,8 +105,7 @@ const Index = () => {
                     categories={genres}
                     setCategory={handleGenreChange}
                 />
-                <Input 
-                    placeholder={"Найти"}
+                <Input
                     setFilter={handleQueryChange}
                 />
                 {itemsError 
@@ -114,7 +116,7 @@ const Index = () => {
                     </div>
                     :
                     <div>
-                        {isItemsLoading &&
+                        {isLoading &&
                             <div className='item-list_empty'>
                                 <Loader/>
                             </div>

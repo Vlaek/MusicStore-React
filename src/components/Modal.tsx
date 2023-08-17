@@ -1,10 +1,11 @@
 import React, { FC, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { IoCart, IoClose, IoHeart } from 'react-icons/io5'
-import { IAdd, IAlbum, ILike, IShowModal } from '../types/types'
+import { IAdd, IAlbum, IOrder, ILike, IShowModal } from '../types/types'
 
 interface ModalProps {
     showModal: boolean
+    showModalOrder: boolean
     item: IAlbum
     likes: IAlbum[]
     onLike: ILike

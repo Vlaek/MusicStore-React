@@ -1,7 +1,14 @@
-import React from 'react'
+import React, {FC} from 'react'
 import { FaPlus, FaMinus } from 'react-icons/fa'
+import { IRemove, IOrder, IAdd } from './../../types/types';
 
-const OrderButton = (props) => {
+interface OrderButtonProps {
+    item: IOrder
+    onRemove: IRemove
+    onAdd: IAdd
+}
+
+const OrderButton: FC<OrderButtonProps> = (props) => {
     return (
         <div className="modal-order__item__count">
             <FaMinus 

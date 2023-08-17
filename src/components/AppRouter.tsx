@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Index from '../pages/Index';
 import { Route, Routes } from 'react-router-dom';
 import { routes } from '../router';
@@ -10,8 +10,7 @@ const AppRouter = () => {
                 <Route 
                     key={index} 
                     path={route.path} 
-                    element={route.element} 
-                    exact={route.exact}
+                    element={route.element}
                 ></Route>
             )}
             <Route path="*" element={<Index/>}></Route>

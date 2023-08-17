@@ -2,10 +2,10 @@ import React, {useState, useRef, FC} from 'react'
 import { CSSTransition } from 'react-transition-group';
 import { FaTrash } from 'react-icons/fa'
 import OrderButton from './UI/OrderButton'
-import { IAdd, IAlbum, IDelete, IRemove, IShowModal } from './../types/types';
+import { IAdd, IOrder, IDelete, IRemove, IShowModal } from './../types/types';
 
 interface OrderProps {
-    item: IAlbum
+    item: IOrder
     onShowModal: IShowModal
     onDelete: IDelete
     onAdd: IAdd

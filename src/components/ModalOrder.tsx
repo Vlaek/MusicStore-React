@@ -47,7 +47,7 @@ const ModalOrder: FC<ModalOrderProps> = (props) => {
                 >
                 <div className="modal-order__content" onClick={e => e.stopPropagation()}>
                 {props.showModalOrder &&
-                    <div style={{height: '100%'}}>
+                    <div>
                         {props.orders.length 
                         ? 
                         <div className='modal-order__container'> 

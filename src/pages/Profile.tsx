@@ -1,13 +1,14 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {FC, useState, useContext, useEffect} from 'react'
 import Tabs from '../components/Tabs'
 import { OrdersContext } from '../context/context';
 import profilePhoto from '../img/Vlek.jpg'
 import Accordion from '../components/Accordion';
 import LikeItem from '../components/LikeItem';
+import { IOrdersContext } from './../types/types';
 
-const Profile = () => {
-    const {likes, ordersHistory, likeItem, onShowModal, addToOrder, setLikes} = useContext(OrdersContext);
-    const [draggableItem, setDraggableItem] = useState(null)
+const Profile: FC = () => {
+    const {likes, ordersHistory, likeItem, onShowModal, addToOrder, setLikes} = useContext(OrdersContext) as IOrdersContext;
+    const [draggableItem, setDraggableItem] = useState<number>(0)
 
     useEffect(() => {
         window.scrollTo(0, 0);

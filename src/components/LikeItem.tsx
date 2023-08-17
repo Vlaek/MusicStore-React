@@ -1,32 +1,49 @@
-import React, {useState, useRef} from 'react'
+import React, {FC, useState, useRef} from 'react'
 import { CSSTransition } from 'react-transition-group';
 import { IoCart, IoHeart } from 'react-icons/io5';
+import { IAdd, IAlbum, ILike, IShowModal, ISetLikes, ISetDraggableItem } from './../types/types';
 
-const LikeItem = (props) => {
+interface LikeItemProps {
+    index: number
+    like: IAlbum
+    likes: IAlbum[]
+    draggableItem: number
+    onAddToOrder: IAdd
+    onLike: ILike
+    onShowModal: IShowModal
+    setLikes: ISetLikes
+    setDraggableItem: ISetDraggableItem
+}
+
+const LikeItem: FC<LikeItemProps> = (props) => {
     const [show, setShow] = useState(true);
     const myRef = useRef(null);
 
-    function dragOverHandler(e) {
+    const dragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
-        e.target.closest('.profile-items__item').style.boxShadow = '0 4px 3px gray'
+        const target = e.target as HTMLElement;
+        (target.closest('.profile-items__item') as HTMLElement).style.boxShadow = '0 4px 3px gray';
     }
 
-    function dragLeaveHandler(e) {
-        e.target.closest('.profile-items__item').style.boxShadow = 'none'
+    const dragLeaveHandler = (e: React.DragEvent<HTMLDivElement>) => {
+        const target = e.target as HTMLElement;
+        (target.closest('.profile-items__item') as HTMLElement).style.boxShadow = 'none'
     }
 
-    function dragStartHandler(index) {
+    const dragStartHandler = (index: number) => {
         props.setDraggableItem(index)
     }
 
-    function dragEndHandler(e) {
-        e.target.closest('.profile-items__item').style.boxShadow = 'none'
+    const dragEndHandler = (e: React.DragEvent<HTMLDivElement>) => {
+        const target = e.target as HTMLElement;
+        (target.closest('.profile-items__item') as HTMLElement).style.boxShadow = 'none'
     }
 
-    function dropHandler(e, index) {
+    const dropHandler = (e: React.DragEvent<HTMLDivElement>, index: number) => {
         e.preventDefault()
-        e.target.closest('.profile-items__item').style.boxShadow = 'none'
-        if (e.target.closest('.profile-items__item')) {
+        const target = e.target as HTMLElement;
+        (target.closest('.profile-items__item') as HTMLElement).style.boxShadow = 'none'
+        if ((target.closest('.profile-items__item') as HTMLElement)) {
             const draggedItem = props.likes[props.draggableItem]
             const remainingItems = props.likes.filter((item, i) => i !== props.draggableItem);
             const updatedItems = [
@@ -36,7 +53,6 @@ const LikeItem = (props) => {
             ]
             props.setLikes(updatedItems)
         }
-            
     }
 
     return (

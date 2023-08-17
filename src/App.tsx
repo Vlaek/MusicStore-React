@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
 import { BrowserRouter as Router } from 'react-router-dom'
 import AppRouter from "./components/AppRouter"
 import Footer from "./components/Footer"
@@ -6,16 +6,27 @@ import Header from "./components/Header"
 import Modal from "./components/Modal"
 import ModalOrder from "./components/ModalOrder"
 import { OrdersContext } from './context/context'
+import { IAlbum, IOrder, IOrderHistory, IOrdersContext } from './types/types';
 
-function App() {
-    const [orders, setOrders] = useState([]);
-    const [ordersHistory, setOrdersHistory] = useState([]);
+const App: FC = () => {
+    const [orders, setOrders] = useState<IOrder[]>([]);
+    const [ordersHistory, setOrdersHistory] = useState<IOrderHistory[]>([]);
     const [showModalOrder, setShowModalOrder] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [fullItem, setFullItem] = useState({});
-    const [likes, setLikes] = useState([]);
+    const [fullItem, setFullItem] = useState<IAlbum>({
+        id: -1,
+        title: '',
+        author: '',
+        tracklist: [],
+        img: '',
+        desc: '',
+        genre: '',
+        date: '',
+        price: 0
+    });
+    const [likes, setLikes] = useState<IAlbum[]>([]);
 
-    const onShowModal = (item) => {
+    const onShowModal = (item: IAlbum) => {
         setFullItem(item);
         setShowModal(!showModal);
     }
@@ -24,13 +35,13 @@ function App() {
         setShowModalOrder(!showModalOrder);
     }
 
-    const makeOrder = (orders, price) => {
+    const makeOrder = (orders: IOrder[], price: number) => {
         let today = new Date();
         const newOrder = {id: ordersHistory.length + 1, order: orders, price: price, date: today.toLocaleString()};
         setOrdersHistory(prevOrders => [...prevOrders, newOrder]);
     }
 
-    const addToOrder = (item) => {
+    const addToOrder = (item: IAlbum) => {
         setOrders(prevOrders => {
             const index = prevOrders.findIndex(order => order.id === item.id);
             if (index >= 0) {
@@ -43,7 +54,7 @@ function App() {
         });
     }
 
-    const deleteOrder = (id) => {
+    const deleteOrder = (id: number) => {
         setOrders(prevOrders => prevOrders.filter(order => order.id !== id));
     }
 
@@ -51,7 +62,7 @@ function App() {
         setOrders([])
     }
 
-    const removeFromOrder = (item) => {
+    const removeFromOrder = (item: IOrder) => {
         setOrders(prevOrders => {
             const index = prevOrders.findIndex(order => order.id === item.id);
             if (index >= 0 && prevOrders[index].count > 1) {
@@ -68,7 +79,7 @@ function App() {
         });
     }
 
-    const likeItem = (item) => {
+    const likeItem = (item: IAlbum) => {
         let isInArray = false;
         likes.forEach(like => {
             if (like.id === item.id)
@@ -79,16 +90,18 @@ function App() {
             setLikes([...likes, item])
     }
 
+    const OrdersContextContent:IOrdersContext = {
+        likes,
+        orders,
+        ordersHistory,
+        addToOrder,
+        likeItem,
+        onShowModal,
+        setLikes
+    }
+
     return (
-        <OrdersContext.Provider value={{
-            likes,
-            orders,
-            ordersHistory,
-            addToOrder,
-            likeItem,
-            onShowModal,
-            setLikes
-        }}>
+        <OrdersContext.Provider value={OrdersContextContent}>
             <Router>
                 <div className="wrapper">
                     <Header
@@ -111,10 +124,10 @@ function App() {
                         item={fullItem} 
                         likes={likes}
                         showModal={showModal}
+                        showModalOrder={showModalOrder}
                         onAdd={addToOrder} 
                         onLike={likeItem}
-                        onShowModal={onShowModal} 
-                        showModalOrder={showModalOrder}
+                        onShowModal={onShowModal}
                     /> 
                     <Footer />
                 </div>

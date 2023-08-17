@@ -544,6 +544,10 @@ header {
     transition: transform 0.2s ease-in-out;
 }
 
+.modal-order__content>div {
+    height: 100%;
+}
+
 .modal-order__container {
     display: flex;
     flex-direction: column;
