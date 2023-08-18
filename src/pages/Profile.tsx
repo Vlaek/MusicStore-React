@@ -55,7 +55,7 @@ const Profile: FC = () => {
                 <div className='profile-items'>
                     {likes.length > 0 
                         ? 
-                        <div className="profile-items_list">
+                        <div className="profile-items__list">
                             {likes.map((like, index) => (
                                 <LikeItem 
                                     like={like} 
