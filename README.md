@@ -22,13 +22,13 @@
   * Реализован поиск по названию альбома или группе.
 
 Технологии:
-* HTML, CSS, JavaScript, React
+* HTML, CSS, SASS, JavaScript, React, TypeScript
 * React Router
 * React Icons
-* Axios
 * React Yandex Maps
 * React Bootstrap (Carousel)
 * React Transition
+* Axios
 
 Замечание: Проект MusicStore React создан исключительно в качестве учебного пет-проекта и не имеет целей стать коммерческим или использоваться для продажи реальных музыкальных товаров.
 
