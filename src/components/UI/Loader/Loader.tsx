@@ -1,10 +1,10 @@
-import cl from './Loader.module.css'
+import styles from './Loader.module.scss'
 
 const Loader = () => {
 	return (
-		<div className={cl.container}>
-			<div className={cl.loader}></div>
-			<p className={cl.loader__text}>Загрузка</p>
+		<div className={styles.container}>
+			<div className={styles.loader}></div>
+			<p className={styles.loader__text}>Загрузка</p>
 		</div>
 	)
 }

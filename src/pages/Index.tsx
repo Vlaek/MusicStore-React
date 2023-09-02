@@ -109,19 +109,20 @@ const Index: FC = () => {
 					</div>
 				) : (
 					<div>
-						{isLoading && (
+						{isLoading ? (
 							<div className='item-list_empty'>
 								<Loader />
 							</div>
+						) : (
+							<Items
+								items={sortedAndSearchedItems}
+								orders={orders}
+								likes={likes}
+								onAdd={addToOrder}
+								onLike={likeItem}
+								onShowModal={onShowModal}
+							/>
 						)}
-						<Items
-							items={sortedAndSearchedItems}
-							orders={orders}
-							likes={likes}
-							onAdd={addToOrder}
-							onLike={likeItem}
-							onShowModal={onShowModal}
-						/>
 					</div>
 				)}
 			</div>

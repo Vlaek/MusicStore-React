@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap');
+
+.container {
+	position: relative;
+	font-family: 'Montserrat', sans-serif;
+
+	.loader {
+		width: 250px;
+		height: 250px;
+		border-radius: 50%;
+		border: 15px dashed #dc3d3d;
+		animation: rotate 4s infinite linear;
+		position: relative;
+
+		&__text {
+			position: absolute;
+			top: calc(50% - 12px);
+			width: 100%;
+			text-align: center;
+			font-size: 24px;
+
+			&::after {
+				content: '';
+				animation: load 0.5s infinite linear;
+			}
+		}
+	}
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg) scale(1);
+	}
+	to {
+		transform: rotate(360deg) scale(1.4);
+	}
+}
+
+@keyframes load {
+	0% {
+		content: '';
+	}
+	33% {
+		content: '.';
+	}
+	66% {
+		content: '..';
+	}
+	99% {
+		content: '...';
+	}
+}
+
+@media (max-width: 768px) {
+	.loader {
+		width: 150px;
+		height: 150px;
+		border: 7px dashed #dc3d3d;
+	}
+
+	.loader__text {
+		top: calc(50% - 11px);
+		font-size: 18px;
+	}
+}
+
+@media (max-width: 576px) {
+	.loader {
+		width: 100px;
+		height: 100px;
+		border: 5px dashed #dc3d3d;
+	}
+
+	.loader__text {
+		top: calc(50% - 10px);
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 420px) {
+	.loader {
+		width: 80px;
+		height: 80px;
+		border: 5px dashed #dc3d3d;
+	}
+
+	.loader__text {
+		top: calc(50% - 9px);
+		font-size: 12px;
+	}
+}
