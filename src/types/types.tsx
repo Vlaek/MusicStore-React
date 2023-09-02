@@ -1,78 +1,78 @@
 export interface IAlbum {
-    id: number
-    title: string
-    author: string
-    tracklist: ITrack[]
-    img: string
-    desc: string
-    genre: string
-    date: string
-    price: number
+	id: number
+	title: string
+	author: string
+	tracklist: ITrack[]
+	img: string
+	desc: string
+	genre: string
+	date: string
+	price: number
 }
 
 export interface ITrack {
-    id: number
-    name: string
-    duration: string
+	id: number
+	name: string
+	duration: string
 }
 
 export interface IOrder extends IAlbum {
-    count: number
+	count: number
 }
 
 export interface IOrderHistory {
-    id: number
-    order: IOrder[]
-    price: number
-    date: string
+	id: number
+	order: IOrder[]
+	price: number
+	date: string
 }
 
 export interface IShowModal {
-    (item: IAlbum): void
+	(item: IAlbum): void
 }
 
 export interface IShowModalOrder {
-    (): void
+	(): void
 }
 
 export interface ILike {
-    (item: IAlbum): void
+	(item: IAlbum): void
 }
 
 export interface IAdd {
-    (item: IAlbum): void
+	(item: IAlbum): void
 }
 
 export interface IRemove {
-    (item: IOrder): void
+	(item: IOrder): void
 }
 
 export interface IDelete {
-    (id: number): void
+	(id: number): void
 }
 
 export interface IMakeOrder {
-    (order: IOrder[], price: number): void
+	(order: IOrder[], price: number): void
 }
 
 export interface IClearOrder {
-    (): void
+	(): void
 }
 
 export interface ISetLikes {
-    (likes: IAlbum[]): void
+	(likes: IAlbum[]): void
 }
 
 export interface ISetDraggableItem {
-    (draggableItem: number): void
+	(draggableItem: number): void
 }
 
 export interface IOrdersContext {
-    likes: IAlbum[]
-    orders: IOrder[]
-    ordersHistory: IOrderHistory[]
-    addToOrder: IAdd
-    likeItem: ILike
-    onShowModal: IShowModal
-    setLikes: ISetLikes
+	likes: IAlbum[]
+	orders: IOrder[]
+	ordersHistory: IOrderHistory[]
+	addToOrder: IAdd
+	likeItem: ILike
+	onShowModal: IShowModal
+	setLikes: ISetLikes
 }
