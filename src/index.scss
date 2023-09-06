@@ -1083,6 +1083,10 @@ footer {
 		cursor: pointer;
 		transition: transform 0.3s ease;
 
+		&.non-auth {
+			color: rgba(0, 0, 0, 0.15);
+		}
+
 		&.active {
 			font-weight: 600;
 			color: #dc3d3d;

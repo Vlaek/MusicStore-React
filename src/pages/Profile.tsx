@@ -54,6 +54,7 @@ const Profile: FC = () => {
 			) : (
 				<Auth handleLogin={handleLogin} handleRegister={handleRegister} />
 			),
+			authTab: isAuthenticated,
 		},
 		{
 			title: 'Мои отложенные',
@@ -68,10 +69,12 @@ const Profile: FC = () => {
 					onShowModal={onShowModal}
 				/>
 			),
+			authTab: isAuthenticated,
 		},
 		{
 			title: 'Мои заказы',
 			content: <MyOrders ordersHistory={ordersHistory} onShowModal={onShowModal} />,
+			authTab: isAuthenticated,
 		},
 	]
 	return (

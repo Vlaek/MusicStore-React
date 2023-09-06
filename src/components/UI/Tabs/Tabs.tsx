@@ -1,4 +1,4 @@
-import { useState, useEffect, FC } from 'react'
+import { useState, useEffect, useRef, FC } from 'react'
 
 interface TabsProps {
 	tabs: Tab[]
@@ -8,24 +8,32 @@ interface TabsProps {
 interface Tab {
 	title: string
 	content: JSX.Element
+	authTab: boolean
 }
 
 const Tabs: FC<TabsProps> = ({ tabs }) => {
 	const [activeTab, setActiveTab] = useState(0)
+	const ref = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
-		;(document.querySelector('.tabs__content') as HTMLDivElement).scrollTo(0, 0)
+		if (ref.current) {
+			ref.current.scrollTo(0, 0)
+		}
 	}, [activeTab])
 
 	return (
 		<div className='tabs'>
-			<div className='tabs__content'>{tabs[activeTab].content}</div>
+			<div className='tabs__content' ref={ref}>
+				{tabs[activeTab].content}
+			</div>
 			<div className='tabs__header'>
 				{tabs.map((tab, index) => (
 					<div
 						key={index}
-						onClick={() => setActiveTab(index)}
-						className={`tabs__btn ${activeTab === index && 'active'}`}
+						onClick={() => {
+							tab.authTab && setActiveTab(index)
+						}}
+						className={`tabs__btn ${activeTab === index && 'active'} ${!tab.authTab && 'non-auth'}`}
 					>
 						{tab.title}
 					</div>
