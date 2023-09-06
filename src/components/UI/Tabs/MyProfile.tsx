@@ -2,9 +2,10 @@ import { FC } from 'react'
 
 interface MyProfileProps {
 	profilePhoto: string
+	handleLogout: () => void
 }
 
-const MyProfile: FC<MyProfileProps> = ({ profilePhoto }) => {
+const MyProfile: FC<MyProfileProps> = ({ profilePhoto, handleLogout }) => {
 	return (
 		<div className='profile'>
 			<div className='profile__title'>Мой профиль</div>
@@ -14,7 +15,9 @@ const MyProfile: FC<MyProfileProps> = ({ profilePhoto }) => {
 						<img src={profilePhoto} alt='profile' />
 					</div>
 					<div className='profile__btn'>Редактировать</div>
-					<div className='profile__btn'>Выйти</div>
+					<button onClick={handleLogout} className='profile__btn'>
+						Выйти
+					</button>
 					<div className='profile__btn'>Удалить</div>
 				</div>
 				<div className='second'>

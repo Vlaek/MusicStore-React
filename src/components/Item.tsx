@@ -1,5 +1,7 @@
 import { FC } from 'react'
 import { IoCart, IoHeart } from 'react-icons/io5'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { IAlbum, IAdd, ILike, IShowModal } from './../types/types'
 
 interface ItemProps {
@@ -12,7 +14,10 @@ interface ItemProps {
 	onShowModal: IShowModal
 }
 
-const Item: FC<ItemProps> = (props) => {
+const Item: FC<ItemProps> = props => {
+	const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated)
+	const navigate = useNavigate()
+
 	return (
 		<div className='item'>
 			<img
@@ -39,7 +44,13 @@ const Item: FC<ItemProps> = (props) => {
 				<div className='item__btn-list'>
 					<IoHeart
 						className={`item__btn-like ${props.like && 'active'}`}
-						onClick={() => props.onLike(props.item)}
+						onClick={() => {
+							if (isAuthenticated) {
+								props.onLike(props.item)
+							} else {
+								navigate('/MusicStore-React/profile')
+							}
+						}}
 					/>
 					<IoCart
 						className={`item__btn-cart ${props.order && 'active'}`}

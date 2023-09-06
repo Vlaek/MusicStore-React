@@ -43,12 +43,12 @@ const App: FC = () => {
 			price: price,
 			date: today.toLocaleString(),
 		}
-		setOrdersHistory((prevOrders) => [...prevOrders, newOrder])
+		setOrdersHistory(prevOrders => [...prevOrders, newOrder])
 	}
 
 	const addToOrder = (item: IAlbum) => {
-		setOrders((prevOrders) => {
-			const index = prevOrders.findIndex((order) => order.id === item.id)
+		setOrders(prevOrders => {
+			const index = prevOrders.findIndex(order => order.id === item.id)
 			if (index >= 0) {
 				const newOrders = [...prevOrders]
 				newOrders[index].count += 1
@@ -60,7 +60,7 @@ const App: FC = () => {
 	}
 
 	const deleteOrder = (id: number) => {
-		setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id))
+		setOrders(prevOrders => prevOrders.filter(order => order.id !== id))
 	}
 
 	const clearOrder = () => {
@@ -68,8 +68,8 @@ const App: FC = () => {
 	}
 
 	const removeFromOrder = (item: IOrder) => {
-		setOrders((prevOrders) => {
-			const index = prevOrders.findIndex((order) => order.id === item.id)
+		setOrders(prevOrders => {
+			const index = prevOrders.findIndex(order => order.id === item.id)
 			if (index >= 0 && prevOrders[index].count > 1) {
 				const newOrders = [...prevOrders]
 				newOrders[index].count -= 1
@@ -86,9 +86,9 @@ const App: FC = () => {
 
 	const likeItem = (item: IAlbum) => {
 		let isInArray = false
-		likes.forEach((like) => {
+		likes.forEach(like => {
 			if (like.id === item.id) isInArray = true
-			setLikes(likes.filter((like) => like.id !== item.id))
+			setLikes(likes.filter(like => like.id !== item.id))
 		})
 		if (!isInArray) setLikes([...likes, item])
 	}

@@ -1100,6 +1100,36 @@ footer {
 }
 
 .profile {
+	&--auth {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 75%;
+
+		.profile__title {
+			margin-bottom: 30px;
+		}
+
+		.profile__input {
+			margin-bottom: 30px;
+		}
+
+		.profile__buttons {
+			display: flex;
+			justify-content: center;
+
+			.profile__btn {
+				margin-right: 10px;
+
+				&:last-child {
+					margin-right: 0;
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+
 	&__content {
 		display: flex;
 

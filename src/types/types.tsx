@@ -76,3 +76,33 @@ export interface IOrdersContext {
 	onShowModal: IShowModal
 	setLikes: ISetLikes
 }
+
+export interface IUser {
+	name: string
+	email: string
+	password: string
+	phone?: string
+	address?: string
+	index?: string
+}
+
+export interface ISaveUser {
+	type: 'LOGIN'
+	payload: IUser
+}
+
+export interface IRemoveUser {
+	type: 'LOGOUT'
+}
+
+export interface IRegisterUser {
+	type: 'REGISTER'
+	payload: IUser
+}
+
+export type UserAction = ISaveUser | IRemoveUser | IRegisterUser
+
+export interface IState {
+	user: IUser | null
+	isAuthenticated: boolean
+}

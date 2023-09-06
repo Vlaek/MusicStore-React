@@ -12,6 +12,9 @@ import {
 	IMakeOrder,
 	IClearOrder,
 } from './../types/types'
+import { useSelector, useDispatch } from 'react-redux'
+import { loginUser } from '../store/reducers/authActions'
+import { Link } from 'react-router-dom'
 
 interface ModalOrderProps {
 	showModalOrder: boolean
@@ -25,7 +28,7 @@ interface ModalOrderProps {
 	onClear: IClearOrder
 }
 
-const ModalOrder: FC<ModalOrderProps> = (props) => {
+const ModalOrder: FC<ModalOrderProps> = props => {
 	const summa = props.orders.reduce((summa, order) => summa + order.price * order.count, 0)
 	const [isOpen, setIsOpen] = useState(false)
 
@@ -37,6 +40,17 @@ const ModalOrder: FC<ModalOrderProps> = (props) => {
 			document.body.style.overflow = 'hidden'
 		}
 	}, [props.showModalOrder])
+
+	const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated)
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		const userString = localStorage.getItem('user')
+		if (userString) {
+			const user = JSON.parse(userString)
+			dispatch(loginUser(user))
+		}
+	}, [dispatch])
 
 	return (
 		<CSSTransition
@@ -53,7 +67,7 @@ const ModalOrder: FC<ModalOrderProps> = (props) => {
 				}}
 			>
 				<CSSTransition in={isOpen} timeout={200} classNames='modal-order__content'>
-					<div className='modal-order__content' onClick={(e) => e.stopPropagation()}>
+					<div className='modal-order__content' onClick={e => e.stopPropagation()}>
 						{props.showModalOrder && (
 							<div>
 								{props.orders.length ? (
@@ -68,7 +82,7 @@ const ModalOrder: FC<ModalOrderProps> = (props) => {
 											</p>
 										</div>
 										<div className='modal-order__body'>
-											{props.orders.map((order) => (
+											{props.orders.map(order => (
 												<Order
 													key={order.id}
 													item={order}
@@ -80,15 +94,26 @@ const ModalOrder: FC<ModalOrderProps> = (props) => {
 											))}
 										</div>
 										<div className='modal-order__footer'>
-											<button
-												className='modal-order__button'
-												onClick={() => {
-													props.onMakeOrder(props.orders, summa)
-													props.onClear()
-												}}
-											>
-												К оформлению
-											</button>
+											{isAuthenticated ? (
+												<button
+													className='modal-order__button'
+													onClick={() => {
+														props.onMakeOrder(props.orders, summa)
+														props.onClear()
+													}}
+												>
+													К оформлению
+												</button>
+											) : (
+												<Link to='/MusicStore-React/profile'>
+													<button
+														className='modal-order__button'
+														onClick={() => props.onShowModalOrder()}
+													>
+														Авторизоваться
+													</button>
+												</Link>
+											)}
 										</div>
 									</div>
 								) : (
