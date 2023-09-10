@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { FaVk, FaTelegram, FaYoutube, FaTwitter, FaOdnoklassniki } from 'react-icons/fa6'
 import { YMaps, Map } from '@pbe/react-yandex-maps'
+import ContactsForm from '../components/UI/Forms/ContactsForm'
 
 const Contacts = () => {
 	useEffect(() => {
@@ -92,25 +93,7 @@ const Contacts = () => {
 						</div>
 					</YMaps>
 				</div>
-				<form className='contact-form'>
-					<div className='contact-form__title'>Оставьте свой вопрос, и мы свяжемся с вами!</div>
-					<div className='contact-form__item'>
-						<div className='contact-form__content'>
-							<div>
-								<input type='text' className='contact-form__input' placeholder='Ваше имя' />
-								<input
-									type='text'
-									className='contact-form__input'
-									placeholder='Ваш номер телефона'
-								/>
-							</div>
-							<div>
-								<textarea className='contact-form__textarea' placeholder='Ваш вопрос'></textarea>
-							</div>
-						</div>
-						<button className='contact-form__btn'>Отправить</button>
-					</div>
-				</form>
+				<ContactsForm />
 			</div>
 		</div>
 	)
