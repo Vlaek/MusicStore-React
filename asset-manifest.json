@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/MusicStore-React/static/css/main.d56cd94e.css",
-    "main.js": "/MusicStore-React/static/js/main.9c8205fd.js",
+    "main.css": "/MusicStore-React/static/css/main.6ad872de.css",
+    "main.js": "/MusicStore-React/static/js/main.27bfe281.js",
     "static/media/2.jpg": "/MusicStore-React/static/media/2.33cca3ba8159aec35ad9.jpg",
     "static/media/Vlek.jpg": "/MusicStore-React/static/media/Vlek.cf80415cbbd9277f6156.jpg",
     "static/media/Nataly.jpg": "/MusicStore-React/static/media/Nataly.8096c0266005cdd8b27e.jpg",
@@ -19,12 +19,13 @@
     "static/media/3.jpg": "/MusicStore-React/static/media/3.c4818de6f538ec65db06.jpg",
     "static/media/nk4.jpg": "/MusicStore-React/static/media/nk4.1d55bf0a01d8d0a98657.jpg",
     "static/media/placebo.jpg": "/MusicStore-React/static/media/placebo.32371ec015c0bc8f7ff2.jpg",
+    "static/media/favicon.svg": "/MusicStore-React/static/media/favicon.c549c93535c56b782d65.svg",
     "index.html": "/MusicStore-React/index.html",
-    "main.d56cd94e.css.map": "/MusicStore-React/static/css/main.d56cd94e.css.map",
-    "main.9c8205fd.js.map": "/MusicStore-React/static/js/main.9c8205fd.js.map"
+    "main.6ad872de.css.map": "/MusicStore-React/static/css/main.6ad872de.css.map",
+    "main.27bfe281.js.map": "/MusicStore-React/static/js/main.27bfe281.js.map"
   },
   "entrypoints": [
-    "static/css/main.d56cd94e.css",
-    "static/js/main.9c8205fd.js"
+    "static/css/main.6ad872de.css",
+    "static/js/main.27bfe281.js"
   ]
 }
