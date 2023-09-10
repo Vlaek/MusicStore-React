@@ -56,7 +56,7 @@ const ContactsForm: FC = () => {
 										[styles.errorInput]: errors.email && touched.email,
 									})}
 									name='email'
-									placeholder='Ваш электронный адрес'
+									placeholder='Ваша электронная почта'
 								/>
 							</div>
 
