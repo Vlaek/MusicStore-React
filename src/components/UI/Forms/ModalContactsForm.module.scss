@@ -1,0 +1,91 @@
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 9999;
+	overflow: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.content {
+		width: 400px;
+		height: 450px;
+		position: relative;
+		padding: 40px 30px;
+		background: #fff;
+		border-radius: 10px;
+	}
+
+	.header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 25%;
+
+		.smile {
+			width: 100px;
+			height: 100px;
+			color: #42f5aa;
+		}
+	}
+
+	.body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 25px 0;
+
+		.text {
+			font-size: 20px;
+			text-align: center;
+		}
+	}
+
+	.footer {
+		display: flex;
+		justify-content: center;
+
+		.button {
+			background-color: #42f5aa;
+			padding: 10px 30px;
+			border-radius: 15px;
+			transition: all 0.3s ease;
+
+			&:hover {
+				background-color: #3a8a80;
+			}
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.modal {
+		.content {
+			height: 400px;
+			padding: 40px 25px;
+		}
+
+		.body {
+			padding: 20px 0;
+
+			.text {
+				font-size: 18px;
+			}
+		}
+	}
+}
+
+@media (max-width: 420px) {
+	.modal {
+		.content {
+			width: 100%;
+			height: 100%;
+			border-radius: 0px;
+		}
+	}
+}

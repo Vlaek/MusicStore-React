@@ -13,7 +13,7 @@ interface ModalProps {
 	onShowModal: IShowModal
 }
 
-const Modal: FC<ModalProps> = (props) => {
+const Modal: FC<ModalProps> = props => {
 	useEffect(() => {
 		if (!props.showModal) document.body.style.overflow = 'visible'
 		else document.body.style.overflow = 'hidden'
@@ -21,9 +21,9 @@ const Modal: FC<ModalProps> = (props) => {
 
 	return (
 		<CSSTransition timeout={300} in={props.showModal} unmountOnExit classNames='modal-item'>
-			<div className={`modal-item `} onClick={() => props.onShowModal(props.item)}>
+			<div className={'modal-item'} onClick={() => props.onShowModal(props.item)}>
 				{props.showModal && (
-					<div className='modal__content' onClick={(e) => e.stopPropagation()}>
+					<div className='modal__content' onClick={e => e.stopPropagation()}>
 						<div className='modal__header'>
 							<img
 								src={require(`../../public/img/${props.item.img}`)}
@@ -45,7 +45,7 @@ const Modal: FC<ModalProps> = (props) => {
 									<div className='modal__btn-list'>
 										<IoHeart
 											className={`modal__btn-like ${
-												props.likes.some((like) => like.id === props.item.id) && 'active'
+												props.likes.some(like => like.id === props.item.id) && 'active'
 											}`}
 											onClick={() => props.onLike(props.item)}
 										/>
@@ -62,7 +62,7 @@ const Modal: FC<ModalProps> = (props) => {
 						</div>
 						<p className='modal__desc'>{props.item.desc}</p>
 						<div className='modal__tracklist'>
-							{props.item.tracklist.map((track) => (
+							{props.item.tracklist.map(track => (
 								<div className='modal__track' key={track.id}>
 									<p className='modal__track-id'>{track.id}</p>
 									<p className='modal__track-name'>{track.name}</p>

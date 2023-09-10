@@ -1,10 +1,13 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import * as Yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import styles from './ContactsForm.module.scss'
 import classNames from 'classnames'
+import ModalContactsForm from './ModalContactsForm'
 
 const ContactsForm: FC = () => {
+	const [showModal, setShowModal] = useState(false)
+
 	const validationSchema = Yup.object().shape({
 		name: Yup.string()
 			.min(3, 'Слишком короткое имя')
@@ -30,11 +33,11 @@ const ContactsForm: FC = () => {
 					request: '',
 				}}
 				onSubmit={values => {
-					console.log('submit', values)
+					setShowModal(true)
 				}}
 				validationSchema={validationSchema}
 			>
-				{({ errors, touched }) => (
+				{({ errors, touched, values }) => (
 					<Form className={styles.wrapper}>
 						<div className={styles.content}>
 							<div>
@@ -75,6 +78,11 @@ const ContactsForm: FC = () => {
 						<button className={styles.button} type='submit'>
 							Отправить
 						</button>
+						<ModalContactsForm
+							showModal={showModal}
+							onShowModal={setShowModal}
+							name={values.name}
+						/>
 					</Form>
 				)}
 			</Formik>
