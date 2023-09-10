@@ -72,3 +72,36 @@
 		}
 	}
 }
+
+@media (max-width: 992px) {
+	.form {
+		.title {
+			font-size: 24px;
+		}
+
+		.content {
+			flex-direction: column;
+		}
+
+		.field,
+		.textarea {
+			margin-right: 0;
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.form {
+		.title {
+			font-size: 18px;
+		}
+	}
+}
+
+@media (max-width: 420px) {
+	.form {
+		.title {
+			font-size: 16px;
+		}
+	}
+}
