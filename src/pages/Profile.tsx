@@ -9,6 +9,7 @@ import MyOrders from '../components/UI/Tabs/MyOrders'
 import { useSelector, useDispatch } from 'react-redux'
 import { loginUser, logoutUser, registerUser } from '../store/reducers/authActions'
 import Auth from '../components/UI/Tabs/Auth'
+import { Helmet } from 'react-helmet'
 
 const Profile: FC = () => {
 	const { likes, ordersHistory, likeItem, onShowModal, addToOrder, setLikes } = useContext(
@@ -78,12 +79,19 @@ const Profile: FC = () => {
 		},
 	]
 	return (
-		<div className='container'>
-			<div className='cabinet'>
-				<h1 className='cabinet__title'>Личный кабинет</h1>
-				<Tabs tabs={tabs} />
+		<>
+			<Helmet>
+				<meta charSet='utf-8' />
+				<meta name='description' content='music store react cabinet' />
+				<title>Music Store - Личный кабинет</title>
+			</Helmet>
+			<div className='container'>
+				<div className='cabinet'>
+					<h1 className='cabinet__title'>Личный кабинет</h1>
+					<Tabs tabs={tabs} />
+				</div>
 			</div>
-		</div>
+		</>
 	)
 }
 

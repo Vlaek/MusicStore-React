@@ -9,6 +9,7 @@ import { useItems } from '../hooks/useItems'
 import { useFetching, IUseFetching } from '../hooks/useFetching'
 import Loader from '../components/UI/Loader/Loader'
 import { IOrdersContext } from './../types/types'
+import { Helmet } from 'react-helmet'
 
 const Index: FC = () => {
 	const [items, setItems] = useState([])
@@ -96,7 +97,12 @@ const Index: FC = () => {
 	}
 
 	return (
-		<div>
+		<>
+			<Helmet>
+				<meta charSet='utf-8' />
+				<meta name='description' content='music store react main page' />
+				<title>Music Store - Главная страница</title>
+			</Helmet>
 			<CarouselBox />
 			<div className='container'>
 				<Categories categories={sorts} setCategory={handleSortChange} />
@@ -126,7 +132,7 @@ const Index: FC = () => {
 					</div>
 				)}
 			</div>
-		</div>
+		</>
 	)
 }
 
