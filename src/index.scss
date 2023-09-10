@@ -1353,8 +1353,16 @@ footer {
 		max-width: 960px;
 	}
 
-	.carousel-container {
-		max-width: 960px;
+	.carousel {
+		&-container {
+			max-width: none;
+			margin: 0px 0px 30px;
+		}
+
+		&-image {
+			height: 450px;
+			width: 100%;
+		}
 	}
 
 	.container {
@@ -1494,7 +1502,7 @@ footer {
 
 		&-image {
 			height: 350px;
-			margin: 0 0 25px;
+			width: 100%;
 		}
 	}
 
@@ -1725,9 +1733,10 @@ footer {
 		max-width: 540px;
 	}
 
-	.carousel-image {
-		height: 300px;
-		margin: 0 0 20px;
+	.carousel {
+		&-container {
+			margin-bottom: 20px;
+		}
 	}
 
 	.category {
@@ -2200,6 +2209,10 @@ footer {
 	}
 
 	.carousel {
+		&-container {
+			margin-bottom: 0px;
+		}
+
 		&-image {
 			height: 200px;
 			margin: 0;
