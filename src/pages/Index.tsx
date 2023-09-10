@@ -13,7 +13,7 @@ import { IOrdersContext } from './../types/types'
 const Index: FC = () => {
 	const [items, setItems] = useState([])
 	const { likes, orders, addToOrder, likeItem, onShowModal } = useContext(
-		OrdersContext
+		OrdersContext,
 	) as IOrdersContext
 
 	const [filter, setFilter] = useState({
@@ -77,7 +77,7 @@ const Index: FC = () => {
 	]
 
 	const handleQueryChange = (
-		e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<SVGElement, MouseEvent> | undefined
+		e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<SVGElement, MouseEvent> | undefined,
 	) => {
 		const input = e?.target as HTMLInputElement
 		if (!input.value) input.value = ''
