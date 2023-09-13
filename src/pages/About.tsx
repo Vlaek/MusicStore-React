@@ -4,6 +4,7 @@ import photoTeam2 from '../img/Nataly.jpg'
 import photoTeam3 from '../img/Vlek.jpg'
 import photoTeam4 from '../img/4eka.jpg'
 import { Helmet } from 'react-helmet'
+import Counter from './../components/UI/Counter/Counter'
 
 const About = () => {
 	useEffect(() => {
@@ -32,15 +33,21 @@ const About = () => {
 					</p>
 					<div className='information'>
 						<div className='information__item'>
-							<div className='information__title'>153 525 434</div>
+							<div className='information__title'>
+								<Counter value={153525434} duration={30} />
+							</div>
 							<div className='information__text'>оформленных заказов за все время!</div>
 						</div>
 						<div className='information__item'>
-							<div className='information__title'>37 706 000</div>
+							<div className='information__title'>
+								<Counter value={37706000} duration={30} />
+							</div>
 							<div className='information__text'>довольных клиентов по всему миру!</div>
 						</div>
 						<div className='information__item'>
-							<div className='information__title'>327 095</div>
+							<div className='information__title'>
+								<Counter value={327095} duration={30} />
+							</div>
 							<div className='information__text'>исполнителей сотрудничают с нами!</div>
 						</div>
 					</div>
@@ -58,7 +65,7 @@ const About = () => {
 					<div className='team'>
 						<div className='team__item'>
 							<div className='team__img'>
-								<img src={photoTeam1} alt='team' />
+								<img src={photoTeam1} alt='team' draggable={false} />
 							</div>
 							<div className='team__name'>Никита</div>
 							<div className='team__position'>Менеджер по фоторекламе</div>
@@ -66,7 +73,7 @@ const About = () => {
 						</div>
 						<div className='team__item'>
 							<div className='team__img'>
-								<img src={photoTeam2} alt='team' />
+								<img src={photoTeam2} alt='team' draggable={false} />
 							</div>
 							<div className='team__name'>Наталья</div>
 							<div className='team__position'>Руководитель детского отдела</div>
@@ -74,7 +81,7 @@ const About = () => {
 						</div>
 						<div className='team__item'>
 							<div className='team__img'>
-								<img src={photoTeam3} alt='team' />
+								<img src={photoTeam3} alt='team' draggable={false} />
 							</div>
 							<div className='team__name'>Владислав</div>
 							<div className='team__position'>Менеджер по видеорекламе</div>
@@ -82,7 +89,7 @@ const About = () => {
 						</div>
 						<div className='team__item'>
 							<div className='team__img'>
-								<img src={photoTeam4} alt='team' />
+								<img src={photoTeam4} alt='team' draggable={false} />
 							</div>
 							<div className='team__name'>Евгений</div>
 							<div className='team__position'>Менеджер международного отдела</div>

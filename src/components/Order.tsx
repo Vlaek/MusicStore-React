@@ -23,6 +23,7 @@ const Order: FC<OrderProps> = ({ item, onShowModal, onDelete, onAdd, onRemove })
 					src={require(`../../public/img/${item.img}`)}
 					alt='img'
 					onClick={() => onShowModal(item)}
+					draggable={false}
 				/>
 				<div className='modal-order__item__body'>
 					<p

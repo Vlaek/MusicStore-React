@@ -100,7 +100,16 @@ export interface IRegisterUser {
 	payload: IUser
 }
 
-export type UserAction = ISaveUser | IRemoveUser | IRegisterUser
+export interface IDeleteUser {
+	type: 'DELETE'
+}
+
+export interface ICurrentUser {
+	type: 'CURRENT_USER'
+	payload: IUser
+}
+
+export type UserAction = ISaveUser | IRemoveUser | IRegisterUser | IDeleteUser | ICurrentUser
 
 export interface IState {
 	user: IUser | null

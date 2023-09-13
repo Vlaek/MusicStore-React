@@ -24,6 +24,7 @@ const Item: FC<ItemProps> = memo(({ item, like, order, onAdd, onLike, onShowModa
 				src={require(`../../public/img/${item.img}`)}
 				alt='img'
 				onClick={() => onShowModal(item)}
+				draggable={false}
 			/>
 			<h2 className='item__title' onClick={() => onShowModal(item)} title={item.title}>
 				{item.title}

@@ -10,21 +10,21 @@ const CarouselBox: FC = memo(() => {
 		<div className='carousel-container'>
 			<Carousel interval={10000} controls={true} indicators={false}>
 				<Carousel.Item>
-					<img className='carousel-image' src={placeboImg} alt='Placebo' />
+					<img className='carousel-image' src={placeboImg} alt='Placebo' draggable={false} />
 					<Carousel.Caption>
 						<h3>Placebo</h3>
 						<p>Never Let Me Go</p>
 					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
-					<img className='carousel-image' src={rammsteinImg} alt='Rammstein' />
+					<img className='carousel-image' src={rammsteinImg} alt='Rammstein' draggable={false} />
 					<Carousel.Caption>
 						<h3>Rammstein</h3>
 						<p>Zeit</p>
 					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
-					<img className='carousel-image' src={kanyeWest} alt='Kanye West' />
+					<img className='carousel-image' src={kanyeWest} alt='Kanye West' draggable={false} />
 					<Carousel.Caption>
 						<h3>Kanye West</h3>
 						<p>My Beautiful Dark Twisted Fantasy</p>

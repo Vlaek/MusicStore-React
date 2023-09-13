@@ -32,7 +32,7 @@ const ContactsForm: FC = () => {
 					email: '',
 					request: '',
 				}}
-				onSubmit={values => {
+				onSubmit={() => {
 					setShowModal(true)
 				}}
 				validationSchema={validationSchema}
@@ -41,15 +41,6 @@ const ContactsForm: FC = () => {
 					<Form className={styles.wrapper}>
 						<div className={styles.content}>
 							<div>
-								<div className={styles.error}>{errors.name && touched.name && errors.name}</div>
-								<Field
-									className={classNames(styles.field, {
-										[styles.errorInput]: errors.name && touched.name,
-									})}
-									name='name'
-									placeholder='Ваше имя'
-								/>
-
 								<div className={styles.error}>{errors.email && touched.email && errors.email}</div>
 								<Field
 									className={classNames(styles.field, {
@@ -57,6 +48,16 @@ const ContactsForm: FC = () => {
 									})}
 									name='email'
 									placeholder='Ваша электронная почта'
+									type='email'
+								/>
+
+								<div className={styles.error}>{errors.name && touched.name && errors.name}</div>
+								<Field
+									className={classNames(styles.field, {
+										[styles.errorInput]: errors.name && touched.name,
+									})}
+									name='name'
+									placeholder='Ваше имя'
 								/>
 							</div>
 

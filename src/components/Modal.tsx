@@ -24,7 +24,12 @@ const Modal: FC<ModalProps> = ({ showModal, item, likes, onLike, onAdd, onShowMo
 				{showModal && (
 					<div className='modal__content' onClick={e => e.stopPropagation()}>
 						<div className='modal__header'>
-							<img src={require(`../../public/img/${item.img}`)} alt='img' className='modal__img' />
+							<img
+								src={require(`../../public/img/${item.img}`)}
+								alt='img'
+								className='modal__img'
+								draggable={false}
+							/>
 							<div className='modal__information'>
 								<h2 className='modal__title'>{item.title}</h2>
 								<p className='modal__author'>{item.author}</p>

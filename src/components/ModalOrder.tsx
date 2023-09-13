@@ -55,7 +55,7 @@ const ModalOrder: FC<ModalOrderProps> = ({
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		const userString = localStorage.getItem('user')
+		const userString = localStorage.getItem('current_user')
 		if (userString) {
 			const user = JSON.parse(userString)
 			dispatch(loginUser(user))
