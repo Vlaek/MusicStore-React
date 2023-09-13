@@ -1,11 +1,10 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { IoCart, IoHeart } from 'react-icons/io5'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { IAlbum, IAdd, ILike, IShowModal } from './../types/types'
 
 interface ItemProps {
-	key: number
 	item: IAlbum
 	like: boolean
 	order: boolean
@@ -14,7 +13,7 @@ interface ItemProps {
 	onShowModal: IShowModal
 }
 
-const Item: FC<ItemProps> = props => {
+const Item: FC<ItemProps> = memo(({ item, like, order, onAdd, onLike, onShowModal }) => {
 	const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated)
 	const navigate = useNavigate()
 
@@ -22,44 +21,37 @@ const Item: FC<ItemProps> = props => {
 		<div className='item'>
 			<img
 				className='item__img'
-				src={require(`../../public/img/${props.item.img}`)}
+				src={require(`../../public/img/${item.img}`)}
 				alt='img'
-				onClick={() => props.onShowModal(props.item)}
+				onClick={() => onShowModal(item)}
 			/>
-			<h2
-				className='item__title'
-				onClick={() => props.onShowModal(props.item)}
-				title={props.item.title}
-			>
-				{props.item.title}
+			<h2 className='item__title' onClick={() => onShowModal(item)} title={item.title}>
+				{item.title}
 			</h2>
-			<p className='item__author'>{props.item.author}</p>
+			<p className='item__author'>{item.author}</p>
 			<div className='item__price'>
 				<p>
 					{Intl.NumberFormat('de-DE', {
 						style: 'currency',
 						currency: 'EUR',
-					}).format(props.item.price)}
+					}).format(item.price)}
 				</p>
 				<div className='item__btn-list'>
 					<IoHeart
-						className={`item__btn-like ${props.like && 'active'}`}
+						className={`item__btn-like ${like && 'active'}`}
 						onClick={() => {
 							if (isAuthenticated) {
-								props.onLike(props.item)
+								onLike(item)
 							} else {
 								navigate('/MusicStore-React/profile')
 							}
 						}}
 					/>
-					<IoCart
-						className={`item__btn-cart ${props.order && 'active'}`}
-						onClick={() => props.onAdd(props.item)}
-					/>
+					<IoCart className={`item__btn-cart ${order && 'active'}`} onClick={() => onAdd(item)} />
 				</div>
 			</div>
 		</div>
 	)
-}
+})
 
 export default Item

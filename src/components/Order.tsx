@@ -12,7 +12,7 @@ interface OrderProps {
 	onRemove: IRemove
 }
 
-const Order: FC<OrderProps> = (props) => {
+const Order: FC<OrderProps> = ({ item, onShowModal, onDelete, onAdd, onRemove }) => {
 	const [show, setShow] = useState(true)
 	const myRef = useRef(null)
 	return (
@@ -20,35 +20,35 @@ const Order: FC<OrderProps> = (props) => {
 			<div className='modal-order__item' ref={myRef}>
 				<img
 					className='modal-order__img'
-					src={require(`../../public/img/${props.item.img}`)}
+					src={require(`../../public/img/${item.img}`)}
 					alt='img'
-					onClick={() => props.onShowModal(props.item)}
+					onClick={() => onShowModal(item)}
 				/>
 				<div className='modal-order__item__body'>
 					<p
 						className='modal-order__item__title'
-						title={props.item.title}
-						onClick={() => props.onShowModal(props.item)}
+						title={item.title}
+						onClick={() => onShowModal(item)}
 					>
-						{props.item.title}
+						{item.title}
 					</p>
-					<p className='modal-order__item__author'>{props.item.author}</p>
+					<p className='modal-order__item__author'>{item.author}</p>
 					<p className='modal-order__item__price'>
 						{Intl.NumberFormat('de-DE', {
 							style: 'currency',
 							currency: 'EUR',
-						}).format(props.item.price)}
+						}).format(item.price)}
 					</p>
 					<FaTrash
 						className='modal-order__item__delete-btn'
 						onClick={() => {
 							setShow(false)
 							setTimeout(() => {
-								props.onDelete(props.item.id)
+								onDelete(item.id)
 							}, 300)
 						}}
 					/>
-					<OrderButton item={props.item} onAdd={props.onAdd} onRemove={props.onRemove} />
+					<OrderButton item={item} onAdd={onAdd} onRemove={onRemove} />
 				</div>
 			</div>
 		</CSSTransition>

@@ -8,15 +8,12 @@ interface OrderButtonProps {
 	onAdd: IAdd
 }
 
-const OrderButton: FC<OrderButtonProps> = (props) => {
+const OrderButton: FC<OrderButtonProps> = ({ item, onRemove, onAdd }) => {
 	return (
 		<div className='modal-order__item__count'>
-			<FaMinus
-				className='modal-order__item__count__btn'
-				onClick={() => props.onRemove(props.item)}
-			/>
-			<p>{props.item.count}</p>
-			<FaPlus className='modal-order__item__count__btn' onClick={() => props.onAdd(props.item)} />
+			<FaMinus className='modal-order__item__count__btn' onClick={() => onRemove(item)} />
+			<p>{item.count}</p>
+			<FaPlus className='modal-order__item__count__btn' onClick={() => onAdd(item)} />
 		</div>
 	)
 }

@@ -1,11 +1,11 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import placeboImg from '../img/placebo.jpg'
 import rammsteinImg from '../img/rammstein.jpg'
 import kanyeWest from '../img/kanye-west.jpg'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const CarouselBox: FC = () => {
+const CarouselBox: FC = memo(() => {
 	return (
 		<div className='carousel-container'>
 			<Carousel interval={10000} controls={true} indicators={false}>
@@ -33,6 +33,6 @@ const CarouselBox: FC = () => {
 			</Carousel>
 		</div>
 	)
-}
+})
 
 export default CarouselBox

@@ -15,7 +15,17 @@ interface LikeItemProps {
 	setDraggableItem: ISetDraggableItem
 }
 
-const LikeItem: FC<LikeItemProps> = (props) => {
+const LikeItem: FC<LikeItemProps> = ({
+	index,
+	like,
+	likes,
+	draggableItem,
+	onAddToOrder,
+	onLike,
+	onShowModal,
+	setLikes,
+	setDraggableItem,
+}) => {
 	const [show, setShow] = useState(true)
 	const myRef = useRef(null)
 
@@ -31,7 +41,7 @@ const LikeItem: FC<LikeItemProps> = (props) => {
 	}
 
 	const dragStartHandler = (index: number) => {
-		props.setDraggableItem(index)
+		setDraggableItem(index)
 	}
 
 	const dragEndHandler = (e: React.DragEvent<HTMLDivElement>) => {
@@ -44,14 +54,14 @@ const LikeItem: FC<LikeItemProps> = (props) => {
 		const target = e.target as HTMLElement
 		;(target.closest('.profile-items__item') as HTMLElement).style.boxShadow = 'none'
 		if (target.closest('.profile-items__item') as HTMLElement) {
-			const draggedItem = props.likes[props.draggableItem]
-			const remainingItems = props.likes.filter((item, i) => i !== props.draggableItem)
+			const draggedItem = likes[draggableItem]
+			const remainingItems = likes.filter((item, i) => i !== draggableItem)
 			const updatedItems = [
 				...remainingItems.slice(0, index),
 				draggedItem,
 				...remainingItems.slice(index),
 			]
-			props.setLikes(updatedItems)
+			setLikes(updatedItems)
 		}
 	}
 
@@ -61,45 +71,42 @@ const LikeItem: FC<LikeItemProps> = (props) => {
 				className='profile-items__item'
 				ref={myRef}
 				draggable={true}
-				onDragOver={(e) => dragOverHandler(e)}
-				onDragStart={(e) => dragStartHandler(props.index)}
-				onDragLeave={(e) => dragLeaveHandler(e)}
-				onDragEnd={(e) => dragEndHandler(e)}
-				onDrop={(e) => dropHandler(e, props.index)}
+				onDragOver={e => dragOverHandler(e)}
+				onDragStart={e => dragStartHandler(index)}
+				onDragLeave={e => dragLeaveHandler(e)}
+				onDragEnd={e => dragEndHandler(e)}
+				onDrop={e => dropHandler(e, index)}
 			>
 				<div className='profile-items__img'>
 					<img
-						src={require(`../../public/img/${props.like.img}`)}
+						src={require(`../../public/img/${like.img}`)}
 						alt='img'
-						onClick={() => props.onShowModal(props.like)}
+						onClick={() => onShowModal(like)}
 					/>
 				</div>
 				<div className='profile-items__content'>
-					<h2 className='profile-items__title' onClick={() => props.onShowModal(props.like)}>
-						{props.like.title}
+					<h2 className='profile-items__title' onClick={() => onShowModal(like)}>
+						{like.title}
 					</h2>
-					<p className='profile-items__author'>{props.like.author}</p>
+					<p className='profile-items__author'>{like.author}</p>
 					<div className='profile-items__price'>
 						<p>
 							{Intl.NumberFormat('de-DE', {
 								style: 'currency',
 								currency: 'EUR',
-							}).format(props.like.price)}
+							}).format(like.price)}
 						</p>
 						<div className='profile-items__btn-list'>
 							<IoHeart
-								className={`profile-items__btn-like ${props.like && 'active'}`}
+								className={`profile-items__btn-like ${like && 'active'}`}
 								onClick={() => {
 									setShow(false)
 									setTimeout(() => {
-										props.onLike(props.like)
+										onLike(like)
 									}, 310)
 								}}
 							/>
-							<IoCart
-								className='profile-items__btn-cart'
-								onClick={() => props.onAddToOrder(props.like)}
-							/>
+							<IoCart className='profile-items__btn-cart' onClick={() => onAddToOrder(like)} />
 						</div>
 					</div>
 				</div>

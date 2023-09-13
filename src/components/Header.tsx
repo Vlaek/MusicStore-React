@@ -8,7 +8,7 @@ interface HeaderProps {
 	onShowModalOrder: IShowModalOrder
 }
 
-const Header: FC<HeaderProps> = (props) => {
+const Header: FC<HeaderProps> = ({ orders, onShowModalOrder }) => {
 	const [cartOpen, setCartOpen] = useState(false)
 
 	const scrollToTop = () => {
@@ -26,9 +26,9 @@ const Header: FC<HeaderProps> = (props) => {
 						<FaShoppingCart
 							onClick={() => {
 								setCartOpen(!cartOpen)
-								props.onShowModalOrder()
+								onShowModalOrder()
 							}}
-							className={`header__btn-cart ${props.orders.length && 'active'}`}
+							className={`header__btn-cart ${orders.length && 'active'}`}
 						/>
 						<li>
 							<NavLink

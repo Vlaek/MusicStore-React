@@ -124,7 +124,6 @@ const App: FC = () => {
 						item={fullItem}
 						likes={likes}
 						showModal={showModal}
-						showModalOrder={showModalOrder}
 						onAdd={addToOrder}
 						onLike={likeItem}
 						onShowModal={onShowModal}

@@ -28,18 +28,28 @@ interface ModalOrderProps {
 	onClear: IClearOrder
 }
 
-const ModalOrder: FC<ModalOrderProps> = props => {
-	const summa = props.orders.reduce((summa, order) => summa + order.price * order.count, 0)
+const ModalOrder: FC<ModalOrderProps> = ({
+	showModalOrder,
+	orders,
+	onShowModalOrder,
+	onAdd,
+	onRemove,
+	onDelete,
+	onShowModal,
+	onMakeOrder,
+	onClear,
+}) => {
+	const summa = orders.reduce((summa, order) => summa + order.price * order.count, 0)
 	const [isOpen, setIsOpen] = useState(false)
 
 	useEffect(() => {
-		if (!props.showModalOrder) {
+		if (!showModalOrder) {
 			setIsOpen(false)
 			document.body.style.overflow = 'visible'
 		} else {
 			document.body.style.overflow = 'hidden'
 		}
-	}, [props.showModalOrder])
+	}, [showModalOrder])
 
 	const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated)
 	const dispatch = useDispatch()
@@ -55,7 +65,7 @@ const ModalOrder: FC<ModalOrderProps> = props => {
 	return (
 		<CSSTransition
 			timeout={100}
-			in={props.showModalOrder}
+			in={showModalOrder}
 			unmountOnExit
 			classNames='modal-order'
 			onEntered={() => setIsOpen(true)}
@@ -63,14 +73,14 @@ const ModalOrder: FC<ModalOrderProps> = props => {
 			<div
 				className='modal-order'
 				onClick={() => {
-					props.onShowModalOrder()
+					onShowModalOrder()
 				}}
 			>
 				<CSSTransition in={isOpen} timeout={200} classNames='modal-order__content'>
 					<div className='modal-order__content' onClick={e => e.stopPropagation()}>
-						{props.showModalOrder && (
+						{showModalOrder && (
 							<div>
-								{props.orders.length ? (
+								{orders.length ? (
 									<div className='modal-order__container'>
 										<div className='modal-order__header'>
 											<p className='summa'>
@@ -82,14 +92,14 @@ const ModalOrder: FC<ModalOrderProps> = props => {
 											</p>
 										</div>
 										<div className='modal-order__body'>
-											{props.orders.map(order => (
+											{orders.map(order => (
 												<Order
 													key={order.id}
 													item={order}
-													onAdd={props.onAdd}
-													onRemove={props.onRemove}
-													onDelete={props.onDelete}
-													onShowModal={props.onShowModal}
+													onAdd={onAdd}
+													onRemove={onRemove}
+													onDelete={onDelete}
+													onShowModal={onShowModal}
 												/>
 											))}
 										</div>
@@ -98,8 +108,8 @@ const ModalOrder: FC<ModalOrderProps> = props => {
 												<button
 													className='modal-order__button'
 													onClick={() => {
-														props.onMakeOrder(props.orders, summa)
-														props.onClear()
+														onMakeOrder(orders, summa)
+														onClear()
 													}}
 												>
 													К оформлению
@@ -108,7 +118,7 @@ const ModalOrder: FC<ModalOrderProps> = props => {
 												<Link to='/MusicStore-React/profile'>
 													<button
 														className='modal-order__button'
-														onClick={() => props.onShowModalOrder()}
+														onClick={() => onShowModalOrder()}
 													>
 														Авторизоваться
 													</button>
@@ -124,10 +134,7 @@ const ModalOrder: FC<ModalOrderProps> = props => {
 										</p>
 									</div>
 								)}
-								<IoClose
-									className='modal-order__btn-close'
-									onClick={() => props.onShowModalOrder()}
-								/>
+								<IoClose className='modal-order__btn-close' onClick={() => onShowModalOrder()} />
 							</div>
 						)}
 					</div>

@@ -1,28 +1,24 @@
 import React, { FC } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
 
-interface SetFilterFunc {
-	(
-		e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<SVGElement, MouseEvent> | undefined
-	): void
-}
-
 interface InputProps {
-	setFilter: SetFilterFunc
+	setFilter: (
+		e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<SVGElement, MouseEvent> | undefined,
+	) => void
 }
 
-const Input: FC<InputProps> = (props) => {
+const Input: FC<InputProps> = ({ setFilter }) => {
 	const clickHandler = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
 		const input = document.querySelector('.search__input') as HTMLInputElement | null
 		if (input != null) {
 			input.value = ''
 		}
-		props.setFilter(e)
+		setFilter(e)
 	}
 
 	return (
 		<div className='search'>
-			<input className='search__input' placeholder='Найти' onChange={(e) => props.setFilter(e)} />
+			<input className='search__input' placeholder='Найти' onChange={e => setFilter(e)} />
 			<IoCloseSharp className='search__btn-close' onClick={clickHandler} />
 		</div>
 	)

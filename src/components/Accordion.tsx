@@ -5,7 +5,7 @@ interface AccordionProps {
 	content: JSX.Element
 }
 
-const Accordion: FC<AccordionProps> = (props) => {
+const Accordion: FC<AccordionProps> = ({ header, content }) => {
 	const [isOpen, setIsOpen] = useState(false)
 
 	const toggleAccordion = () => {
@@ -15,10 +15,10 @@ const Accordion: FC<AccordionProps> = (props) => {
 	return (
 		<div className='accordion'>
 			<div className={`accordion-header ${isOpen && 'active'}`} onClick={toggleAccordion}>
-				{props.header}
+				{header}
 				<div className='arrow'></div>
 			</div>
-			<div className={`accordion-content ${isOpen && 'active'}`}>{props.content}</div>
+			<div className={`accordion-content ${isOpen && 'active'}`}>{content}</div>
 		</div>
 	)
 }

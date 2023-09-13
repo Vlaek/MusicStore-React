@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import Item from './Item'
 import { IAlbum, IOrder, IAdd, ILike, IShowModal } from './../types/types'
 
@@ -11,20 +11,20 @@ interface ItemsProps {
 	onShowModal: IShowModal
 }
 
-const Items: FC<ItemsProps> = (props) => {
+const Items: FC<ItemsProps> = memo(({ items, likes, orders, onAdd, onLike, onShowModal }) => {
 	return (
 		<main>
-			{props.items.length ? (
+			{items.length ? (
 				<div className='item-list'>
-					{props.items.map((item) => (
+					{items.map(item => (
 						<Item
 							key={item.id}
 							item={item}
-							like={props.likes.some((like) => like.id === item.id)}
-							order={props.orders.some((order) => order.id === item.id)}
-							onAdd={props.onAdd}
-							onLike={props.onLike}
-							onShowModal={props.onShowModal}
+							like={likes.some(like => like.id === item.id)}
+							order={orders.some(order => order.id === item.id)}
+							onAdd={onAdd}
+							onLike={onLike}
+							onShowModal={onShowModal}
 						/>
 					))}
 				</div>
@@ -36,6 +36,6 @@ const Items: FC<ItemsProps> = (props) => {
 			)}
 		</main>
 	)
-}
+})
 
 export default Items
