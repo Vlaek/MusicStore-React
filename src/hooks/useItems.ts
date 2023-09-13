@@ -43,7 +43,6 @@ const sortItems = (items: IAlbum[], sort: string) => {
 }
 
 export const useItems = (items: IAlbum[], sort: string, query: string, genre: string) => {
-	console.log(genre)
 	const debouncedQuery = useDebounce(query, 500)
 
 	const [filteredItems, setFilteredItems] = useState(items)
@@ -59,8 +58,6 @@ export const useItems = (items: IAlbum[], sort: string, query: string, genre: st
 	}, [debouncedQuery, items, genre])
 
 	const sortedItems = useMemo(() => sortItems(filteredItems, sort), [filteredItems, sort])
-
-	console.log(sortedItems)
 
 	return sortedItems
 }
