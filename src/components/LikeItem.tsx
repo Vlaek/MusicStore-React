@@ -55,7 +55,7 @@ const LikeItem: FC<LikeItemProps> = ({
 		;(target.closest('.profile-items__item') as HTMLElement).style.boxShadow = 'none'
 		if (target.closest('.profile-items__item') as HTMLElement) {
 			const draggedItem = likes[draggableItem]
-			const remainingItems = likes.filter((item, i) => i !== draggableItem)
+			const remainingItems = likes.filter((_item, i) => i !== draggableItem)
 			const updatedItems = [
 				...remainingItems.slice(0, index),
 				draggedItem,
@@ -72,7 +72,7 @@ const LikeItem: FC<LikeItemProps> = ({
 				ref={myRef}
 				draggable={true}
 				onDragOver={e => dragOverHandler(e)}
-				onDragStart={e => dragStartHandler(index)}
+				onDragStart={() => dragStartHandler(index)}
 				onDragLeave={e => dragLeaveHandler(e)}
 				onDragEnd={e => dragEndHandler(e)}
 				onDrop={e => dropHandler(e, index)}

@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from 'react'
-// import styles from './Counter.module.scss'
 
 interface CounterProps {
 	value: number
