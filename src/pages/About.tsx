@@ -1,8 +1,4 @@
 import { useEffect } from 'react'
-import photoTeam1 from '../img/nk4.jpg'
-import photoTeam2 from '../img/Nataly.jpg'
-import photoTeam3 from '../img/Vlek.jpg'
-import photoTeam4 from '../img/4eka.jpg'
 import { Helmet } from 'react-helmet'
 import Counter from './../components/UI/Counter/Counter'
 
@@ -65,7 +61,11 @@ const About = () => {
 					<div className='team'>
 						<div className='team__item'>
 							<div className='team__img'>
-								<img src={photoTeam1} alt='team' draggable={false} />
+								<img
+									src={process.env.PUBLIC_URL + `/img/users/nk4.jpg`}
+									alt='team'
+									draggable={false}
+								/>
 							</div>
 							<div className='team__name'>Никита</div>
 							<div className='team__position'>Менеджер по фоторекламе</div>
@@ -73,7 +73,11 @@ const About = () => {
 						</div>
 						<div className='team__item'>
 							<div className='team__img'>
-								<img src={photoTeam2} alt='team' draggable={false} />
+								<img
+									src={process.env.PUBLIC_URL + `/img/users/Nataly.jpg`}
+									alt='team'
+									draggable={false}
+								/>
 							</div>
 							<div className='team__name'>Наталья</div>
 							<div className='team__position'>Руководитель детского отдела</div>
@@ -81,7 +85,11 @@ const About = () => {
 						</div>
 						<div className='team__item'>
 							<div className='team__img'>
-								<img src={photoTeam3} alt='team' draggable={false} />
+								<img
+									src={process.env.PUBLIC_URL + `/img/users/Vlek.jpg`}
+									alt='team'
+									draggable={false}
+								/>
 							</div>
 							<div className='team__name'>Владислав</div>
 							<div className='team__position'>Менеджер по видеорекламе</div>
@@ -89,7 +97,11 @@ const About = () => {
 						</div>
 						<div className='team__item'>
 							<div className='team__img'>
-								<img src={photoTeam4} alt='team' draggable={false} />
+								<img
+									src={process.env.PUBLIC_URL + `/img/users/4eka.jpg`}
+									alt='team'
+									draggable={false}
+								/>
 							</div>
 							<div className='team__name'>Евгений</div>
 							<div className='team__position'>Менеджер международного отдела</div>

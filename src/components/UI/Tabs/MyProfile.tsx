@@ -3,7 +3,6 @@ import { IUser } from 'src/types/types'
 import { ToastContainer, toast } from 'react-toastify'
 import { Formik, Form, Field } from 'formik'
 import { profileValidationSchema } from './../../../utils/validation'
-import photo from '../../../img/User.png'
 
 interface MyProfileProps {
 	handleLogout: () => void
@@ -62,7 +61,13 @@ const MyProfile: FC<MyProfileProps> = ({ handleLogout, handleDelete }) => {
 						<>
 							<div className='first'>
 								<div className={`profile__img ${isEdit && 'active'}`}>
-									<div style={{ backgroundImage: `url(${user.photo ? user.photo : photo})` }}>
+									<div
+										style={{
+											backgroundImage: `url(${
+												user.photo ? user.photo : process.env.PUBLIC_URL + '/img/users/User.png'
+											})`,
+										}}
+									>
 										{isEdit && (
 											<div className='profile__img-edit'>
 												<p>Выбрать файл</p>
