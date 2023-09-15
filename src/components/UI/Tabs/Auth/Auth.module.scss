@@ -58,3 +58,39 @@
 		background-color: #dc3d3d;
 	}
 }
+
+@media (max-width: 768px) {
+	.content {
+		width: 85%;
+	}
+
+	.title {
+		font-size: 25px;
+		margin-bottom: 10px;
+	}
+
+	.field {
+		margin-bottom: 10px;
+	}
+
+	.error {
+		font-size: 12px;
+		margin-bottom: 5px;
+	}
+
+	.btn_list {
+		flex-direction: column;
+	}
+
+	.btn {
+		width: 100%;
+		margin-bottom: 5px;
+	}
+}
+
+@media (max-width: 420px) {
+	.error {
+		font-size: 10px;
+		margin-bottom: 5px;
+	}
+}

@@ -1,27 +1,12 @@
 import { FC, useState } from 'react'
-import * as Yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import styles from './ContactsForm.module.scss'
 import classNames from 'classnames'
 import ModalContactsForm from './ModalContactsForm'
+import { contactFormValidationSchema } from 'src/utils/validation'
 
 const ContactsForm: FC = () => {
 	const [showModal, setShowModal] = useState(false)
-
-	const validationSchema = Yup.object().shape({
-		name: Yup.string()
-			.min(3, 'Слишком короткое имя')
-			.max(30, 'Слишком длинное имя')
-			.matches(/^[ a-zA-Zа-яА-Я]+$/, 'Имя должно содержать только буквы')
-			.required('Поле не должно быть пустым'),
-		email: Yup.string()
-			.required('Поле не должно быть пустым')
-			.email('Неверный адрес электронной почти'),
-		request: Yup.string()
-			.min(3, 'Слишком короткий вопрос')
-			.max(500, 'Слишком длинный вопрос')
-			.required('Поле не должно быть пустым'),
-	})
 
 	return (
 		<div className={styles.form}>
@@ -35,7 +20,7 @@ const ContactsForm: FC = () => {
 				onSubmit={() => {
 					setShowModal(true)
 				}}
-				validationSchema={validationSchema}
+				validationSchema={contactFormValidationSchema}
 			>
 				{({ errors, touched, values }) => (
 					<Form className={styles.wrapper}>

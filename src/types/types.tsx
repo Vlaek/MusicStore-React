@@ -84,6 +84,7 @@ export interface IUser {
 	phone?: string
 	address?: string
 	index?: string
+	img?: string
 }
 
 export interface ISaveUser {
@@ -102,6 +103,7 @@ export interface IRegisterUser {
 
 export interface IDeleteUser {
 	type: 'DELETE'
+	payload: IUser
 }
 
 export interface ICurrentUser {

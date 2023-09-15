@@ -1,15 +1,15 @@
 import { FC, useState, useContext, useEffect } from 'react'
 import Tabs from '../components/UI/Tabs/Tabs'
 import { OrdersContext } from '../context/context'
-import profilePhoto from '../img/User.png'
 import { IOrdersContext, IUser } from './../types/types'
 import MyProfile from '../components/UI/Tabs/MyProfile'
 import MyLikes from '../components/UI/Tabs/MyLikes'
 import MyOrders from '../components/UI/Tabs/MyOrders'
 import { useSelector, useDispatch } from 'react-redux'
-import { loginUser, logoutUser, registerUser } from '../store/reducers/authActions'
+import { deleteUser, loginUser, logoutUser, registerUser } from '../store/reducers/authActions'
 import Auth from '../components/UI/Tabs/Auth/Auth'
 import { Helmet } from 'react-helmet'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Profile: FC = () => {
 	const { likes, ordersHistory, likeItem, onShowModal, addToOrder, setLikes } = useContext(
@@ -47,11 +47,16 @@ const Profile: FC = () => {
 		dispatch(registerUser(user))
 	}
 
+	const handleDelete = (user: IUser) => {
+		localStorage.removeItem('current_user')
+		dispatch(deleteUser(user))
+	}
+
 	const tabs = [
 		{
 			title: 'Мои данные',
 			content: isAuthenticated ? (
-				<MyProfile profilePhoto={profilePhoto} handleLogout={handleLogout} />
+				<MyProfile handleLogout={handleLogout} handleDelete={handleDelete} />
 			) : (
 				<Auth handleLogin={handleLogin} handleRegister={handleRegister} />
 			),

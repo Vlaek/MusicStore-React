@@ -15,3 +15,10 @@ export const registerUser = (user: IUser) => {
 		payload: user,
 	}
 }
+
+export const deleteUser = (user: IUser) => {
+	return {
+		type: 'DELETE',
+		payload: user,
+	}
+}

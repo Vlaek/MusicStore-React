@@ -1,11 +1,10 @@
 import { FC } from 'react'
-import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer, toast } from 'react-toastify'
 import { Formik, Form, Field } from 'formik'
 import classNames from 'classnames'
 import styles from './Auth.module.scss'
 import { IUser } from '../../../../types/types'
-import { validationSchema } from './validation'
+import { authValidationSchema } from '../../../../utils/validation'
 
 interface IAuth {
 	handleLogin: (user: IUser) => void
@@ -13,6 +12,37 @@ interface IAuth {
 }
 
 const Auth: FC<IAuth> = ({ handleLogin, handleRegister }) => {
+	const onSubmit = (values: any) => {
+		const value = localStorage.getItem(values.email)
+		if (values.isLogin) {
+			if (value !== null) {
+				const userLS = JSON.parse(value)
+				if (userLS.password !== values.password) {
+					toast.error('Пароли не совпадают!')
+				} else {
+					handleLogin(userLS)
+				}
+			} else {
+				toast.error('Пользователь не найден!')
+			}
+		} else {
+			if (value === null) {
+				const newUser = {
+					name: '',
+					email: values.email,
+					password: values.password,
+					phone: '',
+					address: '',
+					index: '',
+					photo: '',
+				}
+				handleRegister(newUser)
+			} else {
+				toast.error('Пользователь уже зарегистрирован!')
+			}
+		}
+	}
+
 	return (
 		<div className={styles.profile}>
 			<div className={styles.title}>Авторизация</div>
@@ -23,40 +53,10 @@ const Auth: FC<IAuth> = ({ handleLogin, handleRegister }) => {
 						email: '',
 						password: '',
 					}}
-					onSubmit={values => {
-						const value = localStorage.getItem(values.email)
-						if (values.isLogin) {
-							if (value !== null) {
-								const userLS = JSON.parse(value)
-								if (userLS.password !== values.password) {
-									toast.error('Пароли не совпадают!')
-								} else {
-									toast.success('Авторизован успешно!')
-									handleLogin(userLS)
-								}
-							} else {
-								toast.error('Пользователь не найден!')
-							}
-						} else {
-							if (value === null) {
-								const newUser = {
-									name: '',
-									email: values.email,
-									password: values.password,
-									phone: '',
-									address: '',
-									index: '',
-								}
-								toast.success('Зарегистрирован успешно!')
-								handleRegister(newUser)
-							} else {
-								toast.error('Пользователь уже зарегистрирован!')
-							}
-						}
-					}}
-					validationSchema={validationSchema}
+					onSubmit={onSubmit}
+					validationSchema={authValidationSchema}
 				>
-					{({ errors, touched, handleSubmit, setFieldValue }) => (
+					{({ errors, touched, setFieldValue }) => (
 						<Form>
 							<div className={styles.error}>{errors.email && touched.email && errors.email}</div>
 							<Field
@@ -85,7 +85,6 @@ const Auth: FC<IAuth> = ({ handleLogin, handleRegister }) => {
 									type='submit'
 									onClick={() => {
 										setFieldValue('isLogin', true, true)
-										handleSubmit()
 									}}
 								>
 									Войти
@@ -95,7 +94,6 @@ const Auth: FC<IAuth> = ({ handleLogin, handleRegister }) => {
 									type='submit'
 									onClick={() => {
 										setFieldValue('isLogin', false, true)
-										handleSubmit()
 									}}
 								>
 									Регистрация

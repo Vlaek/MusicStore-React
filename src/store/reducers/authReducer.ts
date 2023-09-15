@@ -27,7 +27,7 @@ export const authReducer = (state: IState = initialState, action: UserAction): I
 				isAuthenticated: true,
 			}
 		case 'DELETE':
-			localStorage.removeItem('user')
+			localStorage.removeItem(action.payload.email)
 			return {
 				...state,
 				user: null,
