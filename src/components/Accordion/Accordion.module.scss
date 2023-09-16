@@ -1,0 +1,39 @@
+.accordion {
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		cursor: pointer;
+		background-color: #fff;
+		padding: 10px 20px;
+
+		&.active {
+			.arrow {
+				transform: rotate(135deg);
+			}
+		}
+	}
+
+	.content {
+		height: 0;
+		overflow: hidden;
+		border-top: 3px solid #eee;
+		margin-bottom: 0;
+		transition: height 0.3s ease, border 0s ease 0.3s;
+
+		&.active {
+			height: 100%;
+			border: none;
+			margin-bottom: 10px;
+		}
+	}
+
+	.arrow {
+		width: 10px;
+		height: 10px;
+		border-top: 2px solid black;
+		border-right: 2px solid black;
+		transform: rotate(-45deg);
+		transition: transform 0.3s ease-in-out;
+	}
+}

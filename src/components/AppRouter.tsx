@@ -1,4 +1,4 @@
-import Index from '../pages/Index'
+import Index from '../pages/Index/Index'
 import { Route, Routes } from 'react-router-dom'
 import { routes } from '../router'
 

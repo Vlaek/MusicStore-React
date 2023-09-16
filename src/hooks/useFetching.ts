@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export interface IUseFetching {
-	fetchItems: (limit: number, page: number, query?: string, sort?: string) => Promise<void>
+	fetchItems: (limit?: number, page?: number, query?: string, sort?: string) => Promise<void>
 	isLoading: boolean
 	itemsError: string | boolean
 }

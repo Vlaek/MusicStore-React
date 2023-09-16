@@ -1,10 +1,10 @@
 import { FC, useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import AppRouter from './components/AppRouter'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import Modal from './components/Modal'
-import ModalOrder from './components/ModalOrder'
+import Footer from './components/Footer/Footer'
+import Header from './components/Header/Header'
+import Modal from './components/Modal/Modal'
+import ModalOrder from './components/ModalOrder/ModalOrder'
 import { OrdersContext } from './context/context'
 import { IAlbum, IOrder, IOrderHistory, IOrdersContext } from './types/types'
 
@@ -126,7 +126,7 @@ const App: FC = () => {
 						showModal={showModal}
 						onAdd={addToOrder}
 						onLike={likeItem}
-						onShowModal={onShowModal}
+						onShowModal={setShowModal}
 					/>
 					<Footer />
 				</div>

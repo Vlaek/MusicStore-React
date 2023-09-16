@@ -1,0 +1,167 @@
+header {
+	height: 50px;
+}
+
+.item {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	background: #eeeeee;
+	z-index: 100;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	margin: 0 auto;
+	width: 1280px;
+}
+
+.logo {
+	font-weight: 600;
+	font-size: 32px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	user-select: none;
+	color: #000;
+	text-decoration: none;
+
+	&:hover {
+		color: #dc3d3d;
+	}
+}
+
+.nav {
+	font-weight: 600;
+	list-style: none;
+	margin-bottom: 0;
+	margin-left: 0;
+
+	li {
+		display: inline;
+		margin-left: 25px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+}
+
+.link,
+.link:visited {
+	color: #000 !important;
+	text-decoration: none;
+
+	&:hover {
+		color: #dc3d3d !important;
+		filter: brightness(100%);
+	}
+	&.active {
+		text-decoration: underline;
+	}
+}
+
+.btn_cart {
+	position: relative;
+	top: -2px;
+	margin-right: 10px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	width: 25px;
+	height: 25px;
+
+	&:hover,
+	&.active {
+		color: #dc3d3d;
+		transform: scale(1.2);
+	}
+}
+
+@media (max-width: 1400px) {
+	.container {
+		max-width: 1140px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.container {
+		max-width: 960px;
+	}
+}
+
+@media (max-width: 992px) {
+	.container {
+		max-width: 720px;
+	}
+}
+
+@media (max-width: 768px) {
+	.container {
+		max-width: 540px;
+	}
+
+	.item {
+		padding: 5px 0;
+		display: flex;
+		align-items: center;
+	}
+
+	.logo {
+		font-size: 20px;
+		margin-bottom: 3px;
+	}
+
+	.nav {
+		font-size: 12px;
+	}
+
+	.btn_cart {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+@media (max-width: 576px) {
+	.container {
+		width: 100%;
+		padding: 0px 20px;
+	}
+
+	.logo {
+		font-size: 18px;
+	}
+
+	.nav {
+		padding-left: 5px;
+
+		li {
+			margin-left: 15px;
+		}
+	}
+
+	.btn_cart {
+		margin-right: 0;
+	}
+}
+
+@media (max-width: 420px) {
+	.item {
+		padding: 0;
+	}
+
+	.nav {
+		li {
+			margin-left: 10px;
+			font-size: 10px;
+		}
+	}
+
+	.btn_cart {
+		width: 15px;
+		height: 15px;
+		margin-right: 5px;
+	}
+}

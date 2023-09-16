@@ -1,7 +1,7 @@
-import About from '../pages/About'
-import Index from '../pages/Index'
-import Contacts from '../pages/Contacts'
-import Profile from '../pages/Profile'
+import About from '../pages/About/About'
+import Index from '../pages/Index/Index'
+import Contacts from '../pages/Contacts/Contacts'
+import Profile from '../pages/Profile/Profile'
 
 export const routes = [
 	{ path: '/MusicStore-React/about', element: <About />, exact: true },
