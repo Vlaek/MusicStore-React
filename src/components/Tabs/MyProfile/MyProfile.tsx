@@ -1,10 +1,11 @@
 import { FC, useRef, useState } from 'react'
 import { IUser } from 'src/types/types'
 import { ToastContainer, toast } from 'react-toastify'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form } from 'formik'
 import { profileValidationSchema } from '../../../utils/validation'
 import classNames from 'classnames'
 import styles from './MyProfile.module.scss'
+import ProfileField from './ProfileField/ProfileField'
 
 interface MyProfileProps {
 	handleLogout: () => void
@@ -80,7 +81,7 @@ const MyProfile: FC<MyProfileProps> = ({ handleLogout, handleDelete }) => {
 											name='img'
 											title=''
 											accept='image/*'
-											disabled={isEdit ? false : true}
+											disabled={!isEdit}
 											onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 												if (e.target.files?.length) {
 													const file = e.target.files?.[0]
@@ -103,11 +104,7 @@ const MyProfile: FC<MyProfileProps> = ({ handleLogout, handleDelete }) => {
 								<button
 									type='submit'
 									onClick={() => {
-										if (isEdit) {
-											handleSubmit()
-										} else {
-											setIsEdit(true)
-										}
+										isEdit ? handleSubmit() : setIsEdit(true)
 									}}
 									className={styles.profile__btn}
 								>
@@ -133,104 +130,74 @@ const MyProfile: FC<MyProfileProps> = ({ handleLogout, handleDelete }) => {
 							</div>
 							<div className={styles.second}>
 								<Form ref={ref}>
-									<div
-										className={classNames(styles.profile__label, {
-											[styles.error]: errors.name && touched.name,
-										})}
-									>
-										{errors.name && touched.name ? errors.name : 'Имя пользователя'}
-									</div>
-									<Field
-										className={classNames(styles.profile__input, { [styles.active]: isEdit })}
+									<ProfileField
+										label='Имя пользователя'
 										name='name'
 										value={user.name}
-										placeholder='Имя...'
 										type='text'
+										isEdit={isEdit}
 										onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 											handleInputChange(e)
 											setFieldValue('name', e.target.value, true)
 										}}
-										disabled={isEdit ? false : true}
+										error={errors.name}
+										touched={touched.name}
 									/>
 
-									<div
-										className={classNames(styles.profile__label, {
-											[styles.error]: errors.email && touched.email,
-										})}
-									>
-										{errors.email && touched.email ? errors.email : 'Электронная почта'}
-									</div>
-									<Field
-										className={classNames(styles.profile__input, { [styles.active]: isEdit })}
+									<ProfileField
+										label='Электронная почта'
 										name='email'
 										value={user.email}
-										placeholder='Электронная почта...'
-										type='email'
+										type='text'
+										isEdit={isEdit}
 										onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 											handleInputChange(e)
 											setFieldValue('email', e.target.value, true)
 										}}
-										disabled={isEdit ? false : true}
+										error={errors.email}
+										touched={touched.email}
 									/>
 
-									<div
-										className={classNames(styles.profile__label, {
-											[styles.error]: errors.phone && touched.phone,
-										})}
-									>
-										{errors.phone && touched.phone ? errors.phone : 'Номер телефона'}
-									</div>
-									<Field
-										className={classNames(styles.profile__input, { [styles.active]: isEdit })}
+									<ProfileField
+										label='Номер телефона'
 										name='phone'
 										value={user.phone}
-										placeholder='Номер телефона...'
 										type='text'
+										isEdit={isEdit}
 										onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 											handleInputChange(e)
 											setFieldValue('phone', e.target.value, true)
 										}}
-										disabled={isEdit ? false : true}
+										error={errors.phone}
+										touched={touched.phone}
 									/>
 
-									<div
-										className={classNames(styles.profile__label, {
-											[styles.error]: errors.address && touched.address,
-										})}
-									>
-										{errors.address && touched.address ? errors.address : 'Адрес'}
-									</div>
-									<Field
-										className={classNames(styles.profile__input, { [styles.active]: isEdit })}
+									<ProfileField
+										label='Адрес'
 										name='address'
 										value={user.address}
-										placeholder='Адрес...'
 										type='text'
+										isEdit={isEdit}
 										onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 											handleInputChange(e)
 											setFieldValue('address', e.target.value, true)
 										}}
-										disabled={isEdit ? false : true}
+										error={errors.address}
+										touched={touched.address}
 									/>
 
-									<div
-										className={classNames(styles.profile__label, {
-											[styles.error]: errors.index && touched.index,
-										})}
-									>
-										{errors.index && touched.index ? errors.index : 'Почтовый индекс'}
-									</div>
-									<Field
-										className={classNames(styles.profile__input, { [styles.active]: isEdit })}
+									<ProfileField
+										label='Почтовый индекс'
 										name='index'
 										value={user.index}
-										placeholder='Почтовый индекс...'
 										type='text'
+										isEdit={isEdit}
 										onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 											handleInputChange(e)
 											setFieldValue('index', e.target.value, true)
 										}}
-										disabled={isEdit ? false : true}
+										error={errors.index}
+										touched={touched.index}
 									/>
 								</Form>
 							</div>
