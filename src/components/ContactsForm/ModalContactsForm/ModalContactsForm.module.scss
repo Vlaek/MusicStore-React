@@ -11,6 +11,24 @@
 	justify-content: center;
 	align-items: center;
 
+	&_enter {
+		opacity: 0;
+	}
+
+	&_enter_active {
+		opacity: 1;
+		transition: opacity 500ms ease-in-out;
+	}
+
+	&_exit_active {
+		opacity: 1;
+	}
+
+	&_exit {
+		opacity: 0;
+		transition: opacity 500ms ease-in-out;
+	}
+
 	.content {
 		width: 400px;
 		height: 450px;

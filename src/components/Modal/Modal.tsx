@@ -33,7 +33,6 @@ const Modal: FC<ModalProps> = ({ showModal, item, likes, onLike, onAdd, onShowMo
 			}}
 		>
 			<div className={styles.item} onClick={() => onShowModal(false)}>
-				{/* {showModal && ( */}
 				<div className={styles.content} onClick={e => e.stopPropagation()}>
 					<div className={styles.header}>
 						<img
@@ -57,7 +56,7 @@ const Modal: FC<ModalProps> = ({ showModal, item, likes, onLike, onAdd, onShowMo
 								<div className={styles.btn_list}>
 									<IoHeart
 										className={classNames(styles.btn_like, {
-											active: likes.some(like => like.id === item.id),
+											[styles.active]: likes.some(like => like.id === item.id),
 										})}
 										onClick={() => onLike(item)}
 									/>
@@ -86,7 +85,6 @@ const Modal: FC<ModalProps> = ({ showModal, item, likes, onLike, onAdd, onShowMo
 					</div>
 					<IoClose className={styles.btn_close} onClick={() => onShowModal(false)} />
 				</div>
-				{/* )} */}
 			</div>
 		</CSSTransition>
 	)

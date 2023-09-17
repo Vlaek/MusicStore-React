@@ -16,7 +16,17 @@ const ModalContactsForm: FC<ModalContactsFormProps> = ({ showModal, onShowModal,
 	}, [showModal])
 
 	return (
-		<CSSTransition timeout={300} in={showModal} unmountOnExit classNames='modal-item'>
+		<CSSTransition
+			timeout={300}
+			in={showModal}
+			unmountOnExit
+			classNames={{
+				enter: styles.modal_enter,
+				enterActive: styles.modal_enter_active,
+				exit: styles.modal_exit,
+				exitActive: styles.modal_exit_active,
+			}}
+		>
 			<div className={styles.modal} onClick={() => onShowModal(false)}>
 				{showModal && (
 					<div className={styles.content} onClick={e => e.stopPropagation()}>
