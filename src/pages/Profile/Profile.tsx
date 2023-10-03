@@ -6,23 +6,36 @@ import MyProfile from '../../components/Tabs/MyProfile/MyProfile'
 import MyLikes from '../../components/Tabs/MyLikes/MyLikes'
 import MyOrders from '../../components/Tabs/MyOrders/MyOrders'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteUser, loginUser, logoutUser, registerUser } from '../../store/reducers/authActions'
+import {
+	deleteUser,
+	loginUser,
+	logoutUser,
+	registerUser,
+} from '../../store/reducers/authActions'
 import Auth from '../../components/Tabs/Auth/Auth'
 import { Helmet } from 'react-helmet'
 import 'react-toastify/dist/ReactToastify.css'
 import styles from './Profile.module.scss'
 
 const Profile: FC = () => {
-	const { likes, ordersHistory, likeItem, onShowModal, addToOrder, setLikes } = useContext(
-		OrdersContext,
-	) as IOrdersContext
+	const {
+		likes,
+		orders,
+		ordersHistory,
+		likeItem,
+		onShowModal,
+		addToOrder,
+		setLikes,
+	} = useContext(OrdersContext) as IOrdersContext
 	const [draggableItem, setDraggableItem] = useState<number>(0)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
 	}, [])
 
-	const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated)
+	const isAuthenticated = useSelector(
+		(state: any) => state.auth.isAuthenticated,
+	)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -74,13 +87,16 @@ const Profile: FC = () => {
 					draggableItem={draggableItem}
 					setDraggableItem={setDraggableItem}
 					onShowModal={onShowModal}
+					orders={orders}
 				/>
 			),
 			authTab: isAuthenticated,
 		},
 		{
 			title: 'Мои заказы',
-			content: <MyOrders ordersHistory={ordersHistory} onShowModal={onShowModal} />,
+			content: (
+				<MyOrders ordersHistory={ordersHistory} onShowModal={onShowModal} />
+			),
 			authTab: isAuthenticated,
 		},
 	]

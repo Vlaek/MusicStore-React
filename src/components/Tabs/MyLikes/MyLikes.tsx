@@ -1,7 +1,15 @@
 import { FC } from 'react'
 import LikeItem from './LikeItem/LikeItem'
-import { IAlbum, ISetLikes, IShowModal, ISetDraggableItem, ILike, IAdd } from '../../../types/types'
+import {
+	IAlbum,
+	ISetLikes,
+	IShowModal,
+	ISetDraggableItem,
+	ILike,
+	IAdd,
+} from '../../../types/types'
 import styles from './MyLikes.module.scss'
+import { IOrder } from './../../../types/types'
 
 interface MyLikesProps {
 	likes: IAlbum[]
@@ -11,6 +19,7 @@ interface MyLikesProps {
 	likeItem: ILike
 	addToOrder: IAdd
 	onShowModal: IShowModal
+	orders: IOrder[]
 }
 
 const MyLikes: FC<MyLikesProps> = ({
@@ -21,6 +30,7 @@ const MyLikes: FC<MyLikesProps> = ({
 	likeItem,
 	addToOrder,
 	onShowModal,
+	orders,
 }) => {
 	return (
 		<div className={styles.items}>
@@ -38,6 +48,7 @@ const MyLikes: FC<MyLikesProps> = ({
 							onLike={likeItem}
 							onAddToOrder={addToOrder}
 							onShowModal={onShowModal}
+							order={orders.some(order => order.id === like.id)}
 						/>
 					))}
 				</div>

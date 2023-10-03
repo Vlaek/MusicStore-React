@@ -9,7 +9,7 @@ import {
 	ISetLikes,
 	ISetDraggableItem,
 } from '../../../../types/types'
-import classNames from 'classnames'
+import cn from 'classnames'
 import styles from './LikeItem.module.scss'
 
 interface LikeItemProps {
@@ -22,6 +22,7 @@ interface LikeItemProps {
 	onShowModal: IShowModal
 	setLikes: ISetLikes
 	setDraggableItem: ISetDraggableItem
+	order: boolean
 }
 
 const LikeItem: FC<LikeItemProps> = ({
@@ -34,6 +35,7 @@ const LikeItem: FC<LikeItemProps> = ({
 	onShowModal,
 	setLikes,
 	setDraggableItem,
+	order,
 }) => {
 	const [show, setShow] = useState(true)
 	const myRef = useRef<HTMLDivElement>(null)
@@ -117,7 +119,7 @@ const LikeItem: FC<LikeItemProps> = ({
 						</p>
 						<div className={styles.btn_list}>
 							<IoHeart
-								className={classNames(styles.btn_like, { [styles.active]: like })}
+								className={cn(styles.btn_like, { [styles.active]: like })}
 								onClick={() => {
 									setShow(false)
 									setTimeout(() => {
@@ -125,7 +127,10 @@ const LikeItem: FC<LikeItemProps> = ({
 									}, 310)
 								}}
 							/>
-							<IoCart className={styles.btn_cart} onClick={() => onAddToOrder(like)} />
+							<IoCart
+								className={cn(styles.btn_cart, { [styles.active]: order })}
+								onClick={() => onAddToOrder(like)}
+							/>
 						</div>
 					</div>
 				</div>
