@@ -3,15 +3,13 @@ import { ToastContainer, toast } from 'react-toastify'
 import { Formik, Form, Field } from 'formik'
 import classNames from 'classnames'
 import styles from './Auth.module.scss'
-import { IUser } from '../../../types/types'
 import { authValidationSchema } from '../../../utils/validation'
+import { useDispatch } from 'react-redux'
+import { loginUser, registerUser } from 'src/store/actions/authActions'
 
-interface IAuth {
-	handleLogin: (user: IUser) => void
-	handleRegister: (user: IUser) => void
-}
+const Auth: FC = () => {
+	const dispatch = useDispatch()
 
-const Auth: FC<IAuth> = ({ handleLogin, handleRegister }) => {
 	const onSubmit = (values: any) => {
 		const value = localStorage.getItem(values.email)
 		if (values.isLogin) {
@@ -20,7 +18,7 @@ const Auth: FC<IAuth> = ({ handleLogin, handleRegister }) => {
 				if (userLS.password !== values.password) {
 					toast.error('Пароли не совпадают!')
 				} else {
-					handleLogin(userLS)
+					dispatch(loginUser(userLS))
 				}
 			} else {
 				toast.error('Пользователь не найден!')
@@ -36,7 +34,7 @@ const Auth: FC<IAuth> = ({ handleLogin, handleRegister }) => {
 					index: '',
 					photo: '',
 				}
-				handleRegister(newUser)
+				dispatch(registerUser(newUser))
 			} else {
 				toast.error('Пользователь уже зарегистрирован!')
 			}
@@ -58,7 +56,9 @@ const Auth: FC<IAuth> = ({ handleLogin, handleRegister }) => {
 				>
 					{({ errors, touched, setFieldValue }) => (
 						<Form>
-							<div className={styles.error}>{errors.email && touched.email && errors.email}</div>
+							<div className={styles.error}>
+								{errors.email && touched.email && errors.email}
+							</div>
 							<Field
 								className={classNames(styles.field, {
 									[styles.errorInput]: errors.email && touched.email,

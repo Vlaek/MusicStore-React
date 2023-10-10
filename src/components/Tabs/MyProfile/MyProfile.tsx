@@ -1,19 +1,17 @@
 import { FC, useRef, useState } from 'react'
-import { IUser } from 'src/types/types'
 import { ToastContainer, toast } from 'react-toastify'
 import { Formik, Form } from 'formik'
 import { profileValidationSchema } from '../../../utils/validation'
 import classNames from 'classnames'
 import styles from './MyProfile.module.scss'
 import ProfileField from './ProfileField/ProfileField'
+import { useDispatch } from 'react-redux'
+import { deleteUser, logoutUser } from 'src/store/actions/authActions'
 
-interface MyProfileProps {
-	handleLogout: () => void
-	handleDelete: (user: IUser) => void
-}
-
-const MyProfile: FC<MyProfileProps> = ({ handleLogout, handleDelete }) => {
+const MyProfile: FC = () => {
 	const [isEdit, setIsEdit] = useState(false)
+
+	const dispatch = useDispatch()
 
 	let user = {
 		name: '',
@@ -63,11 +61,17 @@ const MyProfile: FC<MyProfileProps> = ({ handleLogout, handleDelete }) => {
 					{({ errors, touched, handleSubmit, setFieldValue }) => (
 						<>
 							<div className={styles.first}>
-								<div className={classNames(styles.profile__img, { [styles.active]: isEdit })}>
+								<div
+									className={classNames(styles.profile__img, {
+										[styles.active]: isEdit,
+									})}
+								>
 									<div
 										style={{
 											backgroundImage: `url(${
-												user.photo ? user.photo : process.env.PUBLIC_URL + '/img/users/User.png'
+												user.photo
+													? user.photo
+													: process.env.PUBLIC_URL + '/img/users/User.png'
 											})`,
 										}}
 									>
@@ -117,14 +121,17 @@ const MyProfile: FC<MyProfileProps> = ({ handleLogout, handleDelete }) => {
 											user = oldUser.current
 											if (ref.current) ref.current?.reset()
 										} else {
-											handleLogout()
+											dispatch(logoutUser())
 										}
 									}}
 									className={styles.profile__btn}
 								>
 									{isEdit ? 'Отмена' : 'Выйти'}
 								</button>
-								<button onClick={() => handleDelete(user)} className={styles.profile__btn}>
+								<button
+									onClick={() => dispatch(deleteUser(user))}
+									className={styles.profile__btn}
+								>
 									Удалить
 								</button>
 							</div>

@@ -13,7 +13,7 @@ import {
 	IClearOrder,
 } from '../../types/types'
 import { useSelector, useDispatch } from 'react-redux'
-import { loginUser } from '../../store/reducers/authActions'
+import { loginUser } from '../../store/actions/authActions'
 import { Link } from 'react-router-dom'
 import styles from './ModalOrder.module.scss'
 
@@ -40,7 +40,10 @@ const ModalOrder: FC<ModalOrderProps> = ({
 	onMakeOrder,
 	onClear,
 }) => {
-	const summa = orders.reduce((summa, order) => summa + order.price * order.count, 0)
+	const summa = orders.reduce(
+		(summa, order) => summa + order.price * order.count,
+		0,
+	)
 	const [isOpen, setIsOpen] = useState(false)
 
 	useEffect(() => {
@@ -52,7 +55,9 @@ const ModalOrder: FC<ModalOrderProps> = ({
 		}
 	}, [showModalOrder])
 
-	const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated)
+	const isAuthenticated = useSelector(
+		(state: any) => state.auth.isAuthenticated,
+	)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -131,7 +136,10 @@ const ModalOrder: FC<ModalOrderProps> = ({
 											</button>
 										) : (
 											<Link to='/MusicStore-React/profile'>
-												<button className={styles.btn} onClick={() => onShowModalOrder()}>
+												<button
+													className={styles.btn}
+													onClick={() => onShowModalOrder()}
+												>
 													Авторизоваться
 												</button>
 											</Link>
@@ -142,11 +150,15 @@ const ModalOrder: FC<ModalOrderProps> = ({
 								<div className={styles.empty}>
 									<p className={styles.empty__title}>Ой, пусто!</p>
 									<p className={styles.empty__text}>
-										Ваша корзина пуста, откройте "Меню" и выберите понравившийся товар.
+										Ваша корзина пуста, откройте "Меню" и выберите понравившийся
+										товар.
 									</p>
 								</div>
 							)}
-							<IoClose className={styles.btn_close} onClick={() => onShowModalOrder()} />
+							<IoClose
+								className={styles.btn_close}
+								onClick={() => onShowModalOrder()}
+							/>
 						</div>
 					</div>
 				</CSSTransition>

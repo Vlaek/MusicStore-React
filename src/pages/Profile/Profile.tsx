@@ -1,17 +1,12 @@
 import { FC, useState, useContext, useEffect } from 'react'
 import Tabs from '../../components/Tabs/Tabs'
 import { OrdersContext } from '../../context/context'
-import { IOrdersContext, IUser } from '../../types/types'
+import { IOrdersContext } from '../../types/types'
 import MyProfile from '../../components/Tabs/MyProfile/MyProfile'
 import MyLikes from '../../components/Tabs/MyLikes/MyLikes'
 import MyOrders from '../../components/Tabs/MyOrders/MyOrders'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-	deleteUser,
-	loginUser,
-	logoutUser,
-	registerUser,
-} from '../../store/reducers/authActions'
+import { loginUser } from '../../store/actions/authActions'
 import Auth from '../../components/Tabs/Auth/Auth'
 import { Helmet } from 'react-helmet'
 import 'react-toastify/dist/ReactToastify.css'
@@ -46,34 +41,10 @@ const Profile: FC = () => {
 		}
 	}, [dispatch])
 
-	const handleLogin = (user: IUser) => {
-		localStorage.setItem('current_user', JSON.stringify(user))
-		dispatch(loginUser(user))
-	}
-
-	const handleLogout = () => {
-		localStorage.removeItem('current_user')
-		dispatch(logoutUser())
-	}
-
-	const handleRegister = (user: IUser) => {
-		localStorage.setItem('current_user', JSON.stringify(user))
-		dispatch(registerUser(user))
-	}
-
-	const handleDelete = (user: IUser) => {
-		localStorage.removeItem('current_user')
-		dispatch(deleteUser(user))
-	}
-
 	const tabs = [
 		{
 			title: 'Мои данные',
-			content: isAuthenticated ? (
-				<MyProfile handleLogout={handleLogout} handleDelete={handleDelete} />
-			) : (
-				<Auth handleLogin={handleLogin} handleRegister={handleRegister} />
-			),
+			content: isAuthenticated ? <MyProfile /> : <Auth />,
 			authTab: isAuthenticated,
 		},
 		{
