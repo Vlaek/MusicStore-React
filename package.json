@@ -1,71 +1,69 @@
 {
-  "name": "web-store",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": "https://vlaek.github.io/MusicStore-React/",
-  "dependencies": {
-    "@pbe/react-yandex-maps": "^1.2.4",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^29.5.3",
-    "@types/node": "^20.5.0",
-    "@types/react": "^18.2.20",
-    "@types/react-dom": "^18.2.7",
-    "@types/react-helmet": "^6.1.6",
-    "@types/react-redux": "^7.1.26",
-    "axios": "^1.4.0",
-    "bootstrap": "^5.3.1",
-    "classnames": "^2.3.2",
-    "formik": "^2.4.4",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.8.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-icons": "^4.10.1",
-    "react-redux": "^8.1.2",
-    "react-router-dom": "^6.14.2",
-    "react-scripts": "5.0.1",
-    "react-toastify": "^9.1.3",
-    "react-transition-group": "^4.4.5",
-    "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4",
-    "yup": "^1.2.0"
-  },
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "gh-pages": "^5.0.0",
-    "node-sass": "^7.0.3",
-    "sass": "^1.67.0",
-    "sass-loader": "^13.3.2",
-    "ts-loader": "^9.4.4",
-    "webpack": "^5.88.2"
-  }
+	"name": "web-store",
+	"version": "0.1.0",
+	"private": true,
+	"homepage": "https://vlaek.github.io/MusicStore-React/",
+	"dependencies": {
+		"@pbe/react-yandex-maps": "^1.2.4",
+		"@testing-library/jest-dom": "^5.17.0",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/jest": "^29.5.3",
+		"@types/node": "^20.5.0",
+		"@types/react": "^18.2.20",
+		"@types/react-dom": "^18.2.7",
+		"@types/react-helmet": "^6.1.6",
+		"@types/react-redux": "^7.1.26",
+		"axios": "^1.4.0",
+		"bootstrap": "^5.3.1",
+		"classnames": "^2.3.2",
+		"formik": "^2.4.4",
+		"react": "^18.2.0",
+		"react-bootstrap": "^2.8.0",
+		"react-dom": "^18.2.0",
+		"react-helmet": "^6.1.0",
+		"react-icons": "^4.10.1",
+		"react-redux": "^8.1.2",
+		"react-router-dom": "^6.14.2",
+		"react-toastify": "^9.1.3",
+		"react-transition-group": "^4.4.5",
+		"redux": "^4.2.1",
+		"redux-thunk": "^2.4.2",
+		"sass": "^1.67.0",
+		"typescript": "^4.9.5",
+		"web-vitals": "^2.1.4",
+		"yup": "^1.2.0"
+	},
+	"scripts": {
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"gh-pages": "^5.0.0",
+		"react-scripts": "^5.0.1",
+		"ts-loader": "^9.4.4",
+		"webpack": "^5.88.2"
+	}
 }

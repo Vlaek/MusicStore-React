@@ -14,7 +14,7 @@ const App: FC = () => {
 	const [showModalOrder, setShowModalOrder] = useState(false)
 	const [showModal, setShowModal] = useState(false)
 	const [fullItem, setFullItem] = useState<IAlbum>({
-		id: -1,
+		id: 0,
 		title: '',
 		author: '',
 		tracklist: [],
