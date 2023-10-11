@@ -1,14 +1,14 @@
-import { IState, UserAction } from '../../types/types'
+import { UserState, UserAction } from '../types'
 
-const initialState: IState = {
+const initialState: UserState = {
 	user: null,
 	isAuthenticated: false,
 }
 
 export const authReducer = (
-	state: IState = initialState,
+	state: UserState = initialState,
 	action: UserAction,
-): IState => {
+): UserState => {
 	switch (action.type) {
 		case 'LOGIN':
 			localStorage.setItem('current_user', JSON.stringify(action.payload))

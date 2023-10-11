@@ -2,7 +2,6 @@ import React, { FC, useState, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { IoCart, IoHeart } from 'react-icons/io5'
 import {
-	IAdd,
 	IAlbum,
 	ILike,
 	IShowModal,
@@ -11,13 +10,14 @@ import {
 } from '../../../../types/types'
 import cn from 'classnames'
 import styles from './LikeItem.module.scss'
+import { useDispatch } from 'react-redux'
+import { addToOrder } from 'src/store/actions/orderActions'
 
 interface LikeItemProps {
 	index: number
 	like: IAlbum
 	likes: IAlbum[]
 	draggableItem: number
-	onAddToOrder: IAdd
 	onLike: ILike
 	onShowModal: IShowModal
 	setLikes: ISetLikes
@@ -30,7 +30,6 @@ const LikeItem: FC<LikeItemProps> = ({
 	like,
 	likes,
 	draggableItem,
-	onAddToOrder,
 	onLike,
 	onShowModal,
 	setLikes,
@@ -39,6 +38,8 @@ const LikeItem: FC<LikeItemProps> = ({
 }) => {
 	const [show, setShow] = useState(true)
 	const myRef = useRef<HTMLDivElement>(null)
+
+	const dispatch = useDispatch()
 
 	const dragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault()
@@ -129,7 +130,7 @@ const LikeItem: FC<LikeItemProps> = ({
 							/>
 							<IoCart
 								className={cn(styles.btn_cart, { [styles.active]: order })}
-								onClick={() => onAddToOrder(like)}
+								onClick={() => dispatch(addToOrder(like))}
 							/>
 						</div>
 					</div>

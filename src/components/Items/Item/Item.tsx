@@ -2,24 +2,28 @@ import { FC, memo } from 'react'
 import { IoCart, IoHeart } from 'react-icons/io5'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { IAlbum, IAdd, ILike, IShowModal } from '../../../types/types'
+import { IAlbum, ILike, IShowModal } from '../../../types/types'
 import cn from 'classnames'
 import styles from './Item.module.scss'
+import { useDispatch } from 'react-redux'
+import { addToOrder } from 'src/store/actions/orderActions'
 
 interface ItemProps {
 	item: IAlbum
 	like: boolean
 	order: boolean
-	onAdd: IAdd
 	onLike: ILike
 	onShowModal: IShowModal
 }
 
 const Item: FC<ItemProps> = memo(
-	({ item, like, order, onAdd, onLike, onShowModal }) => {
+	({ item, like, order, onLike, onShowModal }) => {
 		const isAuthenticated = useSelector(
 			(state: any) => state.auth.isAuthenticated,
 		)
+
+		const dispatch = useDispatch()
+
 		const navigate = useNavigate()
 
 		return (
@@ -59,7 +63,7 @@ const Item: FC<ItemProps> = memo(
 						/>
 						<IoCart
 							className={cn(styles.btn_cart, { [styles.active]: order })}
-							onClick={() => onAdd(item)}
+							onClick={() => dispatch(addToOrder(item))}
 						/>
 					</div>
 				</div>

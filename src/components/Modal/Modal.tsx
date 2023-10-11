@@ -1,20 +1,29 @@
 import { FC, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { IoCart, IoClose, IoHeart } from 'react-icons/io5'
-import { IAdd, IAlbum, ILike } from '../../types/types'
+import { IAlbum, ILike } from '../../types/types'
 import classNames from 'classnames'
 import styles from './Modal.module.scss'
+import { useDispatch } from 'react-redux'
+import { addToOrder } from 'src/store/actions/orderActions'
 
 interface ModalProps {
 	showModal: boolean
 	item: IAlbum
 	likes: IAlbum[]
 	onLike: ILike
-	onAdd: IAdd
 	onShowModal: (showModal: boolean) => void
 }
 
-const Modal: FC<ModalProps> = ({ showModal, item, likes, onLike, onAdd, onShowModal }) => {
+const Modal: FC<ModalProps> = ({
+	showModal,
+	item,
+	likes,
+	onLike,
+	onShowModal,
+}) => {
+	const dispatch = useDispatch()
+
 	useEffect(() => {
 		if (!showModal) document.body.style.overflow = 'visible'
 		else document.body.style.overflow = 'hidden'
@@ -63,7 +72,7 @@ const Modal: FC<ModalProps> = ({ showModal, item, likes, onLike, onAdd, onShowMo
 									<IoCart
 										className={styles.btn_cart}
 										onClick={() => {
-											onAdd(item)
+											dispatch(addToOrder(item))
 											onShowModal(false)
 										}}
 									/>
@@ -83,7 +92,10 @@ const Modal: FC<ModalProps> = ({ showModal, item, likes, onLike, onAdd, onShowMo
 							</div>
 						))}
 					</div>
-					<IoClose className={styles.btn_close} onClick={() => onShowModal(false)} />
+					<IoClose
+						className={styles.btn_close}
+						onClick={() => onShowModal(false)}
+					/>
 				</div>
 			</div>
 		</CSSTransition>

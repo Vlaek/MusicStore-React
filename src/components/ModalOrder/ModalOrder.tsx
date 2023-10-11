@@ -2,49 +2,38 @@ import { FC, useEffect, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { IoClose } from 'react-icons/io5'
 import Order from './Order/Order'
-import {
-	IAdd,
-	IOrder,
-	IShowModalOrder,
-	IShowModal,
-	IRemove,
-	IDelete,
-	IMakeOrder,
-	IClearOrder,
-} from '../../types/types'
+import { IShowModalOrder, IShowModal } from '../../types/types'
 import { useSelector, useDispatch } from 'react-redux'
 import { loginUser } from '../../store/actions/authActions'
 import { Link } from 'react-router-dom'
 import styles from './ModalOrder.module.scss'
+import { RootState } from 'src/store/types'
+import { clearOrder, makeOrder } from 'src/store/actions/orderActions'
 
 interface ModalOrderProps {
 	showModalOrder: boolean
-	orders: IOrder[]
 	onShowModalOrder: IShowModalOrder
-	onAdd: IAdd
-	onRemove: IRemove
-	onDelete: IDelete
 	onShowModal: IShowModal
-	onMakeOrder: IMakeOrder
-	onClear: IClearOrder
 }
 
 const ModalOrder: FC<ModalOrderProps> = ({
 	showModalOrder,
-	orders,
 	onShowModalOrder,
-	onAdd,
-	onRemove,
-	onDelete,
 	onShowModal,
-	onMakeOrder,
-	onClear,
 }) => {
+	const [isOpen, setIsOpen] = useState(false)
+
+	const orders = useSelector((state: RootState) => state.order.orders)
+	const isAuthenticated = useSelector(
+		(state: any) => state.auth.isAuthenticated,
+	)
+
+	const dispatch = useDispatch()
+
 	const summa = orders.reduce(
 		(summa, order) => summa + order.price * order.count,
 		0,
 	)
-	const [isOpen, setIsOpen] = useState(false)
 
 	useEffect(() => {
 		if (!showModalOrder) {
@@ -54,11 +43,6 @@ const ModalOrder: FC<ModalOrderProps> = ({
 			document.body.style.overflow = 'hidden'
 		}
 	}, [showModalOrder])
-
-	const isAuthenticated = useSelector(
-		(state: any) => state.auth.isAuthenticated,
-	)
-	const dispatch = useDispatch()
 
 	useEffect(() => {
 		const userString = localStorage.getItem('current_user')
@@ -116,9 +100,6 @@ const ModalOrder: FC<ModalOrderProps> = ({
 											<Order
 												key={order.id}
 												item={order}
-												onAdd={onAdd}
-												onRemove={onRemove}
-												onDelete={onDelete}
 												onShowModal={onShowModal}
 											/>
 										))}
@@ -128,8 +109,8 @@ const ModalOrder: FC<ModalOrderProps> = ({
 											<button
 												className={styles.btn}
 												onClick={() => {
-													onMakeOrder(orders, summa)
-													onClear()
+													dispatch(makeOrder(orders, summa))
+													dispatch(clearOrder())
 												}}
 											>
 												К оформлению

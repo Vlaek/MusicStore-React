@@ -14,7 +14,7 @@ import styles from './Index.module.scss'
 
 const Index: FC = () => {
 	const [items, setItems] = useState([])
-	const { likes, orders, addToOrder, likeItem, onShowModal } = useContext(
+	const { likes, likeItem, onShowModal } = useContext(
 		OrdersContext,
 	) as IOrdersContext
 
@@ -24,17 +24,24 @@ const Index: FC = () => {
 		query: '',
 	})
 
-	const { fetchItems, isLoading, itemsError }: IUseFetching = useFetching(async () => {
-		const response = await DataService.getAll()
-		setItems(response.data)
-	})
+	const { fetchItems, isLoading, itemsError }: IUseFetching = useFetching(
+		async () => {
+			const response = await DataService.getAll()
+			setItems(response.data)
+		},
+	)
 
 	useEffect(() => {
 		fetchItems()
 		window.scrollTo(0, 0)
 	}, [])
 
-	const sortedAndSearchedItems = useItems(items, filter.sort, filter.query, filter.genre)
+	const sortedAndSearchedItems = useItems(
+		items,
+		filter.sort,
+		filter.query,
+		filter.genre,
+	)
 
 	const genres = [
 		{
@@ -79,7 +86,10 @@ const Index: FC = () => {
 	]
 
 	const handleQueryChange = (
-		e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<SVGElement, MouseEvent> | undefined,
+		e:
+			| React.ChangeEvent<HTMLInputElement>
+			| React.MouseEvent<SVGElement, MouseEvent>
+			| undefined,
 	) => {
 		const input = e?.target as HTMLInputElement
 		if (!input.value) input.value = ''
@@ -123,9 +133,7 @@ const Index: FC = () => {
 						) : (
 							<Items
 								items={sortedAndSearchedItems}
-								orders={orders}
 								likes={likes}
-								onAdd={addToOrder}
 								onLike={likeItem}
 								onShowModal={onShowModal}
 							/>

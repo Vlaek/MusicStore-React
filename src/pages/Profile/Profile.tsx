@@ -11,17 +11,12 @@ import Auth from '../../components/Tabs/Auth/Auth'
 import { Helmet } from 'react-helmet'
 import 'react-toastify/dist/ReactToastify.css'
 import styles from './Profile.module.scss'
+import { RootState } from 'src/store/types'
 
 const Profile: FC = () => {
-	const {
-		likes,
-		orders,
-		ordersHistory,
-		likeItem,
-		onShowModal,
-		addToOrder,
-		setLikes,
-	} = useContext(OrdersContext) as IOrdersContext
+	const { likes, likeItem, onShowModal, setLikes } = useContext(
+		OrdersContext,
+	) as IOrdersContext
 	const [draggableItem, setDraggableItem] = useState<number>(0)
 
 	useEffect(() => {
@@ -29,7 +24,7 @@ const Profile: FC = () => {
 	}, [])
 
 	const isAuthenticated = useSelector(
-		(state: any) => state.auth.isAuthenticated,
+		(state: RootState) => state.auth.isAuthenticated,
 	)
 	const dispatch = useDispatch()
 
@@ -53,21 +48,17 @@ const Profile: FC = () => {
 				<MyLikes
 					likes={likes}
 					likeItem={likeItem}
-					addToOrder={addToOrder}
 					setLikes={setLikes}
 					draggableItem={draggableItem}
 					setDraggableItem={setDraggableItem}
 					onShowModal={onShowModal}
-					orders={orders}
 				/>
 			),
 			authTab: isAuthenticated,
 		},
 		{
 			title: 'Мои заказы',
-			content: (
-				<MyOrders ordersHistory={ordersHistory} onShowModal={onShowModal} />
-			),
+			content: <MyOrders onShowModal={onShowModal} />,
 			authTab: isAuthenticated,
 		},
 	]

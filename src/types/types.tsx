@@ -69,9 +69,6 @@ export interface ISetDraggableItem {
 
 export interface IOrdersContext {
 	likes: IAlbum[]
-	orders: IOrder[]
-	ordersHistory: IOrderHistory[]
-	addToOrder: IAdd
 	likeItem: ILike
 	onShowModal: IShowModal
 	setLikes: ISetLikes
@@ -85,35 +82,4 @@ export interface IUser {
 	address?: string
 	index?: string
 	img?: string
-}
-
-export interface ISaveUser {
-	type: 'LOGIN'
-	payload: IUser
-}
-
-export interface IRemoveUser {
-	type: 'LOGOUT'
-}
-
-export interface IRegisterUser {
-	type: 'REGISTER'
-	payload: IUser
-}
-
-export interface IDeleteUser {
-	type: 'DELETE'
-	payload: IUser
-}
-
-export interface ICurrentUser {
-	type: 'CURRENT_USER'
-	payload: IUser
-}
-
-export type UserAction = ISaveUser | IRemoveUser | IRegisterUser | IDeleteUser | ICurrentUser
-
-export interface IState {
-	user: IUser | null
-	isAuthenticated: boolean
 }

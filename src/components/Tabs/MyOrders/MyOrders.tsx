@@ -1,14 +1,19 @@
 import { FC } from 'react'
 import Accordion from '../../Accordion/Accordion'
-import { IOrderHistory, IShowModal } from '../../../types/types'
+import { IShowModal } from '../../../types/types'
 import styles from './MyOrders.module.scss'
+import { RootState } from 'src/store/types'
+import { useSelector } from 'react-redux'
 
 interface MyOrdersProps {
-	ordersHistory: IOrderHistory[]
 	onShowModal: IShowModal
 }
 
-const MyOrders: FC<MyOrdersProps> = ({ ordersHistory, onShowModal }) => {
+const MyOrders: FC<MyOrdersProps> = ({ onShowModal }) => {
+	const ordersHistory = useSelector(
+		(state: RootState) => state.order.ordersHistory,
+	)
+
 	return (
 		<div className={styles.history}>
 			{ordersHistory.length > 0 ? (
@@ -43,7 +48,10 @@ const MyOrders: FC<MyOrdersProps> = ({ ordersHistory, onShowModal }) => {
 												/>
 											</div>
 											<div className={styles.content}>
-												<h2 className={styles.title} onClick={() => onShowModal(item)}>
+												<h2
+													className={styles.title}
+													onClick={() => onShowModal(item)}
+												>
 													{item.title}
 												</h2>
 												<p className={styles.author}>{item.author}</p>

@@ -6,10 +6,10 @@ import {
 	IShowModal,
 	ISetDraggableItem,
 	ILike,
-	IAdd,
 } from '../../../types/types'
 import styles from './MyLikes.module.scss'
-import { IOrder } from './../../../types/types'
+import { useSelector } from 'react-redux'
+import { RootState } from 'src/store/types'
 
 interface MyLikesProps {
 	likes: IAlbum[]
@@ -17,9 +17,7 @@ interface MyLikesProps {
 	draggableItem: number
 	setDraggableItem: ISetDraggableItem
 	likeItem: ILike
-	addToOrder: IAdd
 	onShowModal: IShowModal
-	orders: IOrder[]
 }
 
 const MyLikes: FC<MyLikesProps> = ({
@@ -28,10 +26,10 @@ const MyLikes: FC<MyLikesProps> = ({
 	draggableItem,
 	setDraggableItem,
 	likeItem,
-	addToOrder,
 	onShowModal,
-	orders,
 }) => {
+	const orders = useSelector((state: RootState) => state.order.orders)
+
 	return (
 		<div className={styles.items}>
 			{likes.length > 0 ? (
@@ -46,7 +44,6 @@ const MyLikes: FC<MyLikesProps> = ({
 							draggableItem={draggableItem}
 							setDraggableItem={setDraggableItem}
 							onLike={likeItem}
-							onAddToOrder={addToOrder}
 							onShowModal={onShowModal}
 							order={orders.some(order => order.id === like.id)}
 						/>
