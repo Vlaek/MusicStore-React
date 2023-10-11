@@ -78,7 +78,25 @@ export interface OrderState {
 	ordersHistory: IOrderHistory[]
 }
 
+export interface IFilter {
+	genre: string
+	sort: string
+	query: string
+}
+
+export interface ISetFilter {
+	type: 'SET_FILTER'
+	payload: IFilter
+}
+
+export type FilterAction = ISetFilter
+
+export interface FilterState {
+	filter: IFilter
+}
+
 export type RootState = {
 	auth: UserState
 	order: OrderState
+	filter: IFilter
 }

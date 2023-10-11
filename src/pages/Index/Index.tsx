@@ -11,18 +11,15 @@ import Loader from '../../components/Loader/Loader'
 import { IOrdersContext } from '../../types/types'
 import { Helmet } from 'react-helmet'
 import styles from './Index.module.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from 'src/store/types'
+import { setFilter } from 'src/store/actions/filterActions'
 
 const Index: FC = () => {
 	const [items, setItems] = useState([])
 	const { likes, likeItem, onShowModal } = useContext(
 		OrdersContext,
 	) as IOrdersContext
-
-	const [filter, setFilter] = useState({
-		genre: '',
-		sort: 'new',
-		query: '',
-	})
 
 	const { fetchItems, isLoading, itemsError }: IUseFetching = useFetching(
 		async () => {
@@ -36,12 +33,11 @@ const Index: FC = () => {
 		window.scrollTo(0, 0)
 	}, [])
 
-	const sortedAndSearchedItems = useItems(
-		items,
-		filter.sort,
-		filter.query,
-		filter.genre,
-	)
+	const filter = useSelector((state: RootState) => state.filter)
+
+	const dispatch = useDispatch()
+
+	const sortedAndSearchedItems = useItems(items, filter)
 
 	const genres = [
 		{
@@ -94,17 +90,17 @@ const Index: FC = () => {
 		const input = e?.target as HTMLInputElement
 		if (!input.value) input.value = ''
 		const newFilter = { ...filter, query: input.value }
-		setFilter(newFilter)
+		dispatch(setFilter(newFilter))
 	}
 
 	const handleGenreChange = (genre: string) => {
 		const newFilter = { ...filter, genre: genre }
-		setFilter(newFilter)
+		dispatch(setFilter(newFilter))
 	}
 
 	const handleSortChange = (sort: string) => {
-		const newSort = { ...filter, sort: sort }
-		setFilter(newSort)
+		const newFilter = { ...filter, sort: sort }
+		dispatch(setFilter(newFilter))
 	}
 
 	return (

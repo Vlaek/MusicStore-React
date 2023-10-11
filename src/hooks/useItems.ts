@@ -1,6 +1,7 @@
 import { useMemo, useEffect, useState } from 'react'
 import { IAlbum } from './../types/types'
 import useDebounce from './useDebounce'
+import { IFilter } from 'src/store/types'
 
 const filterItems = (items: IAlbum[], query: string, genre: string) => {
 	let result = items
@@ -42,7 +43,9 @@ const sortItems = (items: IAlbum[], sort: string) => {
 	return items
 }
 
-export const useItems = (items: IAlbum[], sort: string, query: string, genre: string) => {
+export const useItems = (items: IAlbum[], filter: IFilter) => {
+	const { sort, query, genre } = filter
+
 	const debouncedQuery = useDebounce(query, 500)
 
 	const [filteredItems, setFilteredItems] = useState(items)
@@ -57,7 +60,10 @@ export const useItems = (items: IAlbum[], sort: string, query: string, genre: st
 		setFilteredItems(result)
 	}, [debouncedQuery, items, genre])
 
-	const sortedItems = useMemo(() => sortItems(filteredItems, sort), [filteredItems, sort])
+	const sortedItems = useMemo(
+		() => sortItems(filteredItems, sort),
+		[filteredItems, sort],
+	)
 
 	return sortedItems
 }

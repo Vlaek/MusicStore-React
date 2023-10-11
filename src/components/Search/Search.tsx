@@ -4,7 +4,10 @@ import styles from './Search.module.scss'
 
 interface SearchProps {
 	setFilter: (
-		e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<SVGElement, MouseEvent> | undefined,
+		e:
+			| React.ChangeEvent<HTMLInputElement>
+			| React.MouseEvent<SVGElement, MouseEvent>
+			| undefined,
 	) => void
 }
 
@@ -20,7 +23,12 @@ const Search: FC<SearchProps> = ({ setFilter }) => {
 
 	return (
 		<div className={styles.search}>
-			<input className={styles.input} placeholder='Найти' onChange={e => setFilter(e)} ref={ref} />
+			<input
+				className={styles.input}
+				placeholder='Найти'
+				onChange={e => setFilter(e)}
+				ref={ref}
+			/>
 			<IoCloseSharp className={styles.btn_clear} onClick={clickHandler} />
 		</div>
 	)
