@@ -1,41 +1,36 @@
-import React, { FC, useState, useEffect, useContext } from 'react'
+import React, { FC, useEffect, useContext } from 'react'
 import { OrdersContext } from '../../context/context'
 import Categories from '../../components/Categories/Categories'
 import Items from '../../components/Items/Items'
 import Search from './../../components/Search/Search'
 import CarouselBox from '../../components/CarouselBox/CarouselBox'
-import DataService from '../../API/DataService'
+// import DataService from '../../API/DataService'
 import { useItems } from '../../hooks/useItems'
-import { useFetching, IUseFetching } from '../../hooks/useFetching'
+// import { useFetching, IUseFetching } from '../../hooks/useFetching'
 import Loader from '../../components/Loader/Loader'
 import { IOrdersContext } from '../../types/types'
 import { Helmet } from 'react-helmet'
 import styles from './Index.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from 'src/store/types'
+import { RootState } from 'src/store/store'
 import { setFilter } from 'src/store/actions/filterActions'
+import { useTypedSelector } from 'src/hooks/useTypedSelector'
+import { fetchItems } from 'src/store/actions/itemActions'
 
 const Index: FC = () => {
-	const [items, setItems] = useState([])
 	const { likes, likeItem, onShowModal } = useContext(
 		OrdersContext,
 	) as IOrdersContext
 
-	const { fetchItems, isLoading, itemsError }: IUseFetching = useFetching(
-		async () => {
-			const response = await DataService.getAll()
-			setItems(response.data)
-		},
-	)
-
-	useEffect(() => {
-		fetchItems()
-		window.scrollTo(0, 0)
-	}, [])
-
-	const filter = useSelector((state: RootState) => state.filter)
+	const { items, error, isLoading } = useTypedSelector(state => state.items)
 
 	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(fetchItems())
+	}, [dispatch])
+
+	const filter = useSelector((state: RootState) => state.filter)
 
 	const sortedAndSearchedItems = useItems(items, filter)
 
@@ -115,26 +110,22 @@ const Index: FC = () => {
 				<Categories categories={sorts} setCategory={handleSortChange} />
 				<Categories categories={genres} setCategory={handleGenreChange} />
 				<Search setFilter={handleQueryChange} />
-				{itemsError ? (
+				{isLoading ? (
+					<div className={styles.empty}>
+						<Loader />
+					</div>
+				) : error ? (
 					<div className={styles.empty}>
 						<p className={styles.empty__title}>Произошла ошибка:</p>
-						<p className={styles.empty__error}>{itemsError}</p>
+						<p className={styles.empty__error}>{error}</p>
 					</div>
 				) : (
-					<div>
-						{isLoading ? (
-							<div className={styles.empty}>
-								<Loader />
-							</div>
-						) : (
-							<Items
-								items={sortedAndSearchedItems}
-								likes={likes}
-								onLike={likeItem}
-								onShowModal={onShowModal}
-							/>
-						)}
-					</div>
+					<Items
+						items={sortedAndSearchedItems}
+						likes={likes}
+						onLike={likeItem}
+						onShowModal={onShowModal}
+					/>
 				)}
 			</div>
 		</>

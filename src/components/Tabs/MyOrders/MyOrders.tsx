@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Accordion from '../../Accordion/Accordion'
 import { IShowModal } from '../../../types/types'
 import styles from './MyOrders.module.scss'
-import { RootState } from 'src/store/types'
+import { RootState } from 'src/store/store'
 import { useSelector } from 'react-redux'
 
 interface MyOrdersProps {

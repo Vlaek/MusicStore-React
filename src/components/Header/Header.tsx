@@ -5,7 +5,7 @@ import { IShowModalOrder } from '../../types/types'
 import classNames from 'classnames'
 import styles from './Header.module.scss'
 import { useSelector } from 'react-redux'
-import { RootState } from 'src/store/types'
+import { RootState } from 'src/store/store'
 
 interface HeaderProps {
 	onShowModalOrder: IShowModalOrder

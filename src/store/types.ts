@@ -95,8 +95,9 @@ export interface FilterState {
 	filter: IFilter
 }
 
-export type RootState = {
-	auth: UserState
-	order: OrderState
-	filter: IFilter
-}
+// export type RootState = {
+// 	auth: UserState
+// 	order: OrderState
+// 	filter: IFilter
+// 	items: ItemState
+// }

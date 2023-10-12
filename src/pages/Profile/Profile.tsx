@@ -11,7 +11,7 @@ import Auth from '../../components/Tabs/Auth/Auth'
 import { Helmet } from 'react-helmet'
 import 'react-toastify/dist/ReactToastify.css'
 import styles from './Profile.module.scss'
-import { RootState } from 'src/store/types'
+import { RootState } from 'src/store/store'
 
 const Profile: FC = () => {
 	const { likes, likeItem, onShowModal, setLikes } = useContext(

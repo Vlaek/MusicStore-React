@@ -9,7 +9,7 @@ import {
 } from '../../../types/types'
 import styles from './MyLikes.module.scss'
 import { useSelector } from 'react-redux'
-import { RootState } from 'src/store/types'
+import { RootState } from 'src/store/store'
 
 interface MyLikesProps {
 	likes: IAlbum[]

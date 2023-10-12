@@ -3,7 +3,7 @@ import Item from './Item/Item'
 import { IAlbum, ILike, IShowModal } from '../../types/types'
 import styles from './Items.module.scss'
 import { useSelector } from 'react-redux'
-import { RootState } from 'src/store/types'
+import { RootState } from 'src/store/store'
 
 interface ItemsProps {
 	items: IAlbum[]

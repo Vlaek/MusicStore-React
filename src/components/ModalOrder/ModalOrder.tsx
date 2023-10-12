@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { loginUser } from '../../store/actions/authActions'
 import { Link } from 'react-router-dom'
 import styles from './ModalOrder.module.scss'
-import { RootState } from 'src/store/types'
+import { RootState } from 'src/store/store'
 import { clearOrder, makeOrder } from 'src/store/actions/orderActions'
 
 interface ModalOrderProps {
