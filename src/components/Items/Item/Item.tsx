@@ -5,8 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { IAlbum, ILike, IShowModal } from '../../../types/types'
 import cn from 'classnames'
 import styles from './Item.module.scss'
-import { useDispatch } from 'react-redux'
-import { addToOrder } from 'src/store/actions/orderActions'
+import { useActions } from 'src/hooks/useAction'
 
 interface ItemProps {
 	item: IAlbum
@@ -22,7 +21,7 @@ const Item: FC<ItemProps> = memo(
 			(state: any) => state.auth.isAuthenticated,
 		)
 
-		const dispatch = useDispatch()
+		const { addToOrder } = useActions()
 
 		const navigate = useNavigate()
 
@@ -63,7 +62,7 @@ const Item: FC<ItemProps> = memo(
 						/>
 						<IoCart
 							className={cn(styles.btn_cart, { [styles.active]: order })}
-							onClick={() => dispatch(addToOrder(item))}
+							onClick={() => addToOrder(item)}
 						/>
 					</div>
 				</div>

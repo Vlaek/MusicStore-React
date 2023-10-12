@@ -4,11 +4,10 @@ import { Formik, Form, Field } from 'formik'
 import classNames from 'classnames'
 import styles from './Auth.module.scss'
 import { authValidationSchema } from '../../../utils/validation'
-import { useDispatch } from 'react-redux'
-import { loginUser, registerUser } from 'src/store/actions/authActions'
+import { useActions } from 'src/hooks/useAction'
 
 const Auth: FC = () => {
-	const dispatch = useDispatch()
+	const { loginUser, registerUser } = useActions()
 
 	const onSubmit = (values: any) => {
 		const value = localStorage.getItem(values.email)
@@ -18,7 +17,7 @@ const Auth: FC = () => {
 				if (userLS.password !== values.password) {
 					toast.error('Пароли не совпадают!')
 				} else {
-					dispatch(loginUser(userLS))
+					loginUser(userLS)
 				}
 			} else {
 				toast.error('Пользователь не найден!')
@@ -34,7 +33,7 @@ const Auth: FC = () => {
 					index: '',
 					photo: '',
 				}
-				dispatch(registerUser(newUser))
+				registerUser(newUser)
 			} else {
 				toast.error('Пользователь уже зарегистрирован!')
 			}

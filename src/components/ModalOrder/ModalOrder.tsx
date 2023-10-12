@@ -3,12 +3,11 @@ import { CSSTransition } from 'react-transition-group'
 import { IoClose } from 'react-icons/io5'
 import Order from './Order/Order'
 import { IShowModalOrder, IShowModal } from '../../types/types'
-import { useSelector, useDispatch } from 'react-redux'
-import { loginUser } from '../../store/actions/authActions'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styles from './ModalOrder.module.scss'
 import { RootState } from 'src/store/store'
-import { clearOrder, makeOrder } from 'src/store/actions/orderActions'
+import { useActions } from 'src/hooks/useAction'
 
 interface ModalOrderProps {
 	showModalOrder: boolean
@@ -28,7 +27,7 @@ const ModalOrder: FC<ModalOrderProps> = ({
 		(state: any) => state.auth.isAuthenticated,
 	)
 
-	const dispatch = useDispatch()
+	const { loginUser, makeOrder, clearOrder } = useActions()
 
 	const summa = orders.reduce(
 		(summa, order) => summa + order.price * order.count,
@@ -48,9 +47,9 @@ const ModalOrder: FC<ModalOrderProps> = ({
 		const userString = localStorage.getItem('current_user')
 		if (userString) {
 			const user = JSON.parse(userString)
-			dispatch(loginUser(user))
+			loginUser(user)
 		}
-	}, [dispatch])
+	}, [])
 
 	return (
 		<CSSTransition
@@ -109,8 +108,8 @@ const ModalOrder: FC<ModalOrderProps> = ({
 											<button
 												className={styles.btn}
 												onClick={() => {
-													dispatch(makeOrder(orders, summa))
-													dispatch(clearOrder())
+													makeOrder(orders, summa)
+													clearOrder()
 												}}
 											>
 												К оформлению

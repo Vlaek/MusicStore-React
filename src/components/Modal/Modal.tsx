@@ -4,8 +4,7 @@ import { IoCart, IoClose, IoHeart } from 'react-icons/io5'
 import { IAlbum, ILike } from '../../types/types'
 import classNames from 'classnames'
 import styles from './Modal.module.scss'
-import { useDispatch } from 'react-redux'
-import { addToOrder } from 'src/store/actions/orderActions'
+import { useActions } from 'src/hooks/useAction'
 
 interface ModalProps {
 	showModal: boolean
@@ -22,7 +21,7 @@ const Modal: FC<ModalProps> = ({
 	onLike,
 	onShowModal,
 }) => {
-	const dispatch = useDispatch()
+	const { addToOrder } = useActions()
 
 	useEffect(() => {
 		if (!showModal) document.body.style.overflow = 'visible'
@@ -72,7 +71,7 @@ const Modal: FC<ModalProps> = ({
 									<IoCart
 										className={styles.btn_cart}
 										onClick={() => {
-											dispatch(addToOrder(item))
+											addToOrder(item)
 											onShowModal(false)
 										}}
 									/>

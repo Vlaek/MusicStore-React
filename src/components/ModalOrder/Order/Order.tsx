@@ -4,8 +4,7 @@ import { FaTrash } from 'react-icons/fa'
 import OrderButton from '../OrderButton/OrderButton'
 import { IOrder, IShowModal } from './../../../types/types'
 import styles from './Order.module.scss'
-import { useDispatch } from 'react-redux'
-import { deleteOrder } from 'src/store/actions/orderActions'
+import { useActions } from 'src/hooks/useAction'
 
 interface OrderProps {
 	item: IOrder
@@ -17,7 +16,7 @@ const Order: FC<OrderProps> = ({ item, onShowModal }) => {
 
 	const myRef = useRef(null)
 
-	const dispatch = useDispatch()
+	const { deleteOrder } = useActions()
 
 	return (
 		<CSSTransition
@@ -60,7 +59,7 @@ const Order: FC<OrderProps> = ({ item, onShowModal }) => {
 						onClick={() => {
 							setShow(false)
 							setTimeout(() => {
-								dispatch(deleteOrder(item.id))
+								deleteOrder(item.id)
 							}, 300)
 						}}
 					/>

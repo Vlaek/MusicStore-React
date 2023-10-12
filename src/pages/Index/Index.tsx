@@ -4,18 +4,15 @@ import Categories from '../../components/Categories/Categories'
 import Items from '../../components/Items/Items'
 import Search from './../../components/Search/Search'
 import CarouselBox from '../../components/CarouselBox/CarouselBox'
-// import DataService from '../../API/DataService'
 import { useItems } from '../../hooks/useItems'
-// import { useFetching, IUseFetching } from '../../hooks/useFetching'
 import Loader from '../../components/Loader/Loader'
 import { IOrdersContext } from '../../types/types'
 import { Helmet } from 'react-helmet'
 import styles from './Index.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from 'src/store/store'
-import { setFilter } from 'src/store/actions/filterActions'
 import { useTypedSelector } from 'src/hooks/useTypedSelector'
-import { fetchItems } from 'src/store/actions/itemActions'
+import { useActions } from 'src/hooks/useAction'
 
 const Index: FC = () => {
 	const { likes, likeItem, onShowModal } = useContext(
@@ -24,11 +21,11 @@ const Index: FC = () => {
 
 	const { items, error, isLoading } = useTypedSelector(state => state.items)
 
-	const dispatch = useDispatch()
+	const { fetchItems, setFilter } = useActions()
 
 	useEffect(() => {
-		dispatch(fetchItems())
-	}, [dispatch])
+		fetchItems()
+	}, [])
 
 	const filter = useSelector((state: RootState) => state.filter)
 
@@ -85,17 +82,17 @@ const Index: FC = () => {
 		const input = e?.target as HTMLInputElement
 		if (!input.value) input.value = ''
 		const newFilter = { ...filter, query: input.value }
-		dispatch(setFilter(newFilter))
+		setFilter(newFilter)
 	}
 
 	const handleGenreChange = (genre: string) => {
 		const newFilter = { ...filter, genre: genre }
-		dispatch(setFilter(newFilter))
+		setFilter(newFilter)
 	}
 
 	const handleSortChange = (sort: string) => {
 		const newFilter = { ...filter, sort: sort }
-		dispatch(setFilter(newFilter))
+		setFilter(newFilter)
 	}
 
 	return (

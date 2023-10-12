@@ -5,13 +5,13 @@ import { IOrdersContext } from '../../types/types'
 import MyProfile from '../../components/Tabs/MyProfile/MyProfile'
 import MyLikes from '../../components/Tabs/MyLikes/MyLikes'
 import MyOrders from '../../components/Tabs/MyOrders/MyOrders'
-import { useSelector, useDispatch } from 'react-redux'
-import { loginUser } from '../../store/actions/authActions'
+import { useSelector } from 'react-redux'
 import Auth from '../../components/Tabs/Auth/Auth'
 import { Helmet } from 'react-helmet'
 import 'react-toastify/dist/ReactToastify.css'
 import styles from './Profile.module.scss'
 import { RootState } from 'src/store/store'
+import { useActions } from 'src/hooks/useAction'
 
 const Profile: FC = () => {
 	const { likes, likeItem, onShowModal, setLikes } = useContext(
@@ -26,15 +26,16 @@ const Profile: FC = () => {
 	const isAuthenticated = useSelector(
 		(state: RootState) => state.auth.isAuthenticated,
 	)
-	const dispatch = useDispatch()
+
+	const { loginUser } = useActions()
 
 	useEffect(() => {
 		const userString = localStorage.getItem('current_user')
 		if (userString) {
 			const user = JSON.parse(userString)
-			dispatch(loginUser(user))
+			loginUser(user)
 		}
-	}, [dispatch])
+	}, [])
 
 	const tabs = [
 		{

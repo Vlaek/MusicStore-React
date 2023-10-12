@@ -5,13 +5,12 @@ import { profileValidationSchema } from '../../../utils/validation'
 import classNames from 'classnames'
 import styles from './MyProfile.module.scss'
 import ProfileField from './ProfileField/ProfileField'
-import { useDispatch } from 'react-redux'
-import { deleteUser, logoutUser } from 'src/store/actions/authActions'
+import { useActions } from 'src/hooks/useAction'
 
 const MyProfile: FC = () => {
 	const [isEdit, setIsEdit] = useState(false)
 
-	const dispatch = useDispatch()
+	const { logoutUser, deleteUser } = useActions()
 
 	let user = {
 		name: '',
@@ -121,7 +120,7 @@ const MyProfile: FC = () => {
 											user = oldUser.current
 											if (ref.current) ref.current?.reset()
 										} else {
-											dispatch(logoutUser())
+											logoutUser()
 										}
 									}}
 									className={styles.profile__btn}
@@ -129,7 +128,7 @@ const MyProfile: FC = () => {
 									{isEdit ? 'Отмена' : 'Выйти'}
 								</button>
 								<button
-									onClick={() => dispatch(deleteUser(user))}
+									onClick={() => deleteUser(user)}
 									className={styles.profile__btn}
 								>
 									Удалить

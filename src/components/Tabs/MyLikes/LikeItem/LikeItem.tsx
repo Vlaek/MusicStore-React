@@ -10,8 +10,7 @@ import {
 } from '../../../../types/types'
 import cn from 'classnames'
 import styles from './LikeItem.module.scss'
-import { useDispatch } from 'react-redux'
-import { addToOrder } from 'src/store/actions/orderActions'
+import { useActions } from 'src/hooks/useAction'
 
 interface LikeItemProps {
 	index: number
@@ -39,7 +38,7 @@ const LikeItem: FC<LikeItemProps> = ({
 	const [show, setShow] = useState(true)
 	const myRef = useRef<HTMLDivElement>(null)
 
-	const dispatch = useDispatch()
+	const { addToOrder } = useActions()
 
 	const dragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault()
@@ -130,7 +129,7 @@ const LikeItem: FC<LikeItemProps> = ({
 							/>
 							<IoCart
 								className={cn(styles.btn_cart, { [styles.active]: order })}
-								onClick={() => dispatch(addToOrder(like))}
+								onClick={() => addToOrder(like)}
 							/>
 						</div>
 					</div>
