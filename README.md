@@ -72,6 +72,7 @@
 - React Transition
 - React Helmet
 - React Toastify
+- React CountUp
 - Axios
 - Formik
 - Yup
