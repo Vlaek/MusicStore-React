@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/MusicStore-React/static/css/main.4984fa99.css",
-    "main.js": "/MusicStore-React/static/js/main.c6e554c1.js",
+    "main.css": "/MusicStore-React/static/css/main.1f14ab88.css",
+    "main.js": "/MusicStore-React/static/js/main.f5059329.js",
     "index.html": "/MusicStore-React/index.html",
-    "main.4984fa99.css.map": "/MusicStore-React/static/css/main.4984fa99.css.map",
-    "main.c6e554c1.js.map": "/MusicStore-React/static/js/main.c6e554c1.js.map"
+    "main.1f14ab88.css.map": "/MusicStore-React/static/css/main.1f14ab88.css.map",
+    "main.f5059329.js.map": "/MusicStore-React/static/js/main.f5059329.js.map"
   },
   "entrypoints": [
-    "static/css/main.4984fa99.css",
-    "static/js/main.c6e554c1.js"
+    "static/css/main.1f14ab88.css",
+    "static/js/main.f5059329.js"
   ]
 }
